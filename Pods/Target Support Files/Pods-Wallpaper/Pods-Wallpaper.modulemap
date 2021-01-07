@@ -1,0 +1,6 @@
+framework module Pods_Wallpaper {
+  umbrella header "Pods-Wallpaper-umbrella.h"
+
+  export *
+  module * { export * }
+}
