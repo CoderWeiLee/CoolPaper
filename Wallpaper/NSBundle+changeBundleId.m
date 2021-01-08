@@ -21,7 +21,6 @@
     dispatch_once(&onceToken, ^{
         [def setObject:[[NSBundle mainBundle] bundleIdentifier] forKey:NSBundle_changeBundleIdentifier_orgBundleId];
         [def synchronize];
-        
         Method m1 = class_getInstanceMethod([self class], NSSelectorFromString(@"bundleIdentifier"));
         Method m2 = class_getInstanceMethod([self class], NSSelectorFromString(@"_changeB"));
         method_exchangeImplementations(m1, m2);

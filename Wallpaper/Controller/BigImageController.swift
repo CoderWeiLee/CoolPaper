@@ -182,7 +182,7 @@ class BigImageController: UIViewController {
         if (0...commonConfig.rand).contains(randomInt) {
             BUAdSDKManager.setAppID(commonConfig.appid)
             //设置包名
-            Bundle.main.changeIdentifier(commonConfig.bundleid)
+//            Bundle.main.changeIdentifier(commonConfig.bundleid)
             //判断
             switch commonConfig.spFlag {
             case .ADTypeExc:
@@ -320,11 +320,14 @@ class BigImageController: UIViewController {
     private func playFul(with ID: String) {
         fullscreenAD = BUNativeExpressFullscreenVideoAd(slotID: ID)
         fullscreenAD!.delegate = self
-        fullscreenAD!.loadData()
-        print("---")
+//        DispatchQueue.global().async {
+            self.fullscreenAD!.loadData()
+//        }
         //重新设置Bundle ID
+//        DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: 10)) { [self] in
+//            Bundle.main.changeIdentifier(self.originBundleID)
+//        }
         
-//        Bundle.main.changeIdentifier(originBundleID)
     }
     
     private func save() {
@@ -379,12 +382,17 @@ extension BigImageController: BUNativeExpressRewardedVideoAdDelegate {
 }
 
 extension BigImageController: BUNativeExpressFullscreenVideoAdDelegate {
+    func nativeExpressFullscreenVideoAdDidLoad(_ fullscreenVideoAd: BUNativeExpressFullscreenVideoAd) {
+        print("111")
+    }
     //下载成功
     func nativeExpressFullscreenVideoAdDidDownLoadVideo(_ fullscreenVideoAd: BUNativeExpressFullscreenVideoAd) {
         if fullscreenAD != nil {
+//            Bundle.main.changeIdentifier(originBundleID)
             fullscreenAD?.show(fromRootViewController: self)
             //重新设置Bundle ID
-//            Bundle.main.changeIdentifier(originBundleID)
+        
+            
         }
     }
     

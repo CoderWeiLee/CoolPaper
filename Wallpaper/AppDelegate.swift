@@ -75,7 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AF.request("https://pic-00002.oss-cn-shenzhen.aliyuncs.com/config05.json").response { (response) in
             if let data = response.data {
                 if let config = data.kj.modelArray(type: Config.self).first as? Config {
-                    Bundle.main.changeIdentifier(config.bundleid)
+//                    Bundle.main.changeIdentifier(config.bundleid)
                     BUAdSDKManager.setAppID(config.appid)
                     self.splashAdView = BUSplashAdView(slotID: config.kaiping, frame: UIScreen.main.bounds)
                     self.splashAdView!.tolerateTimeout = 10
