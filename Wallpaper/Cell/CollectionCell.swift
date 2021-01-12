@@ -14,11 +14,12 @@ import AVKit
 import PhotosUI
 import Photos
 import MobileCoreServices
-import SkeletonView
+import Skeleton
 let baseUrl = "https://pic-00002.oss-cn-shenzhen.aliyuncs.com"
 class CollectionCell: UICollectionViewCell {
     var imgV: UIImageView!
     var livePhotoView: PHLivePhotoView!
+    var skeletonLayer: CAGradientLayer!
     var imgPath: String!
     var videoPath: String!
     var type: ImgTypes? {
@@ -33,6 +34,7 @@ class CollectionCell: UICollectionViewCell {
                     self.videoPath = videoPath
                     print(imgPath)
                     if FileManager.default.fileExists(atPath: imgPath) && FileManager.default.fileExists(atPath: videoPath) {
+                        skeletonLayer.stopSliding()
                         loadLivePhoto(with: imgPath, with: videoPath)
                     }else {
                         let url = baseUrl + "/\(t.key ?? "Dongtai")/\(t.index ?? "0001").mp4"
@@ -43,46 +45,46 @@ class CollectionCell: UICollectionViewCell {
                                 return (fileURL, [.createIntermediateDirectories])
                             }
                             AF.download(url, interceptor: nil, to: dest).downloadProgress(closure: { (progress) in
-                            }).responseData { (res) in
-                                
+                            }).responseData { [self] (res) in
+                                self.skeletonLayer.stopSliding()
                                 self.loadLivePhotoWithVideo(with: fileURL, with: imgPath, with: videoPath)
                                 self.livePhotoView.startPlayback(with: .full)
-                                [self.imgV, self.livePhotoView].forEach {
-                                    $0?.hideSkeleton()
-                                }
                             }
                     }
                 }else {
                     livePhotoView.isHidden = true
-                    imgV.kf.setImage(with: URL(string: baseUrl + "/\(t.key ?? "Daily")/\(t.index ?? "0001").jpg"))
-                    [imgV, livePhotoView].forEach {
-                        $0?.hideSkeleton()
+                    imgV.kf.setImage(with: URL(string: baseUrl + "/\(t.key ?? "Daily")/\(t.index ?? "0001").jpg"), placeholder: nil, options: nil) { _ in
+//                        self.skeletonLayer.stopSliding()
                     }
                 }
             }
-//            imgV.kf.setImage(with: URL(string: baseUrl + "/\(type!.key)/\(fileNumStr).jpg"))
         }
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        self.isSkeletonable = true
+        skeletonLayer = CAGradientLayer()
+        skeletonLayer.frame = contentView.bounds
+        let baseColor = UIColor(red: 223.0 / 255.0, green: 223.0 / 255.0, blue: 223.0 / 255.0, alpha: 1)
+        skeletonLayer.colors = [baseColor.cgColor,
+                                baseColor.brightened(by: 0.93).cgColor,
+                                baseColor.cgColor]
+        contentView.layer.addSublayer(skeletonLayer)
+        skeletonLayer.slide(to: .right)
+        
         imgV = UIImageView()
         imgV.frame = contentView.bounds
         imgV.layer.cornerRadius = 6
         imgV.layer.masksToBounds = true
-//        imgV.isSkeletonable = true
-        imgV.showAnimatedSkeleton()
         contentView.addSubview(imgV)
-        
+
         livePhotoView = PHLivePhotoView()
         livePhotoView.frame = contentView.bounds
         livePhotoView.layer.cornerRadius = 6
         livePhotoView.layer.masksToBounds = true
         livePhotoView.isHidden = true
         livePhotoView.isMuted = true
-//        livePhotoView.isSkeletonable = true
-        livePhotoView.showAnimatedSkeleton()
-        imgV.addSubview(livePhotoView)
+        contentView.addSubview(livePhotoView)
+        
     }
     
     required init?(coder: NSCoder) {
@@ -187,4 +189,12 @@ extension CollectionCell: PHLivePhotoViewDelegate {
             livePhotoView.startPlayback(with: .full)
         }
     }
+}
+
+extension UIColor {
+  func brightened(by factor: CGFloat) -> UIColor {
+    var h: CGFloat = 0, s: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+    getHue(&h, saturation: &s, brightness: &b, alpha: &a)
+    return UIColor(hue: h, saturation: s, brightness: b * factor, alpha: a)
+  }
 }

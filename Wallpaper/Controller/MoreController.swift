@@ -7,7 +7,6 @@
 
 import UIKit
 import PhotosUI
-import SkeletonView
 let moreW = (kScreenW - 12) / 3
 let moreH = moreW
 let moreReuseID = "moreReuseID"
@@ -78,11 +77,7 @@ class MoreController: UIViewController {
     }
 }
 
-extension MoreController: SkeletonCollectionViewDataSource, SkeletonCollectionViewDelegate {
-    func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
-        return "MoreCollectionCell"
-    }
-    
+extension MoreController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseID, for: indexPath) as! MoreCollectionCell
         if let data = UserDefaults.standard.value(forKey: "ImgTypes") as? Data{
@@ -118,9 +113,4 @@ extension MoreController: SkeletonCollectionViewDataSource, SkeletonCollectionVi
         }
       
     }
-    
-    func collectionSkeletonView(_ skeletonView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return num
-    }
-    
 }

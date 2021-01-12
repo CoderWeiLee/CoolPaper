@@ -7,7 +7,6 @@
 
 import UIKit
 import PhotosUI
-import SkeletonView
 class CommonController: UIViewController {
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -65,11 +64,7 @@ class CommonController: UIViewController {
     }
 }
 
-extension CommonController: SkeletonCollectionViewDataSource, SkeletonCollectionViewDelegate {
-    func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
-        return "CollectionCell"
-    }
-    
+extension CommonController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return num
     }
@@ -96,9 +91,5 @@ extension CommonController: SkeletonCollectionViewDataSource, SkeletonCollection
         bigC.type = type
         bigC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(bigC, animated: true)
-    }
-    
-    func collectionSkeletonView(_ skeletonView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return num
     }
 }

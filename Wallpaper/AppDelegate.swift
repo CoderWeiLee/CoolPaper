@@ -64,8 +64,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
  var splashAdView: BUSplashAdView?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.window?.backgroundColor = .white
-        self.myTabarVc = CCTabBarController()
-        self.window?.rootViewController = self.myTabarVc
+       
+        self.window?.rootViewController = UIViewController()
         self.window?.makeKeyAndVisible()
         originBundleID = Bundle.main.bundleIdentifier!
         loadingView = UIActivityIndicatorView(style: .medium)
@@ -76,18 +76,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let data = response.data {
                 if let config = data.kj.modelArray(type: Config.self).first as? Config {
 //                    Bundle.main.changeIdentifier(config.bundleid)
-                    BUAdSDKManager.setAppID(config.appid)
-                    self.splashAdView = BUSplashAdView(slotID: config.kaiping, frame: UIScreen.main.bounds)
-                    self.splashAdView!.tolerateTimeout = 10
-                    self.splashAdView!.delegate = self
-                    self.splashAdView!.needSplashZoomOutAd = true
-                    self.splashAdView!.loadAdData()
-                    //重新设置Bundle ID
-//                    Bundle.main.changeIdentifier(originBundleID)
-                    self.window?.rootViewController?.view.addSubview(self.splashAdView!)
-                    self.splashAdView!.rootViewController = self.window?.rootViewController
-//                    try! UserDefaults.standard.setValue(NSKeyedArchiver.archivedData(withRootObject: config, requiringSecureCoding: true), forKey: "Config")
-//                    UserDefaults.standard.synchronize()
                     commonConfig = config
                 }
             }
@@ -99,6 +87,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         try? UserDefaults.standard.setValue(NSKeyedArchiver.archivedData(withRootObject: imgTypes, requiringSecureCoding: true), forKey: "ImgTypes")
                         UserDefaults.standard.synchronize()
                     self.loadingView?.stopAnimating()
+                    self.myTabarVc = CCTabBarController()
+                    self.window?.rootViewController = self.myTabarVc
+                    BUAdSDKManager.setAppID(commonConfig.appid)
+                    self.splashAdView = BUSplashAdView(slotID: commonConfig.kaiping, frame: UIScreen.main.bounds)
+                    self.splashAdView!.tolerateTimeout = 10
+                    self.splashAdView!.delegate = self
+                    self.splashAdView!.needSplashZoomOutAd = true
+                    self.splashAdView!.loadAdData()
+                    self.window?.rootViewController?.view.addSubview(self.splashAdView!)
+                    self.splashAdView!.rootViewController = self.window?.rootViewController
                 }
             }
         }
@@ -155,6 +153,7 @@ extension AppDelegate: BUSplashAdDelegate {
     func splashAdDidClickSkip(_ splashAd: BUSplashAdView) {
         print("用户点击跳过按钮时会触发此回调，可在此回调方法中处理用户点击跳转后的相关逻辑")
         self.splashAdView?.removeFromSuperview()
+        self.splashAdView = nil
 //        Bundle.main.changeIdentifier(originBundleID)
         print("---当前包名是:\(Bundle.main.bundleIdentifier!)")
     }

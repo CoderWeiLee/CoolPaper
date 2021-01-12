@@ -12,7 +12,7 @@ target 'Wallpaper' do
   pod 'SnapKit'
   pod 'ProgressHUD'
   pod 'JKSwiftExtension'
-  pod 'SkeletonView'
+  pod 'Skeleton'
   # Pods for Wallpaper
 
 end

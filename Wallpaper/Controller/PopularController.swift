@@ -7,7 +7,6 @@
 
 import UIKit
 import JXSegmentedView
-import SkeletonView
 class PopularController: UIViewController {
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -40,11 +39,7 @@ class PopularController: UIViewController {
     }
 }
 
-extension PopularController: SkeletonCollectionViewDataSource, SkeletonCollectionViewDelegate {
-    func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
-        return "CollectionCell"
-    }
-    
+extension PopularController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return num
     }
@@ -69,10 +64,6 @@ extension PopularController: SkeletonCollectionViewDataSource, SkeletonCollectio
         bigC.type = type
         bigC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(bigC, animated: true)
-    }
-    
-    func collectionSkeletonView(_ skeletonView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return num
     }
     
     override func didReceiveMemoryWarning() {

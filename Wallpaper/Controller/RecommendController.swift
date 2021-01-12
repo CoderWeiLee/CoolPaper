@@ -7,7 +7,6 @@
 
 import UIKit
 import JXSegmentedView
-import SkeletonView
 let w = (kScreenW - 9) * 0.5
 let h = w * 2
 let reuseID = "CollectionCell"
@@ -17,8 +16,8 @@ class RecommendController: UIViewController {
         layout.itemSize = CGSize(width: w, height: h)
         layout.minimumLineSpacing = 3
         layout.minimumInteritemSpacing = 3
-        let collectionView = UICollectionView(frame: CGRect(x: 3, y: 3, width: view.bounds.width - 6, height: view.bounds.height-3), collectionViewLayout: layout)
-        collectionView.backgroundColor = .white
+        let collectionView = UICollectionView(frame: CGRect(x: 3, y: 3, width: view.bounds.width - 6, height: view.bounds.height-3 - CGFloat(bottomSafeAreaHeight + tabBarHeight + Int(statusBarHeight) + 50)), collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.showsVerticalScrollIndicator = true
@@ -31,8 +30,6 @@ class RecommendController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.isSkeletonable = true
-//        view.showAnimatedSkeleton()
         view.addSubview(collectionView)
         if let data = UserDefaults.standard.value(forKey: "ImgTypes") as? Data{
             if let imgTypes = try! NSKeyedUnarchiver.unarchivedObject(ofClasses: [NSObject.self], from: data) as? [ImgTypes]{
@@ -42,11 +39,6 @@ class RecommendController: UIViewController {
                 }
             }
         }
-//        collectionView.isSkeletonable = true
-//        collectionView.showAnimatedSkeleton()
-//        self.collectionView.prepareSkeleton { (completion) in
-//            self.view.showAnimatedGradientSkeleton(usingGradient: SkeletonGradient(baseColor: .red), animation: GradientDirection.topLeftBottomRight.slidingAnimation(), transition: .none)
-//        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -55,11 +47,7 @@ class RecommendController: UIViewController {
     }
 }
 
-extension RecommendController: SkeletonCollectionViewDataSource, SkeletonCollectionViewDelegate {
-    func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
-        return "CollectionCell"
-    }
-    
+extension RecommendController: UICollectionViewDataSource, UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return num
     }
@@ -84,10 +72,6 @@ extension RecommendController: SkeletonCollectionViewDataSource, SkeletonCollect
         bigC.hidesBottomBarWhenPushed = true
         bigC.scene = .navHideScene
         navigationController?.pushViewController(bigC, animated: true)
-    }
-    
-    func collectionSkeletonView(_ skeletonView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return num
     }
 }
 

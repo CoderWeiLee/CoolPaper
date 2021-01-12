@@ -18,7 +18,6 @@ import AVKit
 import PhotosUI
 import Photos
 import MobileCoreServices
-import SkeletonView
 class MoreCollectionCell: UICollectionViewCell {
     var imgV: UIImageView!
     var livePhotoView: PHLivePhotoView!
@@ -64,12 +63,10 @@ class MoreCollectionCell: UICollectionViewCell {
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.isSkeletonable = true
         imgV = UIImageView()
         imgV.frame = contentView.bounds
         imgV.layer.cornerRadius = 6
         imgV.layer.masksToBounds = true
-        imgV.isSkeletonable = true
         contentView.addSubview(imgV)
         
         livePhotoView = PHLivePhotoView()
@@ -77,11 +74,9 @@ class MoreCollectionCell: UICollectionViewCell {
         livePhotoView.layer.cornerRadius = 6
         livePhotoView.layer.masksToBounds = true
         livePhotoView.isHidden = true
-        livePhotoView.isSkeletonable = true
         imgV.addSubview(livePhotoView)
         
         bottomView.backgroundColor = UIColor(white: 0.1, alpha: 0.6)
-        bottomView.isSkeletonable = true
         imgV.addSubview(bottomView)
         bottomView.snp.makeConstraints { (make) in
             make.left.right.bottom.equalTo(imgV)
@@ -89,7 +84,6 @@ class MoreCollectionCell: UICollectionViewCell {
         }
         
         tagLabel.textColor = .white
-        tagLabel.isSkeletonable = true
         tagLabel.font = UIFont.systemFont(ofSize: 14)
         imgV.addSubview(tagLabel)
         tagLabel.snp.makeConstraints { (make) in

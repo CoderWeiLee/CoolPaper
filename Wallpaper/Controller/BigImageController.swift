@@ -15,7 +15,6 @@ import AVKit
 import PhotosUI
 import Photos
 import MobileCoreServices
-import SkeletonView
 import BUAdSDK
 public enum PushScene {
     case navHideScene
@@ -64,9 +63,6 @@ class BigImageController: UIViewController {
                                 
                                 self.loadLivePhotoWithVideo(with: fileURL, with: imgPath, with: videoPath)
                                 self.livePhotoView.startPlayback(with: .full)
-                                [self.imgV, self.livePhotoView].forEach {
-                                    $0?.hideSkeleton()
-                                }
                             }
                     }
                 }else {
@@ -93,7 +89,6 @@ class BigImageController: UIViewController {
         }
         livePhotoView.frame = view.bounds
         imgV.addSubview(livePhotoView)
-        imgV.isSkeletonable  = true
         
         //添加返回按钮
         let backBtn = UIButton(type: .custom)
@@ -109,7 +104,6 @@ class BigImageController: UIViewController {
         
         //爱心按钮
         likeBtn.setImage(UIImage(named: "item-btn-like-white"), for: .normal)
-        likeBtn.isSkeletonable = true
         likeBtn.adjustsImageWhenHighlighted = false
         likeBtn.addTarget(self, action: #selector(likeAction), for: .touchUpInside)
         likeBtn.setImage(UIImage(named: "item-btn-like-on"), for: .selected)
@@ -122,7 +116,6 @@ class BigImageController: UIViewController {
         
         //下载按钮
         downloadBtn.setImage(UIImage(named: "icon-cp-download-white"), for: .normal)
-        downloadBtn.isSkeletonable = true
         downloadBtn.adjustsImageWhenHighlighted = false
         downloadBtn.addTarget(self, action: #selector(downloadAction), for: .touchUpInside)
         view.addSubview(downloadBtn)
