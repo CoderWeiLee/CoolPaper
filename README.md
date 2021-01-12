@@ -14,4 +14,4 @@
 ### 效果
 
 <img src="https://github.com/CoderWeiLee/CoolPaper/blob/main/01.jpeg" width="200" height="360" alt="首页"/> <img src="https://github.com/CoderWeiLee/CoolPaper/blob/main/02.jpeg" width="200" height="360" alt="更多"/> <img src="https://github.com/CoderWeiLee/CoolPaper/blob/main/03.jpeg" width="200" height="360" alt="发现"/><br/>
-<img src="https://github.com/CoderWeiLee/CoolPaper/blob/main/04.jpeg" width="200" height="360" alt="工具"/> <img src="https://github.com/CoderWeiLee/CoolPaper/blob/main/05.jpeg" width="200" height="360" alt="我的"/> <img src="https://github.com/CoderWeiLee/CoolPaper/blob/main/demo.gif" width="200" height="360" alt="动图效果"/>
+<img src="https://github.com/CoderWeiLee/CoolPaper/blob/main/04.jpeg" width="200" height="360" alt="工具"/> <img src="https://github.com/CoderWeiLee/CoolPaper/blob/main/05.jpeg" width="200" height="360" alt="我的"/> <img src="https://github.com/CoderWeiLee/CoolPaper/blob/main/demo.GIF" width="200" height="360" alt="动图效果"/>
