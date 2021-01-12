@@ -16,7 +16,7 @@ class RecommendController: UIViewController {
         layout.itemSize = CGSize(width: w, height: h)
         layout.minimumLineSpacing = 3
         layout.minimumInteritemSpacing = 3
-        let collectionView = UICollectionView(frame: CGRect(x: 3, y: 3, width: view.bounds.width - 6, height: view.bounds.height-3 - CGFloat(bottomSafeAreaHeight + tabBarHeight + Int(statusBarHeight) + 50)), collectionViewLayout: layout)
+        let collectionView = UICollectionView(frame: CGRect(x: 3, y: 3, width: view.bounds.width - 6, height: view.bounds.height-3 - CGFloat(bottomSafeAreaHeight)), collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -28,8 +28,13 @@ class RecommendController: UIViewController {
     var num: Int = 0
     var imgType: ImgTypes?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//
+//    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         view.addSubview(collectionView)
         if let data = UserDefaults.standard.value(forKey: "ImgTypes") as? Data{
             if let imgTypes = try! NSKeyedUnarchiver.unarchivedObject(ofClasses: [NSObject.self], from: data) as? [ImgTypes]{

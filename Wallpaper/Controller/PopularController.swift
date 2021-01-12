@@ -13,7 +13,7 @@ class PopularController: UIViewController {
         layout.itemSize = CGSize(width: w, height: h)
         layout.minimumLineSpacing = 3
         layout.minimumInteritemSpacing = 3
-        let collectionView = UICollectionView(frame: CGRect(x: 3, y: 3, width: view.bounds.width - 6, height: view.bounds.height-3), collectionViewLayout: layout)
+        let collectionView = UICollectionView(frame: CGRect(x: 3, y: 3, width: view.bounds.width - 6, height: view.bounds.height - 3 - CGFloat(bottomSafeAreaHeight)), collectionViewLayout: layout)
         collectionView.backgroundColor = .white
         collectionView.delegate = self
         collectionView.dataSource = self

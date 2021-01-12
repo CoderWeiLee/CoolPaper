@@ -46,7 +46,6 @@ class CollectionCell: UICollectionViewCell {
                             }
                             AF.download(url, interceptor: nil, to: dest).downloadProgress(closure: { (progress) in
                             }).responseData { [self] (res) in
-                                self.skeletonLayer.stopSliding()
                                 self.loadLivePhotoWithVideo(with: fileURL, with: imgPath, with: videoPath)
                                 self.livePhotoView.startPlayback(with: .full)
                             }

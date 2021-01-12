@@ -18,14 +18,15 @@ import AVKit
 import PhotosUI
 import Photos
 import MobileCoreServices
+import Skeleton
 class MoreCollectionCell: UICollectionViewCell {
+    var skeletonLayer: CAGradientLayer!
     var imgV: UIImageView!
     var livePhotoView: PHLivePhotoView!
     var bottomView = UIView()
     var tagLabel = UILabel()
     var imgPath: String!
     var videoPath: String!
-//    var saveSuccess:((_ with: PHLivePhoto,_ key: String) -> Void)?
     var type: ImgTypes? {
         didSet {
             if let t = type {
@@ -63,6 +64,15 @@ class MoreCollectionCell: UICollectionViewCell {
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
+        skeletonLayer = CAGradientLayer()
+        skeletonLayer.frame = contentView.bounds
+        let baseColor = UIColor(red: 223.0 / 255.0, green: 223.0 / 255.0, blue: 223.0 / 255.0, alpha: 1)
+        skeletonLayer.colors = [baseColor.cgColor,
+                                baseColor.brightened(by: 0.93).cgColor,
+                                baseColor.cgColor]
+        contentView.layer.addSublayer(skeletonLayer)
+        skeletonLayer.slide(to: .right)
+        
         imgV = UIImageView()
         imgV.frame = contentView.bounds
         imgV.layer.cornerRadius = 6

@@ -16,11 +16,13 @@ import PhotosUI
 import Photos
 import MobileCoreServices
 import BUAdSDK
+import Skeleton
 public enum PushScene {
     case navHideScene
     case navShowScene
 }
 class BigImageController: UIViewController {
+    var skeletonLayer: CAGradientLayer!
     var imgV = UIImageView()
     var livePhotoView = PHLivePhotoView()
     var likeBtn = UIButton(type: .custom)
@@ -82,6 +84,15 @@ class BigImageController: UIViewController {
         originBundleID = Bundle.main.bundleIdentifier!
         view.backgroundColor = .white
         navigationController?.setNavigationBarHidden(true, animated: true)
+        skeletonLayer = CAGradientLayer()
+        skeletonLayer.frame = view.bounds
+        let baseColor = UIColor(red: 223.0 / 255.0, green: 223.0 / 255.0, blue: 223.0 / 255.0, alpha: 1)
+        skeletonLayer.colors = [baseColor.cgColor,
+                                baseColor.brightened(by: 0.93).cgColor,
+                                baseColor.cgColor]
+        view.layer.addSublayer(skeletonLayer)
+        skeletonLayer.slide(to: .right)
+        
         //添加imageview
         view.addSubview(imgV)
         imgV.snp.makeConstraints { (make) in
