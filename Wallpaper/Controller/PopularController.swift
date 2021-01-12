@@ -24,9 +24,9 @@ class PopularController: UIViewController {
     
     var num: Int = 0
     var imgType: ImgTypes?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         view.addSubview(collectionView)
         if let data = UserDefaults.standard.value(forKey: "ImgTypes") as? Data{
             if let imgTypes = try? NSKeyedUnarchiver.unarchivedObject(ofClasses: [NSObject.self], from: data) as? [ImgTypes]{
