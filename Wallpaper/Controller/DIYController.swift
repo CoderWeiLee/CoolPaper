@@ -12,6 +12,8 @@ import PhotosUI
 import Photos
 import MobileCoreServices
 import ProgressHUD
+import mobileffmpeg
+import MBProgressHUD
 class DIYController: UIViewController {
     /// 当前已选资源
     var selectedAssets: [HXPHAsset] = []
@@ -25,6 +27,8 @@ class DIYController: UIViewController {
     var videoPath: String!
     var picker: HXPHPickerController!
     var isGIF: Bool = false
+    var loadingView: UIActivityIndicatorView?
+    var hud: MBProgressHUD?
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -125,6 +129,10 @@ extension DIYController: HXPHPickerControllerDelegate {
     func pickerController(_ pickerController: HXPHPickerController, didFinishSelection selectedAssetArray: [HXPHAsset], _ isOriginal: Bool) {
         self.selectedAssets = selectedAssetArray
         self.isOriginal = isOriginal
+        loadingView = UIActivityIndicatorView(style: .medium)
+        loadingView?.center = CGPoint(x: view.centerX, y: view.centerY - 100)
+        loadingView?.startAnimating()
+        view.addSubview(loadingView!)
         //获取视频地址
         for photoAsset in selectedAssets {
             if photoAsset.mediaType == .video {
@@ -133,11 +141,33 @@ extension DIYController: HXPHPickerControllerDelegate {
                         guard let imgPath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first?.appending("/videoToIMG.JPG") else {return}
                         guard let videoPath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first?.appending("/videoToVideo.MOV") else {return}
                         if self.isGIF {
-                            CCVideoImageTool.generateGIFfromVideoFileURL(videoURL!, startTime: 0) { (gifURL, error) in
-                                guard let url = gifURL else {return}
-                                try? PHPhotoLibrary.shared().performChangesAndWait {
-                                    PHAssetChangeRequest.creationRequestForAssetFromImage(atFileURL: url)
-                                    ProgressHUD.showSuccess("保存GIF到相册成功!")
+                            do {
+                                let outfileName = String(format: "%@_%@", ProcessInfo.processInfo.globallyUniqueString, "outfile.gif")
+                                let outfileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(outfileName)
+
+                                let startTime = CFAbsoluteTimeGetCurrent()
+
+                                let _ = MobileFFmpeg.execute("-i \(videoURL!.path) -vf fps=20,scale=450:-1 \(outfileURL.path)")
+            
+                                let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
+                                print("Time elapsed: \(timeElapsed) s.")
+
+                                PHPhotoLibrary.shared().performChanges({
+                                    PHAssetCreationRequest.creationRequestForAssetFromImage(atFileURL: outfileURL)
+                                }) { (saved, err) in
+                                    DispatchQueue.main.async {
+                                        self.hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+                                        self.hud?.mode = .text
+                                        if err == nil {
+                                            self.hud?.label.text = "gif保存到相册成功"
+                                        }else {
+                                            self.hud?.label.text = err?.localizedDescription
+                                        }
+                                        self.loadingView?.stopAnimating()
+                                        self.loadingView?.removeFromSuperview()
+                                        self.loadingView = nil
+                                        self.hud?.hide(animated: true, afterDelay: 2)
+                                    }
                                 }
                             }
                         }else {
@@ -145,10 +175,22 @@ extension DIYController: HXPHPickerControllerDelegate {
                             self.videoPath = videoPath
                             self.loadLivePhotoWithVideo(with: videoURL!, with: imgPath, with: videoPath)
                         }
+                    }else {
+                        self.loadingView?.stopAnimating()
+                        self.loadingView?.removeFromSuperview()
+                        self.loadingView = nil
+                        self.hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+                        self.hud?.mode = .text
+                        self.hud?.label.text = "获取相册视频失败"
+                        self.hud?.hide(animated: true, afterDelay: 2)
                     }
                 }
+                
             }
         }
+        
+       
+        
     }
     func pickerController(_ pickerController: HXPHPickerController, singleFinishSelection photoAsset:HXPHAsset, _ isOriginal: Bool) {
         selectedAssets = [photoAsset]

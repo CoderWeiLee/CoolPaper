@@ -13,6 +13,8 @@ target 'Wallpaper' do
   pod 'ProgressHUD'
   pod 'JKSwiftExtension'
   pod 'Skeleton'
+  pod 'mobile-ffmpeg-full', '~> 4.4'
+  pod 'MBProgressHUD'
   # Pods for Wallpaper
 
 end

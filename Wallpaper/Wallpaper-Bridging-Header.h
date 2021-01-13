@@ -5,3 +5,4 @@
 #import "NSBundle+changeBundleId.h"
 #import "CCTabBar.h"
 #import "CCTabBarController.h"
+#import <MBProgressHUD/MBProgressHUD.h>
