@@ -1,5 +1,6 @@
 ${PODS_ROOT}/Target Support Files/Pods-Wallpaper/Pods-Wallpaper-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/HXPHPicker/HXPHPicker.framework
 ${BUILT_PRODUCTS_DIR}/JKSwiftExtension/JKSwiftExtension.framework
 ${BUILT_PRODUCTS_DIR}/JXSegmentedView/JXSegmentedView.framework
 ${BUILT_PRODUCTS_DIR}/KakaJSON/KakaJSON.framework

@@ -15,6 +15,7 @@ target 'Wallpaper' do
   pod 'Skeleton'
   pod 'mobile-ffmpeg-full', '~> 4.4'
   pod 'MBProgressHUD'
+  pod 'HXPHPicker'
   # Pods for Wallpaper
 
 end

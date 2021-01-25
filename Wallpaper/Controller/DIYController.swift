@@ -14,6 +14,7 @@ import MobileCoreServices
 import ProgressHUD
 import mobileffmpeg
 import MBProgressHUD
+import HXPHPicker
 class DIYController: UIViewController {
     /// 当前已选资源
     var selectedAssets: [HXPHAsset] = []
@@ -22,7 +23,7 @@ class DIYController: UIViewController {
     /// 相机拍摄的本地资源
     var localCameraAssetArray: [HXPHAsset] = []
     /// 相关配置
-    var config: HXPHConfiguration = HXPHTools.getWXConfig()
+    var config: HXPHConfiguration = HXPHTools.getWXPickerConfig()
     var imgPath: String!
     var videoPath: String!
     var picker: HXPHPickerController!
@@ -99,11 +100,12 @@ class DIYController: UIViewController {
     @objc func gifAction() {
         // 设置与微信主题一致的配置
                 isGIF = true
-                let config = HXPHTools.getWXConfig()
+                let config = HXPHTools.getWXPickerConfig()
                 picker = HXPHPickerController.init(picker: config)
                 picker.pickerControllerDelegate = self
                 // 当前被选择的资源对应的 HXPHAsset 对象数组
                 picker.selectedAssetArray = selectedAssets
+                picker.localCameraAssetArray = localCameraAssetArray
                 // 是否选中原图
                 picker.isOriginal = isOriginal
                 present(picker, animated: true, completion: nil)
@@ -113,7 +115,7 @@ class DIYController: UIViewController {
     @objc func liveAction() {
         // 设置与微信主题一致的配置
                 isGIF = false
-                let config = HXPHTools.getWXConfig()
+                let config = HXPHTools.getWXPickerConfig()
                 config.languageType = .simplifiedChinese
                 picker = HXPHPickerController.init(picker: config)
                 picker.pickerControllerDelegate = self

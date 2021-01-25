@@ -13,63 +13,6 @@
 		D05A837D25A448210016910D /* DiscoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A837C25A448210016910D /* DiscoverController.swift */; };
 		D05A838125A44AF40016910D /* DiscoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A838025A44AF40016910D /* DiscoverCell.swift */; };
 		D05A83B725A473D60016910D /* NSBundle+changeBundleId.m in Sources */ = {isa = PBXBuildFile; fileRef = D05A83B625A473D60016910D /* NSBundle+changeBundleId.m */; };
-		D05A850F25A593950016910D /* HXPHPickerInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84CE25A593950016910D /* HXPHPickerInteractiveTransition.swift */; };
-		D05A851025A593950016910D /* HXPHPickerTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84CF25A593950016910D /* HXPHPickerTransition.swift */; };
-		D05A851125A593950016910D /* Bundle+HXPhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84D125A593950016910D /* Bundle+HXPhotoPicker.swift */; };
-		D05A851225A593950016910D /* HXPHPickerViewController+SwipeSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84D225A593950016910D /* HXPHPickerViewController+SwipeSelect.swift */; };
-		D05A851325A593950016910D /* UIImage+HXPHPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84D325A593950016910D /* UIImage+HXPHPicker.swift */; };
-		D05A851425A593950016910D /* UIColor+HXPHPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84D425A593950016910D /* UIColor+HXPHPicker.swift */; };
-		D05A851525A593950016910D /* UIDevice+HXPHPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84D525A593950016910D /* UIDevice+HXPHPicker.swift */; };
-		D05A851625A593950016910D /* UIView+HXPHPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84D625A593950016910D /* UIView+HXPHPicker.swift */; };
-		D05A851725A593950016910D /* UIFont+HXPHPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84D725A593950016910D /* UIFont+HXPHPicker.swift */; };
-		D05A851825A593950016910D /* String+HXPHPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84D825A593950016910D /* String+HXPHPicker.swift */; };
-		D05A851925A593950016910D /* UIViewController+HXPHPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84D925A593950016910D /* UIViewController+HXPHPicker.swift */; };
-		D05A851A25A593950016910D /* HXPHTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84DB25A593950016910D /* HXPHTools.swift */; };
-		D05A851B25A593950016910D /* HXPHManager+AssetCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84DC25A593950016910D /* HXPHManager+AssetCollection.swift */; };
-		D05A851C25A593950016910D /* HXPHManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84DD25A593950016910D /* HXPHManager.swift */; };
-		D05A851D25A593950016910D /* HXPHAssetManager+Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84DE25A593950016910D /* HXPHAssetManager+Asset.swift */; };
-		D05A851E25A593950016910D /* HXPHAssetManager+Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84DF25A593950016910D /* HXPHAssetManager+Authorization.swift */; };
-		D05A851F25A593950016910D /* HXPHManager+Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84E025A593950016910D /* HXPHManager+Language.swift */; };
-		D05A852025A593950016910D /* HXPHAssetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84E125A593950016910D /* HXPHAssetManager.swift */; };
-		D05A852125A593950016910D /* HXPHAssetManager+AssetCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84E225A593950016910D /* HXPHAssetManager+AssetCollection.swift */; };
-		D05A852225A593950016910D /* HXPHPhotoListCameraCellConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84E425A593950016910D /* HXPHPhotoListCameraCellConfiguration.swift */; };
-		D05A852325A593950016910D /* HXPHPhotoListCellConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84E525A593950016910D /* HXPHPhotoListCellConfiguration.swift */; };
-		D05A852425A593950016910D /* HXPHConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84E625A593950016910D /* HXPHConfiguration.swift */; };
-		D05A852525A593950016910D /* HXPHAlbumTitleViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84E725A593950016910D /* HXPHAlbumTitleViewConfiguration.swift */; };
-		D05A852625A593950016910D /* HXPHPickerBottomViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84E825A593950016910D /* HXPHPickerBottomViewConfiguration.swift */; };
-		D05A852725A593950016910D /* HXPHCameraConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84E925A593950016910D /* HXPHCameraConfiguration.swift */; };
-		D05A852825A593950016910D /* HXPHPreviewViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84EA25A593950016910D /* HXPHPreviewViewConfiguration.swift */; };
-		D05A852925A593950016910D /* HXPHPhotoListConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84EB25A593950016910D /* HXPHPhotoListConfiguration.swift */; };
-		D05A852A25A593950016910D /* HXPHNotAuthorizedConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84EC25A593950016910D /* HXPHNotAuthorizedConfiguration.swift */; };
-		D05A852B25A593950016910D /* HXPHEmptyViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84ED25A593950016910D /* HXPHEmptyViewConfiguration.swift */; };
-		D05A852C25A593950016910D /* HXPHAlbumListConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84EE25A593950016910D /* HXPHAlbumListConfiguration.swift */; };
-		D05A852D25A593950016910D /* HXPHSelectBoxConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84EF25A593950016910D /* HXPHSelectBoxConfiguration.swift */; };
-		D05A852E25A593950016910D /* HXPHPicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D05A84F125A593950016910D /* HXPHPicker.bundle */; };
-		D05A852F25A593950016910D /* HXPHPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84F325A593950016910D /* HXPHPickerViewController.swift */; };
-		D05A853025A593950016910D /* HXPHPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84F425A593950016910D /* HXPHPreviewViewController.swift */; };
-		D05A853125A593950016910D /* HXPHPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84F525A593950016910D /* HXPHPickerController.swift */; };
-		D05A853225A593950016910D /* HXPHAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84F625A593950016910D /* HXPHAlbumViewController.swift */; };
-		D05A853325A593950016910D /* HXPHCameraPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84F725A593950016910D /* HXPHCameraPickerController.swift */; };
-		D05A853425A593950016910D /* HXPHPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84F825A593950016910D /* HXPHPicker.swift */; };
-		D05A853525A593950016910D /* HXPHAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84FA25A593950016910D /* HXPHAsset.swift */; };
-		D05A853625A593950016910D /* HXPHAssetCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84FB25A593950016910D /* HXPHAssetCollection.swift */; };
-		D05A853725A593950016910D /* HXPHAlbumTitleArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84FD25A593950016910D /* HXPHAlbumTitleArrowView.swift */; };
-		D05A853825A593950016910D /* HXPHAlbumTickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84FE25A593950016910D /* HXPHAlbumTickView.swift */; };
-		D05A853925A593950016910D /* HXPHPreviewContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A84FF25A593950016910D /* HXPHPreviewContentView.swift */; };
-		D05A853A25A593950016910D /* HXPHPickerBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A850025A593950016910D /* HXPHPickerBottomView.swift */; };
-		D05A853B25A593950016910D /* HXPHPreviewViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A850225A593950016910D /* HXPHPreviewViewCell.swift */; };
-		D05A853C25A593950016910D /* HXPHPickerCamerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A850325A593950016910D /* HXPHPickerCamerViewCell.swift */; };
-		D05A853D25A593950016910D /* HXPHPickerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A850425A593950016910D /* HXPHPickerViewCell.swift */; };
-		D05A853E25A593950016910D /* HXPHAlbumViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A850525A593950016910D /* HXPHAlbumViewCell.swift */; };
-		D05A853F25A593950016910D /* HXPHPreviewSelectedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A850625A593950016910D /* HXPHPreviewSelectedViewCell.swift */; };
-		D05A854025A593950016910D /* HXPHVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A850725A593950016910D /* HXPHVideoView.swift */; };
-		D05A854125A593950016910D /* HXPHAlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A850825A593950016910D /* HXPHAlbumView.swift */; };
-		D05A854225A593950016910D /* HXPHPickerSelectBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A850925A593950016910D /* HXPHPickerSelectBoxView.swift */; };
-		D05A854325A593950016910D /* HXPHDeniedAuthorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A850A25A593950016910D /* HXPHDeniedAuthorizationView.swift */; };
-		D05A854425A593950016910D /* HXPHAlbumTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A850B25A593950016910D /* HXPHAlbumTitleView.swift */; };
-		D05A854525A593950016910D /* HXPHPreviewSelectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A850C25A593950016910D /* HXPHPreviewSelectedView.swift */; };
-		D05A854625A593950016910D /* HXPHGIFImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A850D25A593950016910D /* HXPHGIFImageView.swift */; };
-		D05A854725A593950016910D /* HXPHEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A850E25A593950016910D /* HXPHEmptyView.swift */; };
 		D05CCDB825988E8D005BF42B /* MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05CCDB725988E8D005BF42B /* MyCell.swift */; };
 		D05CCDBB259895EA005BF42B /* BigImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05CCDBA259895EA005BF42B /* BigImageController.swift */; };
 		D05CCDC72598B788005BF42B /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05CCDC62598B788005BF42B /* LoginController.swift */; };
@@ -115,63 +58,6 @@
 		D05A83B425A473D50016910D /* Wallpaper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Wallpaper-Bridging-Header.h"; sourceTree = "<group>"; };
 		D05A83B525A473D60016910D /* NSBundle+changeBundleId.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSBundle+changeBundleId.h"; sourceTree = "<group>"; };
 		D05A83B625A473D60016910D /* NSBundle+changeBundleId.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+changeBundleId.m"; sourceTree = "<group>"; };
-		D05A84CE25A593950016910D /* HXPHPickerInteractiveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHPickerInteractiveTransition.swift; sourceTree = "<group>"; };
-		D05A84CF25A593950016910D /* HXPHPickerTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHPickerTransition.swift; sourceTree = "<group>"; };
-		D05A84D125A593950016910D /* Bundle+HXPhotoPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+HXPhotoPicker.swift"; sourceTree = "<group>"; };
-		D05A84D225A593950016910D /* HXPHPickerViewController+SwipeSelect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HXPHPickerViewController+SwipeSelect.swift"; sourceTree = "<group>"; };
-		D05A84D325A593950016910D /* UIImage+HXPHPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+HXPHPicker.swift"; sourceTree = "<group>"; };
-		D05A84D425A593950016910D /* UIColor+HXPHPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HXPHPicker.swift"; sourceTree = "<group>"; };
-		D05A84D525A593950016910D /* UIDevice+HXPHPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+HXPHPicker.swift"; sourceTree = "<group>"; };
-		D05A84D625A593950016910D /* UIView+HXPHPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+HXPHPicker.swift"; sourceTree = "<group>"; };
-		D05A84D725A593950016910D /* UIFont+HXPHPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+HXPHPicker.swift"; sourceTree = "<group>"; };
-		D05A84D825A593950016910D /* String+HXPHPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+HXPHPicker.swift"; sourceTree = "<group>"; };
-		D05A84D925A593950016910D /* UIViewController+HXPHPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+HXPHPicker.swift"; sourceTree = "<group>"; };
-		D05A84DB25A593950016910D /* HXPHTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHTools.swift; sourceTree = "<group>"; };
-		D05A84DC25A593950016910D /* HXPHManager+AssetCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HXPHManager+AssetCollection.swift"; sourceTree = "<group>"; };
-		D05A84DD25A593950016910D /* HXPHManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHManager.swift; sourceTree = "<group>"; };
-		D05A84DE25A593950016910D /* HXPHAssetManager+Asset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HXPHAssetManager+Asset.swift"; sourceTree = "<group>"; };
-		D05A84DF25A593950016910D /* HXPHAssetManager+Authorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HXPHAssetManager+Authorization.swift"; sourceTree = "<group>"; };
-		D05A84E025A593950016910D /* HXPHManager+Language.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HXPHManager+Language.swift"; sourceTree = "<group>"; };
-		D05A84E125A593950016910D /* HXPHAssetManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHAssetManager.swift; sourceTree = "<group>"; };
-		D05A84E225A593950016910D /* HXPHAssetManager+AssetCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HXPHAssetManager+AssetCollection.swift"; sourceTree = "<group>"; };
-		D05A84E425A593950016910D /* HXPHPhotoListCameraCellConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHPhotoListCameraCellConfiguration.swift; sourceTree = "<group>"; };
-		D05A84E525A593950016910D /* HXPHPhotoListCellConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHPhotoListCellConfiguration.swift; sourceTree = "<group>"; };
-		D05A84E625A593950016910D /* HXPHConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHConfiguration.swift; sourceTree = "<group>"; };
-		D05A84E725A593950016910D /* HXPHAlbumTitleViewConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHAlbumTitleViewConfiguration.swift; sourceTree = "<group>"; };
-		D05A84E825A593950016910D /* HXPHPickerBottomViewConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHPickerBottomViewConfiguration.swift; sourceTree = "<group>"; };
-		D05A84E925A593950016910D /* HXPHCameraConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHCameraConfiguration.swift; sourceTree = "<group>"; };
-		D05A84EA25A593950016910D /* HXPHPreviewViewConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHPreviewViewConfiguration.swift; sourceTree = "<group>"; };
-		D05A84EB25A593950016910D /* HXPHPhotoListConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHPhotoListConfiguration.swift; sourceTree = "<group>"; };
-		D05A84EC25A593950016910D /* HXPHNotAuthorizedConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHNotAuthorizedConfiguration.swift; sourceTree = "<group>"; };
-		D05A84ED25A593950016910D /* HXPHEmptyViewConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHEmptyViewConfiguration.swift; sourceTree = "<group>"; };
-		D05A84EE25A593950016910D /* HXPHAlbumListConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHAlbumListConfiguration.swift; sourceTree = "<group>"; };
-		D05A84EF25A593950016910D /* HXPHSelectBoxConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHSelectBoxConfiguration.swift; sourceTree = "<group>"; };
-		D05A84F125A593950016910D /* HXPHPicker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HXPHPicker.bundle; sourceTree = "<group>"; };
-		D05A84F325A593950016910D /* HXPHPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHPickerViewController.swift; sourceTree = "<group>"; };
-		D05A84F425A593950016910D /* HXPHPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHPreviewViewController.swift; sourceTree = "<group>"; };
-		D05A84F525A593950016910D /* HXPHPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHPickerController.swift; sourceTree = "<group>"; };
-		D05A84F625A593950016910D /* HXPHAlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHAlbumViewController.swift; sourceTree = "<group>"; };
-		D05A84F725A593950016910D /* HXPHCameraPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHCameraPickerController.swift; sourceTree = "<group>"; };
-		D05A84F825A593950016910D /* HXPHPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHPicker.swift; sourceTree = "<group>"; };
-		D05A84FA25A593950016910D /* HXPHAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHAsset.swift; sourceTree = "<group>"; };
-		D05A84FB25A593950016910D /* HXPHAssetCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHAssetCollection.swift; sourceTree = "<group>"; };
-		D05A84FD25A593950016910D /* HXPHAlbumTitleArrowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHAlbumTitleArrowView.swift; sourceTree = "<group>"; };
-		D05A84FE25A593950016910D /* HXPHAlbumTickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHAlbumTickView.swift; sourceTree = "<group>"; };
-		D05A84FF25A593950016910D /* HXPHPreviewContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHPreviewContentView.swift; sourceTree = "<group>"; };
-		D05A850025A593950016910D /* HXPHPickerBottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHPickerBottomView.swift; sourceTree = "<group>"; };
-		D05A850225A593950016910D /* HXPHPreviewViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHPreviewViewCell.swift; sourceTree = "<group>"; };
-		D05A850325A593950016910D /* HXPHPickerCamerViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHPickerCamerViewCell.swift; sourceTree = "<group>"; };
-		D05A850425A593950016910D /* HXPHPickerViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHPickerViewCell.swift; sourceTree = "<group>"; };
-		D05A850525A593950016910D /* HXPHAlbumViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHAlbumViewCell.swift; sourceTree = "<group>"; };
-		D05A850625A593950016910D /* HXPHPreviewSelectedViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHPreviewSelectedViewCell.swift; sourceTree = "<group>"; };
-		D05A850725A593950016910D /* HXPHVideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHVideoView.swift; sourceTree = "<group>"; };
-		D05A850825A593950016910D /* HXPHAlbumView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHAlbumView.swift; sourceTree = "<group>"; };
-		D05A850925A593950016910D /* HXPHPickerSelectBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHPickerSelectBoxView.swift; sourceTree = "<group>"; };
-		D05A850A25A593950016910D /* HXPHDeniedAuthorizationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHDeniedAuthorizationView.swift; sourceTree = "<group>"; };
-		D05A850B25A593950016910D /* HXPHAlbumTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHAlbumTitleView.swift; sourceTree = "<group>"; };
-		D05A850C25A593950016910D /* HXPHPreviewSelectedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHPreviewSelectedView.swift; sourceTree = "<group>"; };
-		D05A850D25A593950016910D /* HXPHGIFImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHGIFImageView.swift; sourceTree = "<group>"; };
-		D05A850E25A593950016910D /* HXPHEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HXPHEmptyView.swift; sourceTree = "<group>"; };
 		D05CCDB725988E8D005BF42B /* MyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCell.swift; sourceTree = "<group>"; };
 		D05CCDBA259895EA005BF42B /* BigImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigImageController.swift; sourceTree = "<group>"; };
 		D05CCDC62598B788005BF42B /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; wrapsLines = 0; };
@@ -208,6 +94,7 @@
 		D08EE2992597210500F0279D /* CollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
 		D08EE2B72597559100F0279D /* ImgTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgTypes.swift; sourceTree = "<group>"; };
 		D08EE2C325984F6400F0279D /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		D0F2084025BE93820032B17D /* mobileffmpeg.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = mobileffmpeg.xcframework; path = "Pods/mobile-ffmpeg-full/mobileffmpeg.xcframework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +121,7 @@
 		6F529542BB6EDCAAF08F487C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D0F2084025BE93820032B17D /* mobileffmpeg.xcframework */,
 				9B80E388AA1A403C1B758FA5 /* Pods_Wallpaper.framework */,
 			);
 			name = Frameworks;
@@ -289,142 +177,6 @@
 				D04B281C25A2EA55005AC797 /* CacheManager.swift */,
 			);
 			path = DataBase;
-			sourceTree = "<group>";
-		};
-		D05A84CC25A593950016910D /* HXPHPicker */ = {
-			isa = PBXGroup;
-			children = (
-				D05A84CD25A593950016910D /* Transition */,
-				D05A84D025A593950016910D /* Extension */,
-				D05A84DA25A593950016910D /* Util */,
-				D05A84E325A593950016910D /* Config */,
-				D05A84F025A593950016910D /* Resources */,
-				D05A84F225A593950016910D /* Controller */,
-				D05A84F825A593950016910D /* HXPHPicker.swift */,
-				D05A84F925A593950016910D /* Model */,
-				D05A84FC25A593950016910D /* View */,
-			);
-			path = HXPHPicker;
-			sourceTree = "<group>";
-		};
-		D05A84CD25A593950016910D /* Transition */ = {
-			isa = PBXGroup;
-			children = (
-				D05A84CE25A593950016910D /* HXPHPickerInteractiveTransition.swift */,
-				D05A84CF25A593950016910D /* HXPHPickerTransition.swift */,
-			);
-			path = Transition;
-			sourceTree = "<group>";
-		};
-		D05A84D025A593950016910D /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				D05A84D125A593950016910D /* Bundle+HXPhotoPicker.swift */,
-				D05A84D225A593950016910D /* HXPHPickerViewController+SwipeSelect.swift */,
-				D05A84D325A593950016910D /* UIImage+HXPHPicker.swift */,
-				D05A84D425A593950016910D /* UIColor+HXPHPicker.swift */,
-				D05A84D525A593950016910D /* UIDevice+HXPHPicker.swift */,
-				D05A84D625A593950016910D /* UIView+HXPHPicker.swift */,
-				D05A84D725A593950016910D /* UIFont+HXPHPicker.swift */,
-				D05A84D825A593950016910D /* String+HXPHPicker.swift */,
-				D05A84D925A593950016910D /* UIViewController+HXPHPicker.swift */,
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
-		D05A84DA25A593950016910D /* Util */ = {
-			isa = PBXGroup;
-			children = (
-				D05A84DB25A593950016910D /* HXPHTools.swift */,
-				D05A84DC25A593950016910D /* HXPHManager+AssetCollection.swift */,
-				D05A84DD25A593950016910D /* HXPHManager.swift */,
-				D05A84DE25A593950016910D /* HXPHAssetManager+Asset.swift */,
-				D05A84DF25A593950016910D /* HXPHAssetManager+Authorization.swift */,
-				D05A84E025A593950016910D /* HXPHManager+Language.swift */,
-				D05A84E125A593950016910D /* HXPHAssetManager.swift */,
-				D05A84E225A593950016910D /* HXPHAssetManager+AssetCollection.swift */,
-			);
-			path = Util;
-			sourceTree = "<group>";
-		};
-		D05A84E325A593950016910D /* Config */ = {
-			isa = PBXGroup;
-			children = (
-				D05A84E425A593950016910D /* HXPHPhotoListCameraCellConfiguration.swift */,
-				D05A84E525A593950016910D /* HXPHPhotoListCellConfiguration.swift */,
-				D05A84E625A593950016910D /* HXPHConfiguration.swift */,
-				D05A84E725A593950016910D /* HXPHAlbumTitleViewConfiguration.swift */,
-				D05A84E825A593950016910D /* HXPHPickerBottomViewConfiguration.swift */,
-				D05A84E925A593950016910D /* HXPHCameraConfiguration.swift */,
-				D05A84EA25A593950016910D /* HXPHPreviewViewConfiguration.swift */,
-				D05A84EB25A593950016910D /* HXPHPhotoListConfiguration.swift */,
-				D05A84EC25A593950016910D /* HXPHNotAuthorizedConfiguration.swift */,
-				D05A84ED25A593950016910D /* HXPHEmptyViewConfiguration.swift */,
-				D05A84EE25A593950016910D /* HXPHAlbumListConfiguration.swift */,
-				D05A84EF25A593950016910D /* HXPHSelectBoxConfiguration.swift */,
-			);
-			path = Config;
-			sourceTree = "<group>";
-		};
-		D05A84F025A593950016910D /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				D05A84F125A593950016910D /* HXPHPicker.bundle */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		D05A84F225A593950016910D /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				D05A84F325A593950016910D /* HXPHPickerViewController.swift */,
-				D05A84F425A593950016910D /* HXPHPreviewViewController.swift */,
-				D05A84F525A593950016910D /* HXPHPickerController.swift */,
-				D05A84F625A593950016910D /* HXPHAlbumViewController.swift */,
-				D05A84F725A593950016910D /* HXPHCameraPickerController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		D05A84F925A593950016910D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				D05A84FA25A593950016910D /* HXPHAsset.swift */,
-				D05A84FB25A593950016910D /* HXPHAssetCollection.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		D05A84FC25A593950016910D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				D05A84FD25A593950016910D /* HXPHAlbumTitleArrowView.swift */,
-				D05A84FE25A593950016910D /* HXPHAlbumTickView.swift */,
-				D05A84FF25A593950016910D /* HXPHPreviewContentView.swift */,
-				D05A850025A593950016910D /* HXPHPickerBottomView.swift */,
-				D05A850125A593950016910D /* Cell */,
-				D05A850725A593950016910D /* HXPHVideoView.swift */,
-				D05A850825A593950016910D /* HXPHAlbumView.swift */,
-				D05A850925A593950016910D /* HXPHPickerSelectBoxView.swift */,
-				D05A850A25A593950016910D /* HXPHDeniedAuthorizationView.swift */,
-				D05A850B25A593950016910D /* HXPHAlbumTitleView.swift */,
-				D05A850C25A593950016910D /* HXPHPreviewSelectedView.swift */,
-				D05A850D25A593950016910D /* HXPHGIFImageView.swift */,
-				D05A850E25A593950016910D /* HXPHEmptyView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		D05A850125A593950016910D /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				D05A850225A593950016910D /* HXPHPreviewViewCell.swift */,
-				D05A850325A593950016910D /* HXPHPickerCamerViewCell.swift */,
-				D05A850425A593950016910D /* HXPHPickerViewCell.swift */,
-				D05A850525A593950016910D /* HXPHAlbumViewCell.swift */,
-				D05A850625A593950016910D /* HXPHPreviewSelectedViewCell.swift */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		D05CCEB7259D744F005BF42B /* Controller */ = {
@@ -486,7 +238,6 @@
 		D08EE21A2595C29000F0279D /* Wallpaper */ = {
 			isa = PBXGroup;
 			children = (
-				D05A84CC25A593950016910D /* HXPHPicker */,
 				D01139A7259D75A400153731 /* DataBase */,
 				D01139A6259D758F00153731 /* Log */,
 				D01139A5259D757000153731 /* AV */,
@@ -575,7 +326,6 @@
 				D08EE2282595C29300F0279D /* LaunchScreen.storyboard in Resources */,
 				D08EE2252595C29300F0279D /* Assets.xcassets in Resources */,
 				D08EE2232595C29000F0279D /* Main.storyboard in Resources */,
-				D05A852E25A593950016910D /* HXPHPicker.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,46 +395,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D05A850F25A593950016910D /* HXPHPickerInteractiveTransition.swift in Sources */,
-				D05A852D25A593950016910D /* HXPHSelectBoxConfiguration.swift in Sources */,
-				D05A851225A593950016910D /* HXPHPickerViewController+SwipeSelect.swift in Sources */,
-				D05A852C25A593950016910D /* HXPHAlbumListConfiguration.swift in Sources */,
-				D05A853D25A593950016910D /* HXPHPickerViewCell.swift in Sources */,
-				D05A853325A593950016910D /* HXPHCameraPickerController.swift in Sources */,
-				D05A853E25A593950016910D /* HXPHAlbumViewCell.swift in Sources */,
 				D08EE2B82597559100F0279D /* ImgTypes.swift in Sources */,
 				D08EE2202595C29000F0279D /* ViewController.swift in Sources */,
-				D05A853C25A593950016910D /* HXPHPickerCamerViewCell.swift in Sources */,
-				D05A852925A593950016910D /* HXPHPhotoListConfiguration.swift in Sources */,
 				D05CCE0B2599E15C005BF42B /* SearchController.swift in Sources */,
-				D05A852325A593950016910D /* HXPHPhotoListCellConfiguration.swift in Sources */,
-				D05A851125A593950016910D /* Bundle+HXPhotoPicker.swift in Sources */,
-				D05A854425A593950016910D /* HXPHAlbumTitleView.swift in Sources */,
 				D08EE2502595D65800F0279D /* DIYController.swift in Sources */,
-				D05A851A25A593950016910D /* HXPHTools.swift in Sources */,
 				D05CCE39259AFF7B005BF42B /* RecommendCell.swift in Sources */,
-				D05A852425A593950016910D /* HXPHConfiguration.swift in Sources */,
 				D06859C825A5A17200848477 /* CCTabBar.m in Sources */,
-				D05A852F25A593950016910D /* HXPHPickerViewController.swift in Sources */,
 				D08EE2472595D4B300F0279D /* MyNavigationController.swift in Sources */,
 				D05CCE8C259C559E005BF42B /* JPEG.swift in Sources */,
-				D05A853825A593950016910D /* HXPHAlbumTickView.swift in Sources */,
-				D05A851D25A593950016910D /* HXPHAssetManager+Asset.swift in Sources */,
-				D05A852B25A593950016910D /* HXPHEmptyViewConfiguration.swift in Sources */,
-				D05A851825A593950016910D /* String+HXPHPicker.swift in Sources */,
 				D05A83B725A473D60016910D /* NSBundle+changeBundleId.m in Sources */,
 				D08EE27B25970BB400F0279D /* RecommendController.swift in Sources */,
 				D08EE21C2595C29000F0279D /* AppDelegate.swift in Sources */,
-				D05A853B25A593950016910D /* HXPHPreviewViewCell.swift in Sources */,
-				D05A853925A593950016910D /* HXPHPreviewContentView.swift in Sources */,
-				D05A854125A593950016910D /* HXPHAlbumView.swift in Sources */,
-				D05A854525A593950016910D /* HXPHPreviewSelectedView.swift in Sources */,
-				D05A854625A593950016910D /* HXPHGIFImageView.swift in Sources */,
-				D05A853F25A593950016910D /* HXPHPreviewSelectedViewCell.swift in Sources */,
-				D05A852A25A593950016910D /* HXPHNotAuthorizedConfiguration.swift in Sources */,
-				D05A853725A593950016910D /* HXPHAlbumTitleArrowView.swift in Sources */,
 				D08EE2C425984F6400F0279D /* Config.swift in Sources */,
-				D05A853225A593950016910D /* HXPHAlbumViewController.swift in Sources */,
 				D05CCDD925997D14005BF42B /* SigninController.swift in Sources */,
 				D05CCDBB259895EA005BF42B /* BigImageController.swift in Sources */,
 				D05CCE0E2599E9E6005BF42B /* MoreCollectionCell.swift in Sources */,
@@ -692,48 +414,20 @@
 				D08EE24D2595D64800F0279D /* MoreController.swift in Sources */,
 				D05CCE8F259C55A8005BF42B /* QuickTimeMov.swift in Sources */,
 				D08EE27E25970BC200F0279D /* PopularController.swift in Sources */,
-				D05A851425A593950016910D /* UIColor+HXPHPicker.swift in Sources */,
 				D08EE24A2595D63900F0279D /* HomeController.swift in Sources */,
-				D05A854725A593950016910D /* HXPHEmptyView.swift in Sources */,
 				D05CCDB825988E8D005BF42B /* MyCell.swift in Sources */,
-				D05A853125A593950016910D /* HXPHPickerController.swift in Sources */,
 				D05CCDD525996E1F005BF42B /* RegisterController.swift in Sources */,
-				D05A851525A593950016910D /* UIDevice+HXPHPicker.swift in Sources */,
-				D05A853025A593950016910D /* HXPHPreviewViewController.swift in Sources */,
-				D05A852125A593950016910D /* HXPHAssetManager+AssetCollection.swift in Sources */,
 				D05A837A25A4419C0016910D /* CCVideoImageTool.swift in Sources */,
 				D04B281D25A2EA55005AC797 /* CacheManager.swift in Sources */,
-				D05A851625A593950016910D /* UIView+HXPHPicker.swift in Sources */,
-				D05A853425A593950016910D /* HXPHPicker.swift in Sources */,
-				D05A854025A593950016910D /* HXPHVideoView.swift in Sources */,
-				D05A851F25A593950016910D /* HXPHManager+Language.swift in Sources */,
 				D05A838125A44AF40016910D /* DiscoverCell.swift in Sources */,
-				D05A851925A593950016910D /* UIViewController+HXPHPicker.swift in Sources */,
-				D05A852225A593950016910D /* HXPHPhotoListCameraCellConfiguration.swift in Sources */,
-				D05A852725A593950016910D /* HXPHCameraConfiguration.swift in Sources */,
-				D05A851C25A593950016910D /* HXPHManager.swift in Sources */,
-				D05A852625A593950016910D /* HXPHPickerBottomViewConfiguration.swift in Sources */,
-				D05A852525A593950016910D /* HXPHAlbumTitleViewConfiguration.swift in Sources */,
-				D05A852025A593950016910D /* HXPHAssetManager.swift in Sources */,
-				D05A853A25A593950016910D /* HXPHPickerBottomView.swift in Sources */,
-				D05A851B25A593950016910D /* HXPHManager+AssetCollection.swift in Sources */,
-				D05A854325A593950016910D /* HXPHDeniedAuthorizationView.swift in Sources */,
 				D06859CC25A5A24B00848477 /* CCTabBarController.m in Sources */,
-				D05A851325A593950016910D /* UIImage+HXPHPicker.swift in Sources */,
 				D05CCDC72598B788005BF42B /* LoginController.swift in Sources */,
-				D05A853625A593950016910D /* HXPHAssetCollection.swift in Sources */,
 				D05CCE36259AFA6E005BF42B /* CollectionHeaderView.swift in Sources */,
 				D08EE29A2597210500F0279D /* CollectionCell.swift in Sources */,
-				D05A851725A593950016910D /* UIFont+HXPHPicker.swift in Sources */,
-				D05A851025A593950016910D /* HXPHPickerTransition.swift in Sources */,
-				D05A854225A593950016910D /* HXPHPickerSelectBoxView.swift in Sources */,
-				D05A853525A593950016910D /* HXPHAsset.swift in Sources */,
 				D08EE2532595D66200F0279D /* MyController.swift in Sources */,
-				D05A852825A593950016910D /* HXPHPreviewViewConfiguration.swift in Sources */,
 				D05A837D25A448210016910D /* DiscoverController.swift in Sources */,
 				D05CCE3F259B1559005BF42B /* CommonController.swift in Sources */,
 				D05CCE92259C5634005BF42B /* DTOtherMacro.swift in Sources */,
-				D05A851E25A593950016910D /* HXPHAssetManager+Authorization.swift in Sources */,
 				D05CCE3C259AFFEC005BF42B /* SearchCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
