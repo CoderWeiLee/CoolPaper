@@ -45,6 +45,8 @@
 		D08EE29A2597210500F0279D /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EE2992597210500F0279D /* CollectionCell.swift */; };
 		D08EE2B82597559100F0279D /* ImgTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EE2B72597559100F0279D /* ImgTypes.swift */; };
 		D08EE2C425984F6400F0279D /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EE2C325984F6400F0279D /* Config.swift */; };
+		D0F2084625BE9F610032B17D /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F2084525BE9F610032B17D /* UserManager.swift */; };
+		D0F2084B25BEA71B0032B17D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F2084A25BEA71B0032B17D /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +97,8 @@
 		D08EE2B72597559100F0279D /* ImgTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgTypes.swift; sourceTree = "<group>"; };
 		D08EE2C325984F6400F0279D /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		D0F2084025BE93820032B17D /* mobileffmpeg.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = mobileffmpeg.xcframework; path = "Pods/mobile-ffmpeg-full/mobileffmpeg.xcframework"; sourceTree = "<group>"; };
+		D0F2084525BE9F610032B17D /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		D0F2084A25BEA71B0032B17D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +242,7 @@
 		D08EE21A2595C29000F0279D /* Wallpaper */ = {
 			isa = PBXGroup;
 			children = (
+				D0F2084425BE9F060032B17D /* UserManager */,
 				D01139A7259D75A400153731 /* DataBase */,
 				D01139A6259D758F00153731 /* Log */,
 				D01139A5259D757000153731 /* AV */,
@@ -256,6 +261,15 @@
 				D05A83B425A473D50016910D /* Wallpaper-Bridging-Header.h */,
 			);
 			path = Wallpaper;
+			sourceTree = "<group>";
+		};
+		D0F2084425BE9F060032B17D /* UserManager */ = {
+			isa = PBXGroup;
+			children = (
+				D0F2084525BE9F610032B17D /* UserManager.swift */,
+				D0F2084A25BEA71B0032B17D /* User.swift */,
+			);
+			path = UserManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -418,6 +432,7 @@
 				D05CCDB825988E8D005BF42B /* MyCell.swift in Sources */,
 				D05CCDD525996E1F005BF42B /* RegisterController.swift in Sources */,
 				D05A837A25A4419C0016910D /* CCVideoImageTool.swift in Sources */,
+				D0F2084625BE9F610032B17D /* UserManager.swift in Sources */,
 				D04B281D25A2EA55005AC797 /* CacheManager.swift in Sources */,
 				D05A838125A44AF40016910D /* DiscoverCell.swift in Sources */,
 				D06859CC25A5A24B00848477 /* CCTabBarController.m in Sources */,
@@ -426,6 +441,7 @@
 				D08EE29A2597210500F0279D /* CollectionCell.swift in Sources */,
 				D08EE2532595D66200F0279D /* MyController.swift in Sources */,
 				D05A837D25A448210016910D /* DiscoverController.swift in Sources */,
+				D0F2084B25BEA71B0032B17D /* User.swift in Sources */,
 				D05CCE3F259B1559005BF42B /* CommonController.swift in Sources */,
 				D05CCE92259C5634005BF42B /* DTOtherMacro.swift in Sources */,
 				D05CCE3C259AFFEC005BF42B /* SearchCell.swift in Sources */,
