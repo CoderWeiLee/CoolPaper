@@ -7,6 +7,7 @@
 
 import UIKit
 import JXSegmentedView
+
 let w = (kScreenW - 9) * 0.5
 let h = w * 2
 let reuseID = "CollectionCell"

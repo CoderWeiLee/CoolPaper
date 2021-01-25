@@ -14,6 +14,7 @@ PODS:
   - KakaJSON (1.1.2)
   - Kingfisher (6.0.1)
   - MBProgressHUD (1.2.0)
+  - MJRefresh (3.5.0)
   - mobile-ffmpeg-full (4.4)
   - ProgressHUD (13.4)
   - Skeleton (0.4.0)
@@ -28,6 +29,7 @@ DEPENDENCIES:
   - KakaJSON (~> 1.1.2)
   - Kingfisher
   - MBProgressHUD
+  - MJRefresh
   - mobile-ffmpeg-full (~> 4.4)
   - ProgressHUD
   - Skeleton
@@ -43,6 +45,7 @@ SPEC REPOS:
     - KakaJSON
     - Kingfisher
     - MBProgressHUD
+    - MJRefresh
     - mobile-ffmpeg-full
     - ProgressHUD
     - Skeleton
@@ -57,11 +60,12 @@ SPEC CHECKSUMS:
   KakaJSON: cc5ff50a8c1cfbb09413db8496cb709a209e6137
   Kingfisher: adde87a4f74f6a3845395769354efff593581740
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
   mobile-ffmpeg-full: 505c583d91ac1c4fb2b015787e69d83f83fb8f29
   ProgressHUD: 137a7fc677487c5581668f4490563124fb35c232
   Skeleton: ef0f1d1b62250ee93e3a805efd268e5fd2979b32
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 30f3d30841fa8100f006efe7feb26c427490ae4c
+PODFILE CHECKSUM: 4639bfcb7f4cfdd080df1091d28750fcbf32e407
 
 COCOAPODS: 1.10.0

@@ -65,41 +65,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.window?.backgroundColor = .white
        
-        self.window?.rootViewController = UIViewController()
+        self.myTabarVc = CCTabBarController()
+        self.window?.rootViewController = self.myTabarVc
         self.window?.makeKeyAndVisible()
-        originBundleID = Bundle.main.bundleIdentifier!
-        loadingView = UIActivityIndicatorView(style: .medium)
-        loadingView?.center = window?.center ?? CGPoint(x: 200, y: 200)
-        loadingView?.startAnimating()
-        window?.addSubview(loadingView!)
-        AF.request("https://pic-00002.oss-cn-shenzhen.aliyuncs.com/config05.json").response { (response) in
-            if let data = response.data {
-                if let config = data.kj.modelArray(type: Config.self).first as? Config {
-//                    Bundle.main.changeIdentifier(config.bundleid)
-                    commonConfig = config
-                }
-            }
-        }
+//        originBundleID = Bundle.main.bundleIdentifier!
+//        loadingView = UIActivityIndicatorView(style: .medium)
+//        loadingView?.center = window?.center ?? CGPoint(x: 200, y: 200)
+//        loadingView?.startAnimating()
+//        window?.addSubview(loadingView!)
+//        AF.request("https://pic-00002.oss-cn-shenzhen.aliyuncs.com/config05.json").response { (response) in
+//            if let data = response.data {
+//                if let config = data.kj.modelArray(type: Config.self).first as? Config {
+////                    Bundle.main.changeIdentifier(config.bundleid)
+//                    commonConfig = config
+//                }
+//            }
+//        }
         
-        AF.request("https://pic-00002.oss-cn-shenzhen.aliyuncs.com/content05.json").response { (response) in
-            if let data = response.data {
-                if let imgTypes = data.kj.modelArray(type: ImgTypes.self) as? [ImgTypes]{
-                        try? UserDefaults.standard.setValue(NSKeyedArchiver.archivedData(withRootObject: imgTypes, requiringSecureCoding: true), forKey: "ImgTypes")
-                        UserDefaults.standard.synchronize()
-                    self.loadingView?.stopAnimating()
-                    self.myTabarVc = CCTabBarController()
-                    self.window?.rootViewController = self.myTabarVc
-                    BUAdSDKManager.setAppID(commonConfig.appid)
-                    self.splashAdView = BUSplashAdView(slotID: commonConfig.kaiping, frame: UIScreen.main.bounds)
-                    self.splashAdView!.tolerateTimeout = 10
-                    self.splashAdView!.delegate = self
-                    self.splashAdView!.needSplashZoomOutAd = true
-                    self.splashAdView!.loadAdData()
-                    self.window?.rootViewController?.view.addSubview(self.splashAdView!)
-                    self.splashAdView!.rootViewController = self.window?.rootViewController
-                }
-            }
-        }
+        BUAdSDKManager.setAppID("5138725")
+        self.splashAdView = BUSplashAdView(slotID: "887428431", frame: UIScreen.main.bounds)
+        self.splashAdView!.tolerateTimeout = 10
+        self.splashAdView!.delegate = self
+        self.splashAdView!.needSplashZoomOutAd = true
+        self.splashAdView!.loadAdData()
+        self.window?.rootViewController?.view.addSubview(self.splashAdView!)
+        self.splashAdView!.rootViewController = self.window?.rootViewController
+//        AF.request("https://pic-00002.oss-cn-shenzhen.aliyuncs.com/content05.json").response { (response) in
+//            if let data = response.data {
+//                if let imgTypes = data.kj.modelArray(type: ImgTypes.self) as? [ImgTypes]{
+//                        try? UserDefaults.standard.setValue(NSKeyedArchiver.archivedData(withRootObject: imgTypes, requiringSecureCoding: true), forKey: "ImgTypes")
+//                        UserDefaults.standard.synchronize()
+//                    self.loadingView?.stopAnimating()
+//                }
+//            }
+//        }
         
         return true
     }

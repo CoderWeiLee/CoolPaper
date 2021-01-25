@@ -16,6 +16,7 @@ target 'Wallpaper' do
   pod 'mobile-ffmpeg-full', '~> 4.4'
   pod 'MBProgressHUD'
   pod 'HXPHPicker'
+  pod 'MJRefresh'
   # Pods for Wallpaper
 
 end
