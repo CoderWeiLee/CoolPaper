@@ -7,7 +7,15 @@
 
 import UIKit
 import JXSegmentedView
+import MJRefresh
+import Alamofire
+import KakaJSON 
 class PopularController: UIViewController {
+    struct Login: Encodable {
+        let appkey: String
+        let page: String
+        let pagesize: String
+    }
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: w, height: h)
@@ -23,46 +31,65 @@ class PopularController: UIViewController {
     }()
     
     var num: Int = 0
-    var imgType: ImgTypes?
+    var maxCount: NSInteger?
+    var dataArray: NSMutableArray?
+    var currentPage: NSInteger?
+    var totalPage: NSInteger?
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         view.addSubview(collectionView)
-        if let data = UserDefaults.standard.value(forKey: "ImgTypes") as? Data{
-            if let imgTypes = try? NSKeyedUnarchiver.unarchivedObject(ofClasses: [NSObject.self], from: data) as? [ImgTypes]{
-                if let type = imgTypes.filter({$0.key == "Hot"}).first {
-                    imgType = type
-                    num = Int(type.num ?? "0") ?? 0
-                }
+        collectionView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(loadData))
+        collectionView.mj_header?.isAutomaticallyChangeAlpha = true;
+        collectionView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(loadMore))
+        collectionView.mj_footer?.isAutomaticallyChangeAlpha = true
+        collectionView.mj_header?.beginRefreshing()
+    }
+    
+    //下拉刷新
+    @objc func loadData() -> Void {
+        currentPage = 1
+        let login = Login(appkey: "mobile-iOS", page: "\(currentPage ?? 1)", pagesize: "20")
+        AF.request(hotURL, method: .post, parameters: login).responseJSON {[self] (response) in
+            if let responseModel = (response.data?.kj.model(ResponseModel.self)){
+                self.dataArray = NSMutableArray(array: (responseModel.data?.data)!)
+                self.collectionView.reloadData()
+                self.collectionView.mj_header?.endRefreshing()
             }
+        }
+    }
+    
+    //上拉加载更多
+    @objc func loadMore() -> Void {
+        currentPage = currentPage ?? 1 + 1
+        let login = Login(appkey: "mobile-iOS", page: "\(currentPage ?? 1)", pagesize: "20")
+        AF.request(hotURL, method: .post, parameters: login).response {[self] (response) in
+            if let responseModel = (response.data?.kj.model(ResponseModel.self)){
+                self.currentPage = NSInteger(responseModel.data?.current_page ?? "1")
+                self.totalPage = NSInteger(responseModel.data?.total ?? "1")
+                let dataArray = NSMutableArray(array: (responseModel.data?.data)!)
+                self.dataArray?.addObjects(from: dataArray as! [Any])
+                self.collectionView.reloadData()
+                self.currentPage == self.totalPage ? self.collectionView.mj_footer?.endRefreshingWithNoMoreData() : self.collectionView.mj_footer?.endRefreshing()
+            }
+            
         }
     }
 }
 
 extension PopularController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return num
+        return self.dataArray?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseID, for: indexPath) as! CollectionCell
-        guard let type = imgType else {
-            return cell
-        }
-        type.index = String(format: "%04d", indexPath.row + 1)
-        cell.type = type
+        cell.imageModel = self.dataArray?[indexPath.row] as? ImageModel
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let bigC = BigImageController()
-        guard let type = imgType else {
-            return
-        }
-        bigC.scene = .navHideScene
-        type.index = String(format: "%04d", indexPath.row + 1)
-        bigC.type = type
-        bigC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(bigC, animated: true)
     }
     

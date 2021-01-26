@@ -34,7 +34,6 @@ class RecommendController: UIViewController {
     }()
     
     var num: Int = 0
-    var imgType: ImgTypes?
     var maxCount: NSInteger?
     var dataArray: NSMutableArray?
     var currentPage: NSInteger?
@@ -98,13 +97,6 @@ extension RecommendController: UICollectionViewDataSource, UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let bigC = BigImageController()
-        guard let type = imgType else {
-            return 
-        }
-        type.index = String(format: "%04d", indexPath.row + 1)
-        bigC.type = type
-        bigC.hidesBottomBarWhenPushed = true
-        bigC.scene = .navHideScene
         navigationController?.pushViewController(bigC, animated: true)
     }
 }
