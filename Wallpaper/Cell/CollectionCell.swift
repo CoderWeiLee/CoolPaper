@@ -59,6 +59,13 @@ class CollectionCell: UICollectionViewCell {
             }
         }
     }
+    
+    var imageModel: ImageModel? {
+        didSet {
+            livePhotoView.isHidden = true
+            imgV.kf.setImage(with: URL(string: imageModel?.url ?? ""))
+        }
+    }
     override init(frame: CGRect) {
         super.init(frame: frame)
         skeletonLayer = CAGradientLayer()
