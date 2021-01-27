@@ -7,10 +7,16 @@
 
 import UIKit
 import JXSegmentedView
+import Alamofire
+import KakaJSON
 class HomeController: UIViewController, JXSegmentedViewDelegate, JXSegmentedListContainerViewDataSource {
+    struct Category: Encodable {
+        let appkey: String
+    }
     var segmentedView: JXSegmentedView!
     var segmentedDataSource: JXSegmentedTitleDataSource!
     var listContainerView: JXSegmentedListContainerView!
+    var dataArray: Array<CategoryModel>?
         override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: true)
@@ -45,6 +51,18 @@ class HomeController: UIViewController, JXSegmentedViewDelegate, JXSegmentedList
             
         //6、将listContainerView.scrollView和segmentedView.contentScrollView进行关联
         segmentedView.listContainer = listContainerView
+            
+        //发起请求查询分页的数据
+        let category = Category(appkey: "mobile-iOS")
+            AF.request(categoryListURL, method: .post, parameters: category).responseJSON {[self] (response) in
+            if let responseModel = (response.data?.kj.model(CategoryResModel.self)){
+                self.dataArray = Array(responseModel.data!)
+                self.segmentedDataSource.titles.append(contentsOf: self.dataArray.flatMap {
+                    $0.map {$0.name!}
+                }!)
+                self.segmentedView.reloadData()
+            }
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -81,8 +99,13 @@ extension HomeController {
         switch index {
         case 0:
             return RecommendController()
-        default:
+        case 1:
             return PopularController()
+        default:
+            let categoryVC = CategoryController()
+            categoryVC.model = self.dataArray?[index-2]
+            return categoryVC
+            
         }
     }
 }

@@ -11,6 +11,8 @@
 		D04B281D25A2EA55005AC797 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04B281C25A2EA55005AC797 /* CacheManager.swift */; };
 		D04D483F25BFE60700C6AFA6 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04D483E25BFE60700C6AFA6 /* Api.swift */; };
 		D04D484225C004C500C6AFA6 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04D484125C004C500C6AFA6 /* HomeModel.swift */; };
+		D04D485D25C0F0F000C6AFA6 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04D485C25C0F0F000C6AFA6 /* CategoryModel.swift */; };
+		D04D487125C0FFC100C6AFA6 /* CategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04D487025C0FFC100C6AFA6 /* CategoryController.swift */; };
 		D05A837A25A4419C0016910D /* CCVideoImageTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A837925A4419C0016910D /* CCVideoImageTool.swift */; };
 		D05A837D25A448210016910D /* DiscoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A837C25A448210016910D /* DiscoverController.swift */; };
 		D05A838125A44AF40016910D /* DiscoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A838025A44AF40016910D /* DiscoverCell.swift */; };
@@ -58,6 +60,8 @@
 		D04B281C25A2EA55005AC797 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		D04D483E25BFE60700C6AFA6 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		D04D484125C004C500C6AFA6 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
+		D04D485C25C0F0F000C6AFA6 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
+		D04D487025C0FFC100C6AFA6 /* CategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryController.swift; sourceTree = "<group>"; };
 		D05A837925A4419C0016910D /* CCVideoImageTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCVideoImageTool.swift; sourceTree = "<group>"; };
 		D05A837C25A448210016910D /* DiscoverController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverController.swift; sourceTree = "<group>"; };
 		D05A838025A44AF40016910D /* DiscoverCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCell.swift; sourceTree = "<group>"; };
@@ -150,6 +154,7 @@
 			children = (
 				D08EE2B72597559100F0279D /* ImgTypes.swift */,
 				D04D484125C004C500C6AFA6 /* HomeModel.swift */,
+				D04D485C25C0F0F000C6AFA6 /* CategoryModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -197,6 +202,7 @@
 				D08EE27A25970BB400F0279D /* RecommendController.swift */,
 				D05CCE3E259B1559005BF42B /* CommonController.swift */,
 				D08EE27D25970BC200F0279D /* PopularController.swift */,
+				D04D487025C0FFC100C6AFA6 /* CategoryController.swift */,
 				D05CCDBA259895EA005BF42B /* BigImageController.swift */,
 				D08EE24C2595D64800F0279D /* MoreController.swift */,
 				D08EE24F2595D65800F0279D /* DIYController.swift */,
@@ -428,6 +434,7 @@
 				D08EE27B25970BB400F0279D /* RecommendController.swift in Sources */,
 				D08EE21C2595C29000F0279D /* AppDelegate.swift in Sources */,
 				D08EE2C425984F6400F0279D /* Config.swift in Sources */,
+				D04D485D25C0F0F000C6AFA6 /* CategoryModel.swift in Sources */,
 				D05CCDD925997D14005BF42B /* SigninController.swift in Sources */,
 				D05CCDBB259895EA005BF42B /* BigImageController.swift in Sources */,
 				D05CCE0E2599E9E6005BF42B /* MoreCollectionCell.swift in Sources */,
@@ -435,6 +442,7 @@
 				D08EE24D2595D64800F0279D /* MoreController.swift in Sources */,
 				D05CCE8F259C55A8005BF42B /* QuickTimeMov.swift in Sources */,
 				D08EE27E25970BC200F0279D /* PopularController.swift in Sources */,
+				D04D487125C0FFC100C6AFA6 /* CategoryController.swift in Sources */,
 				D08EE24A2595D63900F0279D /* HomeController.swift in Sources */,
 				D05CCDB825988E8D005BF42B /* MyCell.swift in Sources */,
 				D04D483F25BFE60700C6AFA6 /* Api.swift in Sources */,
@@ -603,13 +611,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = W6LAHQF374;
+				DEVELOPMENT_TEAM = R6LCY2C3NY;
 				INFOPLIST_FILE = Wallpaper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.picture.fourk;
+				PRODUCT_BUNDLE_IDENTIFIER = com.picture.fourkxxx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Wallpaper/Wallpaper-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -627,13 +635,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = W6LAHQF374;
+				DEVELOPMENT_TEAM = R6LCY2C3NY;
 				INFOPLIST_FILE = Wallpaper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.picture.fourk;
+				PRODUCT_BUNDLE_IDENTIFIER = com.picture.fourkxxx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Wallpaper/Wallpaper-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

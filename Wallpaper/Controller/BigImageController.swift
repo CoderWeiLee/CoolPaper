@@ -75,6 +75,12 @@ class BigImageController: UIViewController {
         }
     }
     var scene: PushScene?
+    var model: ImageModel? {
+        didSet {
+            livePhotoView.isHidden = true
+            imgV.kf.setImage(with: URL(string: model?.url ?? ""))
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
     }
