@@ -50,16 +50,21 @@
     diyVC.tabBarItem.image = [UIImage imageNamed:@"tab-social"];
     diyVC.tabBarItem.selectedImage = [UIImage imageNamed:@"tab-social-active"];
 
-    MyController *myVC = [[MyController alloc] init];
-    myVC.tabBarItem.title = @"我的";
-    myVC.tabBarItem.image = [UIImage imageNamed:@"tab-mine"];
-    myVC.tabBarItem.selectedImage = [UIImage imageNamed:@"tab-mine-active"];
+//    MyController *myVC = [[MyController alloc] init];
+//    myVC.tabBarItem.title = @"我的";
+//    myVC.tabBarItem.image = [UIImage imageNamed:@"tab-mine"];
+//    myVC.tabBarItem.selectedImage = [UIImage imageNamed:@"tab-mine-active"];
+    
+    LoginController *login = [[LoginController alloc] init];
+    login.tabBarItem.title = @"我的";
+    login.tabBarItem.image = [UIImage imageNamed:@"tab-mine"];
+    login.tabBarItem.selectedImage = [UIImage imageNamed:@"tab-mine-active"];
 
     MyNavigationController *navHome = [[MyNavigationController alloc] initWithRootViewController:homeVC];
     MyNavigationController *navMore = [[MyNavigationController alloc] initWithRootViewController:moreVC];
     MyNavigationController *navDiscover = [[MyNavigationController alloc] initWithRootViewController:discoverVC];
     MyNavigationController *navDIY = [[MyNavigationController alloc] initWithRootViewController:diyVC];
-    MyNavigationController *navMy = [[MyNavigationController alloc] initWithRootViewController:myVC];
+    MyNavigationController *navMy = [[MyNavigationController alloc] initWithRootViewController:login];
     NSArray *itemArrays   = @[navHome,navMore,navDiscover,navDIY,navMy];
     self.viewControllers  = itemArrays;
     self.tabBar.tintColor = [UIColor colorNamed:@"indicatorColor"];
