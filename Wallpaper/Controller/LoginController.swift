@@ -17,6 +17,10 @@ class LoginController: UIViewController {
         let mobile: String //手机号码
         let event: String   //事件名称
     }
+    struct checkCode: Encodable {
+        let mobile: String //手机号码
+        let captcha: String //短信验证码
+    }
     var phoneText: UITextField!
     var codeText: UITextField!
     var countdownTimer: Timer?
@@ -168,19 +172,41 @@ class LoginController: UIViewController {
     
     //登录
     @objc func loginAction() {
-        //检查
-        guard let _ = UserDefaults.standard.value(forKey: "name") else {
-//            ProgressHUD.show("您还没有注册哦，快去注册吧")
+        //检查短信文本框是否有内容
+        guard phoneText.text != nil else {
             let hud = MBProgressHUD.showAdded(to: view, animated: true)
-            hud.label.text = ""
+            hud.label.text = "手机号码格式错误"
+            hud.mode = .text
+            hud.show(animated: true)
+            hud.hide(animated: true, afterDelay: 1)
             return
         }
-        guard let _ = UserDefaults.standard.value(forKey: "pwd") else {
-            ProgressHUD.show("您还没有注册哦，快去注册吧")
-            return
-        }
-        //登录成功
         
+        guard codeText.text != nil else {
+            let hud = MBProgressHUD.showAdded(to: view, animated: true)
+            hud.label.text = "短信验证码格式错误"
+            hud.mode = .text
+            hud.show(animated: true)
+            hud.hide(animated: true, afterDelay: 1)
+            return
+        }
+        //验证短信
+        let params = checkCode(mobile: phoneText.text ?? "", captcha: codeText.text ?? "")
+        //发送验证码请求
+        AF.request(mobileLoginURL, method: .post, parameters: params).responseJSON { [self] (response) in
+            if let loginRes = response.data?.kj.model(loginResponse.self) {
+                //保存当前用户信息
+                if let user = loginRes.data?["userinfo"] {
+                    UserManager.currentUser = user
+                    UserManager.token = user.token ?? ""
+                    let hud = MBProgressHUD.showAdded(to: view, animated: true)
+                    hud.label.text = "登陆成功"
+                    hud.mode = .text
+                    hud.show(animated: true)
+                    hud.hide(animated: true, afterDelay: 1)
+                }
+            }
+        }
     }
     
     @objc func sendButtonClick() {

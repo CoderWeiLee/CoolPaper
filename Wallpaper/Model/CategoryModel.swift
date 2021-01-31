@@ -24,6 +24,7 @@ struct CodeModel: Convertible, Hashable {
     var msg: String?
     var time: String?
     var data: String?
+    var token: String?
 }
 
 
