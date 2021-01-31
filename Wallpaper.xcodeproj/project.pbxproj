@@ -13,6 +13,7 @@
 		D04D484225C004C500C6AFA6 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04D484125C004C500C6AFA6 /* HomeModel.swift */; };
 		D04D485D25C0F0F000C6AFA6 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04D485C25C0F0F000C6AFA6 /* CategoryModel.swift */; };
 		D04D487125C0FFC100C6AFA6 /* CategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04D487025C0FFC100C6AFA6 /* CategoryController.swift */; };
+		D04E9C2325C68394002FBAD3 /* LWGradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04E9C2225C68394002FBAD3 /* LWGradientButton.swift */; };
 		D05A837A25A4419C0016910D /* CCVideoImageTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A837925A4419C0016910D /* CCVideoImageTool.swift */; };
 		D05A837D25A448210016910D /* DiscoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A837C25A448210016910D /* DiscoverController.swift */; };
 		D05A838125A44AF40016910D /* DiscoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A838025A44AF40016910D /* DiscoverCell.swift */; };
@@ -62,6 +63,7 @@
 		D04D484125C004C500C6AFA6 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		D04D485C25C0F0F000C6AFA6 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		D04D487025C0FFC100C6AFA6 /* CategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryController.swift; sourceTree = "<group>"; };
+		D04E9C2225C68394002FBAD3 /* LWGradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LWGradientButton.swift; sourceTree = "<group>"; };
 		D05A837925A4419C0016910D /* CCVideoImageTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCVideoImageTool.swift; sourceTree = "<group>"; };
 		D05A837C25A448210016910D /* DiscoverController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverController.swift; sourceTree = "<group>"; };
 		D05A838025A44AF40016910D /* DiscoverCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCell.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				D06859C625A5A17200848477 /* CCTabBar.h */,
 				D06859C725A5A17200848477 /* CCTabBar.m */,
 				D05CCE35259AFA6E005BF42B /* CollectionHeaderView.swift */,
+				D04E9C2225C68394002FBAD3 /* LWGradientButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -458,6 +461,7 @@
 				D08EE2532595D66200F0279D /* MyController.swift in Sources */,
 				D05A837D25A448210016910D /* DiscoverController.swift in Sources */,
 				D0F2084B25BEA71B0032B17D /* User.swift in Sources */,
+				D04E9C2325C68394002FBAD3 /* LWGradientButton.swift in Sources */,
 				D05CCE3F259B1559005BF42B /* CommonController.swift in Sources */,
 				D05CCE92259C5634005BF42B /* DTOtherMacro.swift in Sources */,
 				D05CCE3C259AFFEC005BF42B /* SearchCell.swift in Sources */,

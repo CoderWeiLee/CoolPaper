@@ -19,7 +19,7 @@ class LoginController: UIViewController {
     var phoneText: UITextField!
     var codeText: UITextField!
     var countdownTimer: Timer?
-    var sendButton: UIButton!
+    var sendButton: LWGradientButton!
     var remainingSeconds: Int = 0 {
         willSet {
             sendButton.setTitle("验证码已发送\(newValue)后重新获取", for: .normal)
@@ -62,88 +62,115 @@ class LoginController: UIViewController {
             make.edges.equalTo(view)
         }
         
+        let logoImageV = UIImageView(image: UIImage(named: "loginLogo"))
+        view.addSubview(logoImageV)
+        logoImageV.snp.makeConstraints { (make) in
+            make.centerX.equalTo(view)
+            make.top.equalTo(view).offset(20)
+        }
+        
         //欢迎登陆
         let welcomeLabel = UILabel()
-        welcomeLabel.text = "欢迎登陆"
-        welcomeLabel.font = UIFont.systemFont(ofSize: 30)
+        welcomeLabel.text = "壁纸大全"
+        welcomeLabel.textColor = UIColor(hexString: "#2A2A2A")
+        welcomeLabel.font = UIFont.systemFont(ofSize: 24)
         view.addSubview(welcomeLabel)
         welcomeLabel.snp.makeConstraints { (make) in
             make.centerX.equalTo(view)
-            make.top.equalTo(view).offset(kScreenH * 0.1)
+            make.top.equalTo(logoImageV.snp.bottom).offset(9)
         }
         
         //手机号码文本输入框
         phoneText = UITextField()
         phoneText.keyboardType = .numberPad
-        phoneText.placeholder = "请输入手机号码"
+        let phonePlaceholder = NSMutableAttributedString(string: "请输入您的手机号")
+        phonePlaceholder.addAttributes([NSMutableAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSMutableAttributedString.Key.foregroundColor : UIColor(hexString: "#999999")], range: NSMakeRange(0, phonePlaceholder.length))
+        phoneText.attributedPlaceholder = phonePlaceholder
         phoneText.clearButtonMode = .whileEditing
+        phoneText.layer.cornerRadius = 22
+        phoneText.layer.masksToBounds = true
+        phoneText.layer.borderColor = UIColor(hexString: "#E6E6E6").cgColor
+        phoneText.layer.borderWidth = 1
         view.addSubview(phoneText)
+        let leftView = UIView()
+        var frame = self.phoneText.frame
+        frame.size.width = 14
+        leftView.frame = frame
+        phoneText.leftViewMode = .always
+        phoneText.leftView = leftView
         phoneText.snp.makeConstraints { (make) in
-            make.left.equalTo(view).offset(20)
-            make.top.equalTo(view).offset(kScreenH * 0.3)
-            make.right.equalTo(view).offset(-20)
+            make.left.equalTo(view).offset(41)
+            make.top.equalTo(welcomeLabel.snp.bottom).offset(51)
+            make.right.equalTo(view).offset(-34)
+            make.height.equalTo(44)
         }
         
-        let phoneLine = UIView()
-        phoneLine.backgroundColor = UIColor(white: 0.3, alpha: 0.3)
-        view.addSubview(phoneLine)
-        phoneLine.snp.makeConstraints { (make) in
-            make.left.equalTo(view).offset(10)
-            make.top.equalTo(phoneText.snp.bottom).offset(5)
-            make.height.equalTo(2)
-            make.right.equalTo(view).offset(-10)
-        }
-        
-        
-        //用户名文本输入框
+   
+        //验证码输入框
         codeText = UITextField()
-        codeText.placeholder = "请输入验证码"
+        let codePlaceholder = NSMutableAttributedString(string: "请输入验证码")
+        codePlaceholder.addAttributes([NSMutableAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSMutableAttributedString.Key.foregroundColor : UIColor(hexString: "#999999")], range: NSMakeRange(0, codePlaceholder.length))
+        codeText.attributedPlaceholder = codePlaceholder
         codeText.clearButtonMode = .whileEditing
+        codeText.layer.cornerRadius = 22
+        codeText.layer.masksToBounds = true
+        codeText.layer.borderColor = UIColor(hexString: "#E6E6E6").cgColor
+        codeText.layer.borderWidth = 1
         view.addSubview(codeText)
+        let leftView2 = UIView()
+        var frame2 = self.codeText.frame
+        frame2.size.width = 14
+        leftView2.frame = frame2
+        codeText.leftViewMode = .always
+        codeText.leftView = leftView2
         codeText.snp.makeConstraints { (make) in
-            make.left.equalTo(phoneText)
-            make.top.equalTo(phoneLine.snp.bottom).offset(30)
-            make.right.equalTo(phoneText).offset(-80)
+            make.left.right.equalTo(phoneText)
+            make.top.equalTo(phoneText.snp.bottom).offset(20)
+            make.height.equalTo(44)
         }
         
-        let codeLine = UIView()
-        codeLine.backgroundColor = UIColor(white: 0.3, alpha: 0.3)
-        view.addSubview(codeLine)
-        codeLine.snp.makeConstraints { (make) in
-            make.left.equalTo(view).offset(10)
-            make.top.equalTo(codeText.snp.bottom).offset(5)
-            make.height.equalTo(2)
-            make.right.equalTo(view).offset(-10)
-        }
         
         //发送验证码按钮
-        sendButton = UIButton(type: .custom)
-        sendButton.backgroundColor = .black
+        sendButton = LWGradientButton()
         sendButton.setTitle("获取验证码", for: .normal)
-        sendButton.setTitleColor(.white, for: .normal)
+        sendButton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        sendButton.gradientColors = [UIColor(hexString: "#FF62A5"), UIColor(hexString: "#FF632E")]
         sendButton.addTarget(self, action: #selector(sendButtonClick), for: .touchUpInside)
         view.addSubview(sendButton)
         sendButton.snp.makeConstraints { (make) in
-            make.right.equalTo(codeLine)
-            make.centerY.equalTo(codeText).offset(-5)
+            make.right.equalTo(codeText).offset(-14)
+            make.centerY.equalTo(codeText)
         }
         
         //登录按钮
         let loginBtn = UIButton(type: .custom)
         loginBtn.addTarget(self, action: #selector(loginAction), for: .touchUpInside)
-        loginBtn.setTitle("登录", for: .normal)
+        loginBtn.setTitle("注册并登陆", for: .normal)
         loginBtn.setTitleColor(.white, for: .normal)
-        loginBtn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        loginBtn.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         loginBtn.backgroundColor = UIColor(named: "indicatorColor")
-        loginBtn.layer.cornerRadius = 3
+        loginBtn.layer.cornerRadius = 22
         loginBtn.layer.masksToBounds = true
         view.addSubview(loginBtn)
+        //绘制渐变色
+        let size = CGSize(width: kScreenW - 60, height: 44)
+        UIGraphicsBeginImageContextWithOptions(size, true, 1.0)
+        let context = UIGraphicsGetCurrentContext()
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenW - 60, height: 44)
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 0)
+        gradientLayer.locations = [0.5,1]
+        gradientLayer.colors = [UIColor(hexString: "#FF62A5"), UIColor(hexString: "#FF632E")]
+        gradientLayer.render(in: context!)
+        let bgImage = UIGraphicsGetImageFromCurrentImageContext()
+        loginBtn.setBackgroundImage(bgImage, for: .normal)
         loginBtn.snp.makeConstraints { (make) in
-            make.left.equalTo(view).offset(30)
-            make.right.equalTo(view).offset(-30)
+            make.left.right.equalTo(codeText)
             make.height.equalTo(44)
-            make.top.equalTo(codeLine.snp.bottom).offset(20)
+            make.top.equalTo(codeText.snp.bottom).offset(50)
         }
+        
         
     }
     
