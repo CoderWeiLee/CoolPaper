@@ -11,6 +11,7 @@ import SnapKit
 import ProgressHUD
 import Alamofire
 import KakaJSON
+import MBProgressHUD
 class LoginController: UIViewController {
     struct sendCode: Encodable {
         let phoneNumber: String //手机号码
@@ -148,30 +149,15 @@ class LoginController: UIViewController {
         loginBtn.setTitle("注册并登陆", for: .normal)
         loginBtn.setTitleColor(.white, for: .normal)
         loginBtn.titleLabel?.font = UIFont.systemFont(ofSize: 18)
-        loginBtn.backgroundColor = UIColor(named: "indicatorColor")
         loginBtn.layer.cornerRadius = 22
         loginBtn.layer.masksToBounds = true
+        loginBtn.addGradientColor(colors: [UIColor(hexString: "#FF62A5"), UIColor(hexString: "#FF632E")], locations: [0,1], direction: .Horizontal, targetView: view)
         view.addSubview(loginBtn)
-        //绘制渐变色
-        let size = CGSize(width: kScreenW - 60, height: 44)
-        UIGraphicsBeginImageContextWithOptions(size, true, 1.0)
-        let context = UIGraphicsGetCurrentContext()
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenW - 60, height: 44)
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 1, y: 0)
-        gradientLayer.locations = [0.5,1]
-        gradientLayer.colors = [UIColor(hexString: "#FF62A5"), UIColor(hexString: "#FF632E")]
-        gradientLayer.render(in: context!)
-        let bgImage = UIGraphicsGetImageFromCurrentImageContext()
-        loginBtn.setBackgroundImage(bgImage, for: .normal)
         loginBtn.snp.makeConstraints { (make) in
             make.left.right.equalTo(codeText)
             make.height.equalTo(44)
             make.top.equalTo(codeText.snp.bottom).offset(50)
         }
-        
-        
     }
     
   
@@ -180,7 +166,9 @@ class LoginController: UIViewController {
     @objc func loginAction() {
         //检查
         guard let _ = UserDefaults.standard.value(forKey: "name") else {
-            ProgressHUD.show("您还没有注册哦，快去注册吧")
+//            ProgressHUD.show("您还没有注册哦，快去注册吧")
+            let hud = MBProgressHUD.showAdded(to: view, animated: true)
+            hud.label.text = ""
             return
         }
         guard let _ = UserDefaults.standard.value(forKey: "pwd") else {
@@ -246,3 +234,36 @@ class LoginController: UIViewController {
     }
 }
 
+
+//方向枚举，这里只列出两个
+enum GradientDirection {
+    case Horizontal ///水平
+    case Vertial ///垂直
+}
+ 
+//MARK:渐进色
+extension UIView {
+    
+    func addGradientColor(colors:[UIColor],locations:[NSNumber],direction:GradientDirection = .Horizontal,targetView:UIView) {
+        //UIColor处理为CGColor
+        let exColor = colors.compactMap{ $0.cgColor }
+        
+        let point_H = CGPoint(x: 1.0, y: 0)
+        let point_V = CGPoint(x: 0, y: 1.0)
+        
+        let gradientLayer = CAGradientLayer.init()
+        //控制渐进色方向，
+        //start:(0,0) end:(1.0,0) 水平方向
+        //start:(0,0) end:(0,1.0) 垂直方向，还有左上左下右上右下方向可设置
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        //判断方向
+        gradientLayer.endPoint = (direction == .Horizontal) ? point_H : point_V
+        
+        gradientLayer.colors = exColor
+        gradientLayer.locations = locations
+        //layer的位置
+        gradientLayer.frame = targetView.frame
+        self.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
+}
