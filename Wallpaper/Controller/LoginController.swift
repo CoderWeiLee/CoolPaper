@@ -14,8 +14,8 @@ import KakaJSON
 import MBProgressHUD
 class LoginController: UIViewController {
     struct sendCode: Encodable {
-        let phoneNumber: String //手机号码
-        let eventName: String   //事件名称
+        let mobile: String //手机号码
+        let event: String   //事件名称
     }
     var phoneText: UITextField!
     var codeText: UITextField!
@@ -109,10 +109,14 @@ class LoginController: UIViewController {
    
         //验证码输入框
         codeText = UITextField()
+        if #available(iOS 12, *) {
+            //iOS 12及以上系统运行
+            codeText.textContentType = .oneTimeCode
+        }
+        codeText.keyboardType = .numberPad
         let codePlaceholder = NSMutableAttributedString(string: "请输入验证码")
         codePlaceholder.addAttributes([NSMutableAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSMutableAttributedString.Key.foregroundColor : UIColor(hexString: "#999999")], range: NSMakeRange(0, codePlaceholder.length))
         codeText.attributedPlaceholder = codePlaceholder
-        codeText.clearButtonMode = .whileEditing
         codeText.layer.cornerRadius = 22
         codeText.layer.masksToBounds = true
         codeText.layer.borderColor = UIColor(hexString: "#E6E6E6").cgColor
@@ -184,23 +188,27 @@ class LoginController: UIViewController {
         if (!isTelNumber(num: (phoneText.text ?? "") as NSString )) {
             let hud = MBProgressHUD.showAdded(to: view, animated: true)
             hud.label.text = "手机号码格式错误"
-            hud.hide(animated: true, afterDelay: 1)
             hud.show(animated: true)
+            hud.hide(animated: true, afterDelay: 1)
             return
         }
         // 启动倒计时
         isCounting = true
-        let params = sendCode(phoneNumber: phoneText.text ?? "", eventName: "mobilelogin")
+        let params = sendCode(mobile: phoneText.text ?? "", event: "mobilelogin")
         //发送验证码请求
-        AF.request(sendCodeURL, method: .post, parameters: params).responseJSON {[self] (response) in
-//            if let responseModel = (response.data?.kj.model(ResponseModel.self)){
-//                self.dataArray = NSMutableArray(array: (responseModel.data?.data)!)
-//                self.collectionView.reloadData()
-//                self.collectionView.mj_header?.endRefreshing()
-//            }
-            
-            print("111")
-            print("111")
+        AF.request(sendCodeURL, method: .post, parameters: params).responseJSON { [self] (response) in
+            if let codeModel = (response.data?.kj.model(CodeModel.self)){
+                if let msg = codeModel.msg {
+                    if msg == "发送成功" {
+                        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+                        hud.label.text = "发送成功"
+                        hud.mode = .text
+                        hud.show(animated: true)
+                        hud.hide(animated: true, afterDelay: 1)
+                        self.codeText.becomeFirstResponder()
+                    }
+                }
+            }
         }
     }
     

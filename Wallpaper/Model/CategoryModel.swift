@@ -19,4 +19,11 @@ struct CategoryModel: Convertible, Hashable {
     var name: String?
 }
 
+struct CodeModel: Convertible, Hashable {
+    var code: String?
+    var msg: String?
+    var time: String?
+    var data: String?
+}
+
 
