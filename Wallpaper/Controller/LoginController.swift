@@ -23,7 +23,7 @@ class LoginController: UIViewController {
     var sendButton: LWGradientButton!
     var remainingSeconds: Int = 0 {
         willSet {
-            sendButton.setTitle("验证码已发送\(newValue)后重新获取", for: .normal)
+            sendButton.setTitle("重新获取\(newValue)s", for: .normal)
             if newValue <= 0 {
                 sendButton.setTitle("重新获取验证码", for: .normal)
                 isCounting = false
@@ -34,13 +34,13 @@ class LoginController: UIViewController {
     var isCounting = false {
         willSet {
             if newValue {
-                countdownTimer = Timer(timeInterval: 1, target: self, selector: #selector(updateTime(timer:)), userInfo: nil, repeats: true)
+                countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime(timer:)), userInfo: nil, repeats: true)
                 remainingSeconds = 60
-                sendButton.backgroundColor = .lightGray
+                sendButton.gradientColors = [.lightGray]
             }else {
                 countdownTimer?.invalidate()
                 countdownTimer = nil
-                sendButton.backgroundColor = .black
+                sendButton.gradientColors = [UIColor(hexString: "#FF62A5"), UIColor(hexString: "#FF632E")]
             }
             sendButton.isEnabled = !newValue
         }
@@ -182,10 +182,10 @@ class LoginController: UIViewController {
     @objc func sendButtonClick() {
         //检测手机号是否合法
         if (!isTelNumber(num: (phoneText.text ?? "") as NSString )) {
-            let alert = UIAlertController(title: "电话号码格式错误", message: "请重新输入", preferredStyle: .alert)
-            let ok = UIAlertAction(title: "知道了", style: .default, handler: nil)
-            alert.addAction(ok)
-            present(alert, animated: true, completion: nil)
+            let hud = MBProgressHUD.showAdded(to: view, animated: true)
+            hud.label.text = "手机号码格式错误"
+            hud.hide(animated: true, afterDelay: 1)
+            hud.show(animated: true)
             return
         }
         // 启动倒计时
