@@ -17,6 +17,7 @@ import Photos
 import MobileCoreServices
 import BUAdSDK
 import Skeleton
+import JKSwiftExtension
 public enum PushScene {
     case navHideScene
     case navShowScene
@@ -29,6 +30,10 @@ class BigImageController: UIViewController {
     var downloadBtn = UIButton(type: .custom)
     var imgPath: String!
     var videoPath: String!
+    //设为桌面
+    var setHomeBtn: UIButton!
+    //设为锁屏
+    var setLockBtn: UIButton!
     //广告展示视图
 //    var splashAdView: BUSplashAdView?
     //激励视频
@@ -85,6 +90,10 @@ class BigImageController: UIViewController {
         super.viewDidLoad()
     }
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     override func loadView() {
         super.loadView()
         originBundleID = Bundle.main.bundleIdentifier!
@@ -110,37 +119,81 @@ class BigImageController: UIViewController {
         //添加返回按钮
         let backBtn = UIButton(type: .custom)
         backBtn.adjustsImageWhenHighlighted = false
-        backBtn.setImage(UIImage(named: "bottom_btn_back_active"), for: .normal)
+        backBtn.setImage(UIImage(named: "back"), for: .normal)
         backBtn.addTarget(self, action: #selector(backAction), for: .touchUpInside)
         view.addSubview(backBtn)
         backBtn.snp.makeConstraints { (make) in
-            make.left.equalTo(view).offset(20)
-            make.top.equalTo(view).offset(50)
+            make.left.equalTo(view).offset(17)
+            make.top.equalTo(view).offset(33)
             make.width.height.equalTo(30)
         }
         
+        let shareBtn = UIButton(type: .custom)
+        shareBtn.adjustsImageWhenHighlighted = false
+        shareBtn.setImage(UIImage(named: "share"), for: .normal)
+        shareBtn.addTarget(self, action: #selector(shareAction), for: .touchUpInside)
+        view.addSubview(shareBtn)
+        shareBtn.snp.makeConstraints { (make) in
+            make.right.equalTo(view).offset(-17)
+            make.centerY.equalTo(backBtn)
+        }
+        
         //爱心按钮
-        likeBtn.setImage(UIImage(named: "item-btn-like-white"), for: .normal)
+        likeBtn.setImage(UIImage(named: "collect"), for: .normal)
         likeBtn.adjustsImageWhenHighlighted = false
         likeBtn.addTarget(self, action: #selector(likeAction), for: .touchUpInside)
         likeBtn.setImage(UIImage(named: "item-btn-like-on"), for: .selected)
         view.addSubview(likeBtn)
         likeBtn.snp.makeConstraints { (make) in
-            make.right.equalTo(view).offset(-20)
-            make.bottom.equalTo(view).offset(-120)
-            make.width.height.equalTo(50)
+            make.left.equalTo(view).offset(20)
+            make.bottom.equalTo(view).offset(-27)
+            make.width.height.equalTo(36)
         }
         
         //下载按钮
-        downloadBtn.setImage(UIImage(named: "icon-cp-download-white"), for: .normal)
+        downloadBtn.setImage(UIImage(named: "download"), for: .normal)
         downloadBtn.adjustsImageWhenHighlighted = false
         downloadBtn.addTarget(self, action: #selector(downloadAction), for: .touchUpInside)
         view.addSubview(downloadBtn)
         downloadBtn.snp.makeConstraints { (make) in
             make.right.equalTo(view).offset(-20)
-            make.top.equalTo(likeBtn.snp.bottom).offset(0)
-            make.width.height.equalTo(50)
+            make.bottom.equalTo(view).offset(-27)
+            make.width.height.equalTo(36)
         }
+        
+        setHomeBtn = UIButton(type: .custom)
+        setHomeBtn.backgroundColor = UIColor(hexString: "#6A6F84", alpha: 0.23)
+        setHomeBtn.setTitle("设为桌面", for: .normal)
+        setHomeBtn.setTitleColor(.white, for: .normal)
+        setHomeBtn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        setHomeBtn.layer.cornerRadius = 18
+        setHomeBtn.addTarget(self, action: #selector(setHomeAction), for: .touchUpInside)
+        setHomeBtn.layer.masksToBounds = true
+        view.addSubview(setHomeBtn)
+        setHomeBtn.snp.makeConstraints { (make) in
+            make.width.equalTo(100)
+            make.height.equalTo(36)
+            make.left.equalTo(likeBtn.snp.right).offset(26)
+            make.centerY.equalTo(likeBtn)
+        }
+        
+        setLockBtn = UIButton(type: .custom)
+        setLockBtn.backgroundColor = UIColor(hexString: "#6A6F84", alpha: 0.23)
+        setLockBtn.setTitle("设为锁屏", for: .normal)
+        setLockBtn.setTitleColor(.white, for: .normal)
+        setLockBtn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        setLockBtn.layer.cornerRadius = 18
+        setLockBtn.addTarget(self, action: #selector(setLockAction), for: .touchUpInside)
+        setLockBtn.layer.masksToBounds = true
+        view.addSubview(setLockBtn)
+        setLockBtn.snp.makeConstraints { (make) in
+            make.width.equalTo(100)
+            make.height.equalTo(36)
+            make.right.equalTo(downloadBtn.snp.left).offset(-20)
+            make.centerY.equalTo(likeBtn)
+        }
+        
+        
     }
     
     @objc func backAction() {
@@ -155,63 +208,28 @@ class BigImageController: UIViewController {
         }
     }
     
+    //分享
+    @objc func shareAction() {
+        
+    }
+    
+    //设为桌面
+    @objc func setHomeAction() {
+        
+    }
+    
+    //设为锁屏
+    @objc func setLockAction() {
+        
+    }
+    
     @objc func likeAction() {
-        likeBtn.isSelected = !likeBtn.isSelected
-        //判断当前是喜欢 还是不喜欢
-        if likeBtn.isSelected {
-            //喜欢
-            //查询是否存在 `我喜欢的`字典
-            if var likes = UserDefaults.standard.object(forKey: "likes") as? Dictionary<String, String>{
-                if let t = type {
-                    let contents = "/\(t.key ?? "Daily")/\(t.index ?? "0001").jpg"
-                    imgV.kf.setImage(with: URL(string: baseUrl + contents))
-                    likes.updateValue(contents, forKey: contents)
-                }
-            }else {
-                var likes = Dictionary<String, String>()
-                if let t = type {
-                    let contents = "/\(t.key ?? "Daily")/\(t.index ?? "0001").jpg"
-                    likes.updateValue(contents, forKey: contents)
-                    UserDefaults.standard.setValue(likes, forKey: "likes")
-                    UserDefaults.standard.synchronize()
-                }
-            }
-        }else {
-            if var likes = UserDefaults.standard.object(forKey: "likes") as? Dictionary<String, String>{
-                if let t = type {
-                    let contents = "/\(t.key ?? "Daily")/\(t.index ?? "0001").jpg"
-                    likes.removeValue(forKey: contents)
-                }
-            }
-        }
+
     }
     
     @objc func downloadAction() {
-        //计算随机数
-        let randomInt = Int.random(in: 0...100)
-        if (0...commonConfig.rand).contains(randomInt) {
-            BUAdSDKManager.setAppID(commonConfig.appid)
-            //设置包名
-//            Bundle.main.changeIdentifier(commonConfig.bundleid)
-            //判断
-            switch commonConfig.spFlag {
-            case .ADTypeExc:
-                //播放激励
-                playExc(with: commonConfig.sp)
-            case .ADTypeFull:
-                //播放全屏
-                playFul(with: commonConfig.fp)
-            default:
-                let random = Int.random(in: 1...2)
-                if random == 1 {
-                    playExc(with: commonConfig.sp)
-                }else {
-                    playFul(with: commonConfig.fp)
-                }
-            }
-        }else {
-            save()
-        }
+        
+        
     }
     
     @objc func savedPhotosAlbum(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: AnyObject) {

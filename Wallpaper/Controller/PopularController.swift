@@ -91,6 +91,7 @@ extension PopularController: UICollectionViewDataSource, UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let bigC = BigImageController()
         bigC.model = self.dataArray?[indexPath.row] as? ImageModel
+        bigC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(bigC, animated: true)
     }
     
