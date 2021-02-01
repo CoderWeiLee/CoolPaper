@@ -31,7 +31,7 @@ class MoreController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //0.设置导航栏和文字标题
-        title = "更多"
+        title = "动态"
 //        tabBarItem.title = ""
         navigationController?.setNavigationBarHidden(false, animated: true)
         view.backgroundColor = .white

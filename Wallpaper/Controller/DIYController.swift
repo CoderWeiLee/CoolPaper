@@ -33,7 +33,7 @@ class DIYController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        title = "工具"
+        title = "本地"
 //        tabBarItem.title = ""
         navigationController?.isNavigationBarHidden = false
         view.backgroundColor = .white
