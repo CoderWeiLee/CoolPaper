@@ -12,6 +12,7 @@ import ProgressHUD
 import Alamofire
 import KakaJSON
 import MBProgressHUD
+let loginSuccessNotification = "loginSuccessNotification"
 class LoginController: UIViewController {
     struct sendCode: Encodable {
         let mobile: String //手机号码
@@ -71,7 +72,7 @@ class LoginController: UIViewController {
         view.addSubview(logoImageV)
         logoImageV.snp.makeConstraints { (make) in
             make.centerX.equalTo(view)
-            make.top.equalTo(view).offset(20)
+            make.top.equalTo(view).offset(statusBarHeight + 69)
         }
         
         //欢迎登陆
@@ -204,6 +205,9 @@ class LoginController: UIViewController {
                     hud.mode = .text
                     hud.show(animated: true)
                     hud.hide(animated: true, afterDelay: 1)
+                    //发出通知
+                    NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: loginSuccessNotification)))
+                    dismiss(animated: true, completion: nil)
                 }
             }
         }

@@ -17,6 +17,7 @@ target 'Wallpaper' do
   pod 'MBProgressHUD'
   pod 'HXPHPicker'
   pod 'MJRefresh'
+  pod 'SDWebImage'
   # Pods for Wallpaper
 
 end

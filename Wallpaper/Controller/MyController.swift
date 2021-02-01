@@ -7,25 +7,27 @@
 
 import UIKit
 import SnapKit
+import SDWebImage
 class MyController: UIViewController {
+    var titleLabel: UILabel!
+    var bezierPath: UIBezierPath!
+    var ovalImageView: UIImageView!
+    var loginContainerView: UIView!
+    var shapeLayer: CAShapeLayer!
+    var gradientLayer: CAGradientLayer!
+    var loginLabel: UILabel!
+    var loginTipsLabel: UILabel!
+    var loginBtn: UIButton!
+    var sepLine: UIView!
+    var collectBtn: UIButton!
+    var cleanBtn: UIButton!
+    var contactBtn: UIButton!
+    var userContainer: UIView!
+    var protocolContainer: UIView!
+    var policyContainer: UIView!
+    var loginoutBtn: UIButton!
     override func viewDidLoad() {
-        var titleLabel: UILabel!
-        var bezierPath: UIBezierPath!
-        var ovalImageView: UIImageView!
-        var loginContainerView: UIView!
-        var shapeLayer: CAShapeLayer!
-        var gradientLayer: CAGradientLayer!
-        var loginLabel: UILabel!
-        var loginTipsLabel: UILabel!
-        var loginBtn: UIButton!
-        var sepLine: UIView!
-        var collectBtn: UIButton!
-        var cleanBtn: UIButton!
-        var contactBtn: UIButton!
-        var userContainer: UIView!
-        var protocolContainer: UIView!
-        var policyContainer: UIView!
-        var loginoutBtn: UIButton!
+        NotificationCenter.default.addObserver(self, selector: #selector(loginSuccess), name: Notification.Name(loginSuccessNotification), object: nil)
         super.viewDidLoad()
         //0.设置导航栏和文字标题
 //        title = "个人中心"
@@ -36,15 +38,6 @@ class MyController: UIViewController {
 //        //隐藏分割线
 //        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
 //        navigationController?.navigationBar.shadowImage = UIImage()
-        titleLabel = UILabel()
-        titleLabel.text = "个人中心"
-        titleLabel.textColor = .white
-        titleLabel.font = UIFont.systemFont(ofSize: 17)
-        view.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints { (make) in
-            make.centerX.equalTo(view)
-            make.top.equalTo(view).offset(31)
-        }
         navigationController?.setNavigationBarHidden(true, animated: true)
         view.backgroundColor = UIColor(hexString: "#F7F7F7")
         //0.添加顶部的渐变色图层
@@ -335,6 +328,7 @@ class MyController: UIViewController {
         loginoutBtn.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         loginoutBtn.addTarget(self, action: #selector(loginoutAction), for: .touchUpInside)
         loginoutBtn.alpha = 0.41
+        loginoutBtn.isUserInteractionEnabled = false
         loginoutBtn.layer.cornerRadius = 4
         loginoutBtn.layer.masksToBounds = true
         view.addSubview(loginoutBtn)
@@ -343,6 +337,16 @@ class MyController: UIViewController {
             make.right.equalTo(view).offset(-12)
             make.top.equalTo(userContainer.snp.bottom).offset(118)
             make.height.equalTo(49)
+        }
+        
+        titleLabel = UILabel()
+        titleLabel.text = "个人中心"
+        titleLabel.textColor = .white
+        titleLabel.font = UIFont.systemFont(ofSize: 17)
+        view.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { (make) in
+            make.centerX.equalTo(view)
+            make.top.equalTo(view).offset(statusBarHeight + 11)
         }
         
     }
@@ -386,7 +390,51 @@ class MyController: UIViewController {
         
     }
     
+    //退出登录
     @objc func loginoutAction() {
         
     }
+    
+    //登录成功
+    @objc func loginSuccess() {
+        //获取当前用户
+        let user = UserManager.currentUser
+        //0.设置头像
+        let imgUrl = base64Decoding(encodedString: user?.avatar ?? "")
+        self.ovalImageView.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: "Oval"))
+        //1.设置用户名
+        loginLabel.text = user?.username ?? user?.nickname
+        //2.隐藏提示文字
+        loginTipsLabel.isHidden = true
+        //3.退出登录alpha设置为1
+        loginoutBtn.alpha = 1
+        loginoutBtn.isUserInteractionEnabled = true
+    }
+    
+    /// 编码
+    /// - Parameter plainString: <#plainString description#>
+    /// - Returns: <#description#>
+       func base64Encoding(plainString:String)->String
+
+       {
+           let plainData = plainString.data(using: String.Encoding.utf8)
+
+           let base64String = plainData?.base64EncodedString(options: NSData.Base64EncodingOptions.init(rawValue: 0))
+
+           return base64String!
+       }
+    
+    
+    /// 解码
+    /// - Parameter encodedString: <#encodedString description#>
+    /// - Returns: <#description#>
+       func base64Decoding(encodedString:String)->String
+
+       {
+          let decodedData = NSData(base64Encoded: encodedString, options: NSData.Base64DecodingOptions.init(rawValue: 0))
+
+          let decodedString = NSString(data: decodedData! as Data, encoding: String.Encoding.utf8.rawValue)! as String
+
+          return decodedString
+      }
 }

@@ -6,3 +6,4 @@
 #import "CCTabBar.h"
 #import "CCTabBarController.h"
 #import <MBProgressHUD/MBProgressHUD.h>
+#import <SDWebImage/SDWebImage.h>
