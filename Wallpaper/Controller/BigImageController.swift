@@ -24,7 +24,7 @@ public enum PushScene {
 }
 class BigImageController: UIViewController {
     struct like: Encodable {
-        let id: String
+        let wpid: String
         let token: String
     }
     var skeletonLayer: CAGradientLayer!
@@ -156,7 +156,7 @@ class BigImageController: UIViewController {
         likeBtn.setImage(UIImage(named: "collect"), for: .normal)
         likeBtn.adjustsImageWhenHighlighted = false
         likeBtn.addTarget(self, action: #selector(likeAction), for: .touchUpInside)
-        likeBtn.setImage(UIImage(named: "item-btn-like-on"), for: .selected)
+        likeBtn.setImage(UIImage(named: "ic_home_like_after"), for: .selected)
         view.addSubview(likeBtn)
         likeBtn.snp.makeConstraints { (make) in
             make.left.equalTo(view).offset(20)
@@ -247,7 +247,7 @@ class BigImageController: UIViewController {
             likeBtn.isSelected = !likeBtn.isSelected
             if likeBtn.isSelected {
                 //发送收藏请求 //addFavURL
-                let likeParams = like(id: model?.id ?? "", token: UserManager.currentUser?.token ?? "")
+                let likeParams = like(wpid: model?.id ?? "", token: UserDefaults.standard.value(forKey: "token") as! String)
                 AF.request(addFavURL, method: .post, parameters: likeParams).responseJSON {[self] (response) in
                     switch response.result {
                     case  .success( _) :
@@ -268,7 +268,7 @@ class BigImageController: UIViewController {
                 }
             }else {
                 //发送取消收藏请求 delFavURL
-                let likeParams = like(id: model?.id ?? "", token: UserManager.currentUser?.token ?? "")
+                let likeParams = like(wpid: model?.id ?? "", token: UserDefaults.standard.value(forKey: "token") as! String)
                 AF.request(delFavURL, method: .post, parameters: likeParams).responseJSON {[self] (response) in
                     switch response.result {
                     case  .success( _) :
@@ -513,7 +513,7 @@ extension BigImageController: BUNativeExpressFullscreenVideoAdDelegate {
 extension UIViewController {
     //检查是否登录
     func checkLogin() -> Bool {
-        if UserManager.currentUser?.token == nil {
+        if UserDefaults.standard.value(forKey: "token") == nil {
            return false
         }else {
             return true

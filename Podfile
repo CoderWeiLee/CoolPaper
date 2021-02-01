@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+ platform :ios, '10.0'
 
 target 'Wallpaper' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -18,6 +18,7 @@ target 'Wallpaper' do
   pod 'HXPHPicker'
   pod 'MJRefresh'
   pod 'SDWebImage'
+  pod 'JQFMDB'
   # Pods for Wallpaper
 
 end

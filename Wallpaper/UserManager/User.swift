@@ -16,7 +16,7 @@ public class loginResponse: NSObject, Convertible {
     var time: String?
     var data: Dictionary<String, User>?
 }
-public final class User: NSObject, NSCoding, Convertible {
+public final class User: NSObject, NSCoding, Convertible, Codable {
     public override init () {
         
     }

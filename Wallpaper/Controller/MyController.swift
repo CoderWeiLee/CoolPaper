@@ -398,12 +398,12 @@ class MyController: UIViewController {
     //登录成功
     @objc func loginSuccess() {
         //获取当前用户
-        let user = UserManager.currentUser
         //0.设置头像
-        let imgUrl = base64Decoding(encodedString: user?.avatar ?? "")
-        self.ovalImageView.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: "Oval"))
+        
+//        let imgUrl = base64Decoding(encodedString: user.avatar ?? "")
+//        self.ovalImageView.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: "Oval"))
         //1.设置用户名
-        loginLabel.text = user?.username ?? user?.nickname
+        loginLabel.text = UserDefaults.standard.value(forKey: "username") as? String
         //2.隐藏提示文字
         loginTipsLabel.isHidden = true
         //3.退出登录alpha设置为1

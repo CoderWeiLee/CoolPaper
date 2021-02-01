@@ -198,8 +198,18 @@ class LoginController: UIViewController {
             if let loginRes = response.data?.kj.model(loginResponse.self) {
                 //保存当前用户信息
                 if let user = loginRes.data?["userinfo"] {
-                    UserManager.currentUser = user
-                    UserManager.token = user.token ?? ""
+                    UserDefaults.standard.setValue(user.id, forKey: "id")
+                    UserDefaults.standard.setValue(user.username, forKey: "username")
+                    UserDefaults.standard.setValue(user.nickname, forKey: "nickname")
+                    UserDefaults.standard.setValue(user.mobile, forKey: "mobile")
+                    UserDefaults.standard.setValue(user.avatar, forKey: "avatar")
+                    UserDefaults.standard.setValue(user.score, forKey: "score")
+                    UserDefaults.standard.setValue(user.token, forKey: "token")
+                    UserDefaults.standard.setValue(user.user_id, forKey: "user_id")
+                    UserDefaults.standard.setValue(user.createtime, forKey: "createtime")
+                    UserDefaults.standard.setValue(user.expiretime, forKey: "expiretime")
+                    UserDefaults.standard.setValue(user.expires_in, forKey: "expires_in")
+                    UserDefaults.standard.synchronize()
                     let hud = MBProgressHUD.showAdded(to: view, animated: true)
                     hud.label.text = "登陆成功"
                     hud.mode = .text
