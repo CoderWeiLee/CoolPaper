@@ -19,9 +19,9 @@ class PopularController: UIViewController {
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: w, height: h)
-        layout.minimumLineSpacing = 3
-        layout.minimumInteritemSpacing = 3
-        let collectionView = UICollectionView(frame: CGRect(x: 3, y: 3, width: view.bounds.width - 6, height: view.bounds.height - 3 - CGFloat(bottomSafeAreaHeight)), collectionViewLayout: layout)
+        layout.minimumLineSpacing = 7
+        layout.minimumInteritemSpacing = 7
+        let collectionView = UICollectionView(frame: CGRect(x: 8, y: 8, width: view.bounds.width - 16, height: view.bounds.height - 8 - CGFloat(bottomSafeAreaHeight)), collectionViewLayout: layout)
         collectionView.backgroundColor = .white
         collectionView.delegate = self
         collectionView.dataSource = self

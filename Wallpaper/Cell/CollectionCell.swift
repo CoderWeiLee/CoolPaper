@@ -70,6 +70,8 @@ class CollectionCell: UICollectionViewCell {
         super.init(frame: frame)
         skeletonLayer = CAGradientLayer()
         skeletonLayer.frame = contentView.bounds
+        skeletonLayer.cornerRadius = 6
+        skeletonLayer.masksToBounds = true
         let baseColor = UIColor(red: 223.0 / 255.0, green: 223.0 / 255.0, blue: 223.0 / 255.0, alpha: 1)
         skeletonLayer.colors = [baseColor.cgColor,
                                 baseColor.brightened(by: 0.93).cgColor,
