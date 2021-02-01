@@ -21,6 +21,10 @@ class MyController: UIViewController {
         var collectBtn: UIButton!
         var cleanBtn: UIButton!
         var contactBtn: UIButton!
+        var userContainer: UIView!
+        var protocolContainer: UIView!
+        var policyContainer: UIView!
+        var loginoutBtn: UIButton!
         super.viewDidLoad()
         //0.设置导航栏和文字标题
         title = "个人中心"
@@ -214,6 +218,122 @@ class MyController: UIViewController {
             make.edges.equalTo(threeV)
         }
         
+        userContainer = UIView()
+        userContainer.backgroundColor = .white
+        userContainer.layer.cornerRadius = 8
+        userContainer.layer.masksToBounds = true
+        view.addSubview(userContainer)
+        userContainer.snp.makeConstraints { (make) in
+            make.left.right.equalTo(loginContainerView)
+            make.top.equalTo(loginContainerView.snp.bottom).offset(20)
+            make.height.equalTo(104)
+        }
+        
+        protocolContainer = UIView()
+        protocolContainer.backgroundColor = .white
+        userContainer.addSubview(protocolContainer)
+        protocolContainer.snp.makeConstraints { (make) in
+            make.top.left.right.equalTo(userContainer)
+            make.height.equalTo(51.5)
+        }
+        
+        let sepLine2 = UIView()
+        sepLine2.backgroundColor = UIColor(hexString: "#F5F5F5")
+        userContainer.addSubview(sepLine2)
+        sepLine2.snp.makeConstraints { (make) in
+            make.left.right.equalTo(protocolContainer)
+            make.top.equalTo(protocolContainer.snp.bottom)
+            make.height.equalTo(1)
+        }
+        
+        policyContainer = UIView()
+        policyContainer.backgroundColor = .white
+        userContainer.addSubview(policyContainer)
+        policyContainer.snp.makeConstraints { (make) in
+            make.left.right.equalTo(userContainer)
+            make.height.equalTo(51.5)
+            make.top.equalTo(sepLine2.snp.bottom)
+        }
+        
+        let protocolImgV = UIImageView(image: UIImage(named: "protocol"))
+        protocolContainer.addSubview(protocolImgV)
+        protocolImgV.snp.makeConstraints { (make) in
+            make.left.equalTo(protocolContainer).offset(14)
+            make.centerY.equalTo(protocolContainer)
+        }
+        
+        let protocolLabel = UILabel()
+        protocolLabel.text = "用户协议"
+        protocolLabel.textColor = UIColor(hexString: "#262626")
+        protocolLabel.font = UIFont.systemFont(ofSize: 15)
+        protocolContainer.addSubview(protocolLabel)
+        protocolLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(protocolImgV.snp.right).offset(12)
+            make.centerY.equalTo(protocolContainer)
+        }
+        
+        let protocolArrow = UIImageView(image: UIImage(named: "rightArrow"))
+        protocolContainer.addSubview(protocolArrow)
+        protocolArrow.snp.makeConstraints { (make) in
+            make.right.equalTo(protocolContainer).offset(-18)
+            make.centerY.equalTo(protocolContainer)
+        }
+        
+        let protocolBtn = UIButton(type: .custom)
+        protocolBtn.addTarget(self, action: #selector(protocolAction), for: .touchUpInside)
+        protocolContainer.addSubview(protocolBtn)
+        protocolBtn.snp.makeConstraints { (make) in
+            make.edges.equalTo(protocolContainer)
+        }
+        
+        let policyImgV = UIImageView(image: UIImage(named: "Policy"))
+        policyContainer.addSubview(policyImgV)
+        policyImgV.snp.makeConstraints { (make) in
+            make.left.equalTo(policyContainer).offset(14)
+            make.centerY.equalTo(policyContainer)
+        }
+
+        let policyLabel = UILabel()
+        policyLabel.text = "隐私政策"
+        policyLabel.textColor = UIColor(hexString: "#262626")
+        policyLabel.font = UIFont.systemFont(ofSize: 15)
+        policyContainer.addSubview(policyLabel)
+        policyLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(policyImgV.snp.right).offset(12)
+            make.centerY.equalTo(policyContainer)
+        }
+
+        let policyArrow = UIImageView(image: UIImage(named: "rightArrow"))
+        policyContainer.addSubview(policyArrow)
+        policyArrow.snp.makeConstraints { (make) in
+            make.right.equalTo(policyContainer).offset(-18)
+            make.centerY.equalTo(policyContainer)
+        }
+
+        let policyBtn = UIButton(type: .custom)
+        policyBtn.addTarget(self, action: #selector(policyAction), for: .touchUpInside)
+        policyContainer.addSubview(policyBtn)
+        policyBtn.snp.makeConstraints { (make) in
+            make.edges.equalTo(policyContainer)
+        }
+        
+        loginoutBtn = UIButton()
+        loginoutBtn.addGradientColor(colors: [UIColor(hexString: "#FF62A5"), UIColor(hexString: "#FF632E")], locations: [0,1], direction: .Horizontal, targetView: view)
+        loginoutBtn.setTitle("退出登录", for: .normal)
+        loginoutBtn.setTitleColor(.white, for: .normal)
+        loginoutBtn.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        loginoutBtn.addTarget(self, action: #selector(loginoutAction), for: .touchUpInside)
+        loginoutBtn.alpha = 0.41
+        loginoutBtn.layer.cornerRadius = 4
+        loginoutBtn.layer.masksToBounds = true
+        view.addSubview(loginoutBtn)
+        loginoutBtn.snp.makeConstraints { (make) in
+            make.left.equalTo(view).offset(12)
+            make.right.equalTo(view).offset(-12)
+            make.top.equalTo(userContainer.snp.bottom).offset(118)
+            make.height.equalTo(49)
+        }
+        
     }
     
     @objc func loginAction() {
@@ -242,6 +362,20 @@ class MyController: UIViewController {
     
     //联系客服
     @objc func contactAction() {
+        
+    }
+    
+    //用户协议
+    @objc func protocolAction() {
+        
+    }
+    
+    //隐私政策
+    @objc func policyAction() {
+        
+    }
+    
+    @objc func loginoutAction() {
         
     }
 }
