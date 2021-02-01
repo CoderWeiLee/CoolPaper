@@ -18,6 +18,7 @@ class HomeController: UIViewController, JXSegmentedViewDelegate, JXSegmentedList
     var listContainerView: JXSegmentedListContainerView!
     var dataArray: Array<CategoryModel>?
     var menuImageView: UIImageView!
+    var menuBtn: UIButton!
         override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: true)
@@ -70,7 +71,18 @@ class HomeController: UIViewController, JXSegmentedViewDelegate, JXSegmentedList
         view.addSubview(menuImageView)
         menuImageView.snp.makeConstraints { (make) in
             make.right.equalTo(view).offset(-19)
+            make.centerY.equalTo(segmentedView);
         }
+            
+        menuBtn = UIButton(type: .custom)
+        menuBtn.addTarget(self, action: #selector(menuAction), for: .touchUpInside)
+        view.addSubview(menuBtn)
+        menuBtn.snp.makeConstraints { (make) in
+            make.top.right.equalTo(view)
+            make.height.equalTo(statusBarHeight + 50)
+            make.width.equalTo(100)
+        }
+            
         //发起请求查询分页的数据
         let category = Category(appkey: "mobile-iOS")
             AF.request(categoryListURL, method: .post, parameters: category).responseJSON {[self] (response) in
@@ -89,6 +101,10 @@ class HomeController: UIViewController, JXSegmentedViewDelegate, JXSegmentedList
         
         segmentedView.frame = CGRect(x: 0, y: statusBarHeight, width: view.bounds.size.width, height: 50)
         listContainerView.frame = CGRect(x: 0, y: statusBarHeight + 50, width: view.bounds.size.width, height: view.bounds.size.height - statusBarHeight - 50)
+    }
+    
+    @objc func menuAction() {
+        
     }
 }
 

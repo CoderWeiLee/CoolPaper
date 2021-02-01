@@ -11,7 +11,7 @@ import MJRefresh
 import Alamofire
 import KakaJSON
 let w = (kScreenW - 9) * 0.5
-let h = w * 2
+let h = w * 230.0 / 176.0
 let reuseID = "CollectionCell"
 class RecommendController: UIViewController {
     struct Login: Encodable {
