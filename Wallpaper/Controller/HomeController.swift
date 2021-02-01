@@ -17,26 +17,30 @@ class HomeController: UIViewController, JXSegmentedViewDelegate, JXSegmentedList
     var segmentedDataSource: JXSegmentedTitleDataSource!
     var listContainerView: JXSegmentedListContainerView!
     var dataArray: Array<CategoryModel>?
+    var menuImageView: UIImageView!
         override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: true)
         view.backgroundColor = .systemBackground
-        
         //1、初始化JXSegmentedView
         segmentedView = JXSegmentedView()
             
         //2、配置数据源
         //segmentedViewDataSource一定要通过属性强持有！！！！！！！！！
         segmentedDataSource = JXSegmentedTitleDataSource()
+        segmentedDataSource.isItemSpacingAverageEnabled = false
+        segmentedDataSource.itemWidth = 30
         segmentedDataSource.titles = ["推荐", "热门"]
-        segmentedDataSource.titleNormalColor = UIColor(named: "segmentNormalTitleColor") ?? .green
-        segmentedDataSource.titleSelectedColor = UIColor(named: "segmentSelectedTitleColor") ?? .green
+        segmentedDataSource.titleNormalColor = .white
+        segmentedDataSource.titleNormalFont = UIFont.systemFont(ofSize: 14)
+        segmentedDataSource.titleSelectedFont = UIFont.systemFont(ofSize: 17)
+        segmentedDataSource.titleSelectedColor = .white
         segmentedDataSource.isTitleColorGradientEnabled = true
         segmentedView.dataSource = segmentedDataSource
             
         //3、配置指示器
         let indicator = JXSegmentedIndicatorLineView()
-        indicator.indicatorColor = UIColor(named: "indicatorColor") ?? .green
+            indicator.indicatorColor = .white
         indicator.indicatorWidth = JXSegmentedViewAutomaticDimension
         indicator.lineStyle = .lengthen
         indicator.verticalOffset = 5
@@ -51,7 +55,22 @@ class HomeController: UIViewController, JXSegmentedViewDelegate, JXSegmentedList
             
         //6、将listContainerView.scrollView和segmentedView.contentScrollView进行关联
         segmentedView.listContainer = listContainerView
-            
+        
+        //7.添加渐变层
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenW, height: statusBarHeight + 50)
+        gradientLayer.colors = [UIColor(hexString: "#FF62A5").cgColor, UIColor(hexString: "#FF632E").cgColor]
+        gradientLayer.locations = [0,1]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 1)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 0)
+        view.layer.insertSublayer(gradientLayer, at: 0)
+
+        //8.添加选择更多的按钮
+        menuImageView = UIImageView(image: UIImage(named: "menu"))
+        view.addSubview(menuImageView)
+        menuImageView.snp.makeConstraints { (make) in
+            make.right.equalTo(view).offset(-19)
+        }
         //发起请求查询分页的数据
         let category = Category(appkey: "mobile-iOS")
             AF.request(categoryListURL, method: .post, parameters: category).responseJSON {[self] (response) in
