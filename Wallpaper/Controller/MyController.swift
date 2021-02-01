@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 class MyController: UIViewController {
     override func viewDidLoad() {
+        var titleLabel: UILabel!
         var bezierPath: UIBezierPath!
         var ovalImageView: UIImageView!
         var loginContainerView: UIView!
@@ -27,15 +28,25 @@ class MyController: UIViewController {
         var loginoutBtn: UIButton!
         super.viewDidLoad()
         //0.设置导航栏和文字标题
-        title = "个人中心"
-        tabBarItem.title = "我的"
-        navigationController?.isNavigationBarHidden = false
+//        title = "个人中心"
+//        tabBarItem.title = "我的"
+//        navigationController?.isNavigationBarHidden = false
+//
+//        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "indicatorColor") ?? .green, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)]
+//        //隐藏分割线
+//        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        navigationController?.navigationBar.shadowImage = UIImage()
+        titleLabel = UILabel()
+        titleLabel.text = "个人中心"
+        titleLabel.textColor = .white
+        titleLabel.font = UIFont.systemFont(ofSize: 17)
+        view.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { (make) in
+            make.centerX.equalTo(view)
+            make.top.equalTo(view).offset(31)
+        }
+        navigationController?.setNavigationBarHidden(true, animated: true)
         view.backgroundColor = UIColor(hexString: "#F7F7F7")
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "indicatorColor") ?? .green, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)]
-        //隐藏分割线
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        
         //0.添加顶部的渐变色图层
         bezierPath = UIBezierPath.init()
         bezierPath.move(to: CGPoint.init(x: 0, y: 0))
