@@ -59,13 +59,13 @@ struct Config: Convertible {
 class AppDelegate: UIResponder, UIApplicationDelegate {
  var window: UIWindow?
  var loadingView: UIActivityIndicatorView?
- var myTabarVc: CCTabBarController!
+ var myTabarVc: MyTabBarController!
  //广告展示视图 
  var splashAdView: BUSplashAdView?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.window?.backgroundColor = .white
        
-        self.myTabarVc = CCTabBarController()
+        self.myTabarVc = MyTabBarController()
         self.window?.rootViewController = self.myTabarVc
         self.window?.makeKeyAndVisible()
 //        originBundleID = Bundle.main.bundleIdentifier!

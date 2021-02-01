@@ -34,7 +34,7 @@ class DIYController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         title = "工具"
-        tabBarItem.title = ""
+//        tabBarItem.title = ""
         navigationController?.isNavigationBarHidden = false
         view.backgroundColor = .white
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "indicatorColor") ?? .green, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)]

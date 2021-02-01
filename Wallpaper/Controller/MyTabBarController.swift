@@ -14,30 +14,30 @@ class MyTabBarController: UITabBarController {
 //        super.loadView()
 //    }
     
-    var mytabBar: CCTabBar!
+//    var mytabBar: CCTabBar!
     override func viewDidLoad() {
         super.viewDidLoad()
-        mytabBar = CCTabBar()
+//        mytabBar = CCTabBar()
         addChildViewControllers()
         self.tabBar.tintColor = UIColor(named: "indicatorColor")
     }
     
     private func addChildViewControllers() {
         setChildViewController(HomeController(), title: "首页", imageName: "tab-recommend")
-        setChildViewController(MoreController(), title: "更多", imageName: "tab-explore")
-        setChildViewController(DiscoverController(), title: "社区", imageName: "post_normal")
-        setChildViewController(DIYController(), title: "工具", imageName: "tab-social")
+        setChildViewController(MoreController(), title: "动态", imageName: "tab-explore")
+//        setChildViewController(DiscoverController(), title: "社区", imageName: "post_normal")
+        setChildViewController(DIYController(), title: "本地", imageName: "tab-social")
         setChildViewController(MyController(), title: "我的", imageName: "tab-mine")
     }
     
     private func setChildViewController(_ childController: UIViewController, title: String, imageName: String) {
-        if imageName == "post_normal" {
-            childController.tabBarItem.image = UIImage(named: imageName)
-            childController.tabBarItem.selectedImage = UIImage(named: imageName)
-        }else {
+//        if imageName == "post_normal" {
+//            childController.tabBarItem.image = UIImage(named: imageName)
+//            childController.tabBarItem.selectedImage = UIImage(named: imageName)
+//        }else {
             childController.tabBarItem.image = UIImage(named: imageName)
             childController.tabBarItem.selectedImage = UIImage(named: imageName + "-active")
-        }
+//        }
         childController.title = title
         let navVc = MyNavigationController(rootViewController: childController)
         addChild(navVc)

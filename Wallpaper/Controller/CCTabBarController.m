@@ -21,7 +21,7 @@
     self.delegate = self;
     
     self.tabBar = [[CCTabBar alloc] init];
-    [self.tabBar.centerBtn addTarget:self action:@selector(buttonAction) forControlEvents:UIControlEventTouchUpInside];
+//    [self.tabBar.centerBtn addTarget:self action:@selector(buttonAction) forControlEvents:UIControlEventTouchUpInside];
     //设置背景颜色不透明
     self.tabBar.translucent = NO;
     //利用KVC,将自定义tabBar,赋给系统tabBar
@@ -42,8 +42,8 @@
     moreVC.tabBarItem.selectedImage = [UIImage imageNamed:@"tab-explore-active"];
     
     //不设置图片,先占位
-    DiscoverController *discoverVC = [[DiscoverController alloc] init];
-    discoverVC.tabBarItem.title = @"社区";
+//    DiscoverController *discoverVC = [[DiscoverController alloc] init];
+//    discoverVC.tabBarItem.title = @"社区";
 
     DIYController *diyVC = [[DIYController alloc] init];
     diyVC.tabBarItem.title = @"工具";
@@ -62,10 +62,10 @@
 
     MyNavigationController *navHome = [[MyNavigationController alloc] initWithRootViewController:homeVC];
     MyNavigationController *navMore = [[MyNavigationController alloc] initWithRootViewController:moreVC];
-    MyNavigationController *navDiscover = [[MyNavigationController alloc] initWithRootViewController:discoverVC];
+//    MyNavigationController *navDiscover = [[MyNavigationController alloc] initWithRootViewController:discoverVC];
     MyNavigationController *navDIY = [[MyNavigationController alloc] initWithRootViewController:diyVC];
     MyNavigationController *navMy = [[MyNavigationController alloc] initWithRootViewController:myVC];
-    NSArray *itemArrays   = @[navHome,navMore,navDiscover,navDIY,navMy];
+    NSArray *itemArrays   = @[navHome,navMore,navDIY,navMy];
     self.viewControllers  = itemArrays;
     self.tabBar.tintColor = [UIColor colorNamed:@"indicatorColor"];
 }

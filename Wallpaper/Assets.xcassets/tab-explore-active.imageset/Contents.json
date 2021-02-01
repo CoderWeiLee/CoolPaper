@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "message_highlight.png",
+      "filename" : "tab-explore-active.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "message_highlight@2x.png",
+      "filename" : "tab-explore-active@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "message_highlight@3x.png",
+      "filename" : "tab-explore-active@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

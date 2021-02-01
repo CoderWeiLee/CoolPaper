@@ -28,7 +28,7 @@ class MyController: UIViewController {
         super.viewDidLoad()
         //0.设置导航栏和文字标题
         title = "个人中心"
-        tabBarItem.title = ""
+        tabBarItem.title = "我的"
         navigationController?.isNavigationBarHidden = false
         view.backgroundColor = UIColor(hexString: "#F7F7F7")
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "indicatorColor") ?? .green, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)]

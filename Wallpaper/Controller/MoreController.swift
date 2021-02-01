@@ -32,7 +32,7 @@ class MoreController: UIViewController {
         super.viewDidLoad()
         //0.设置导航栏和文字标题
         title = "更多"
-        tabBarItem.title = ""
+//        tabBarItem.title = ""
         navigationController?.setNavigationBarHidden(false, animated: true)
         view.backgroundColor = .white
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "indicatorColor") ?? .green, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)]

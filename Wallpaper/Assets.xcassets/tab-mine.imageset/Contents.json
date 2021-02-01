@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "account_normal.png",
+      "filename" : "tab-mine.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "account_normal@2x.png",
+      "filename" : "tab-mine@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "account_normal@3x.png",
+      "filename" : "tab-mine@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
