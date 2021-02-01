@@ -57,10 +57,10 @@ class HomeController: UIViewController, JXSegmentedViewDelegate, JXSegmentedList
             AF.request(categoryListURL, method: .post, parameters: category).responseJSON {[self] (response) in
             if let responseModel = (response.data?.kj.model(CategoryResModel.self)){
                 self.dataArray = Array(responseModel.data!)
-                self.segmentedDataSource.titles.append(contentsOf: self.dataArray.flatMap {
-                    $0.map {$0.name!}
-                }!)
-                self.segmentedView.reloadData()
+//                self.segmentedDataSource.titles.append(contentsOf: self.dataArray.flatMap {
+//                    $0.map {$0.name!}
+//                }!)
+//                self.segmentedView.reloadData()
             }
         }
     }
