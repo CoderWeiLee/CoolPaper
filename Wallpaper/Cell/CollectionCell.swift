@@ -22,6 +22,7 @@ class CollectionCell: UICollectionViewCell {
     var skeletonLayer: CAGradientLayer!
     var imgPath: String!
     var videoPath: String!
+    var likesLabel: UILabel!
     var type: ImgTypes? {
         didSet {
             if let t = type {
@@ -64,6 +65,7 @@ class CollectionCell: UICollectionViewCell {
         didSet {
             livePhotoView.isHidden = true
             imgV.kf.setImage(with: URL(string: imageModel?.url ?? ""))
+            likesLabel.text = imageModel?.views
         }
     }
     override init(frame: CGRect) {
@@ -92,6 +94,16 @@ class CollectionCell: UICollectionViewCell {
         livePhotoView.isHidden = true
         livePhotoView.isMuted = true
         contentView.addSubview(livePhotoView)
+        
+        likesLabel = UILabel()
+        likesLabel.text = "0"
+        likesLabel.textColor = .white
+        likesLabel.font = UIFont.systemFont(ofSize: 13)
+        contentView.addSubview(likesLabel)
+        likesLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(contentView).offset(7)
+            make.bottom.equalTo(contentView).offset(-10)
+        }
         
     }
     
