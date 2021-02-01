@@ -18,6 +18,9 @@ class MyController: UIViewController {
         var loginTipsLabel: UILabel!
         var loginBtn: UIButton!
         var sepLine: UIView!
+        var collectBtn: UIButton!
+        var cleanBtn: UIButton!
+        var contactBtn: UIButton!
         super.viewDidLoad()
         //0.设置导航栏和文字标题
         title = "个人中心"
@@ -49,13 +52,14 @@ class MyController: UIViewController {
         //1.添加顶部的登录容器
         loginContainerView = UIView()
         loginContainerView.layer.cornerRadius = 4
+        loginContainerView.layer.masksToBounds = true
         loginContainerView.backgroundColor = .white
         view.addSubview(loginContainerView)
         loginContainerView.snp.makeConstraints { (make) in
             make.left.equalTo(view).offset(18)
             make.right.equalTo(view).offset(-16)
             make.top.equalTo(view).offset(86)
-            make.height.equalTo(180)
+            make.height.equalTo(190)
         }
         
         //1.1添加用户头像
@@ -108,14 +112,114 @@ class MyController: UIViewController {
             make.height.equalTo(1)
             make.top.equalTo(ovalImageView.snp.bottom).offset(9)
         }
-       
-             
- 
+        
+        //1.6添加收藏、清理、联系客服三个按钮
+        let oneV = UIView()
+        oneV.backgroundColor = .white
+        loginContainerView.addSubview(oneV)
+        oneV.snp.makeConstraints { (make) in
+            make.left.bottom.equalTo(loginContainerView)
+            make.top.equalTo(sepLine.snp.bottom)
+            make.width.equalTo(loginContainerView.snp.width).multipliedBy(1.0 / 3.0)
+        }
+        
+        let oneL = UILabel()
+        oneL.text = "我的收藏"
+        oneL.textColor = UIColor(hexString: "#C1C0C9")
+        oneL.font = UIFont.systemFont(ofSize: 12)
+        oneV.addSubview(oneL)
+        oneL.snp.makeConstraints { (make) in
+            make.top.equalTo(oneV).offset(12)
+            make.centerX.equalTo(oneV)
+        }
+        
+        let oneI = UIImageView()
+        oneI.image = UIImage(named: "shoucang")
+        oneV.addSubview(oneI)
+        oneI.snp.makeConstraints { (make) in
+            make.centerX.equalTo(oneV)
+            make.top.equalTo(oneL.snp.bottom).offset(6)
+        }
+        
+        let twoV = UIView()
+        twoV.backgroundColor = .white
+        loginContainerView.addSubview(twoV)
+        twoV.snp.makeConstraints { (make) in
+            make.width.top.bottom.equalTo(oneV)
+            make.left.equalTo(oneV.snp.right)
+        }
+        
+        let twoL = UILabel()
+        twoL.text = "清理缓冲"
+        twoL.textColor = UIColor(hexString: "#C1C0C9")
+        twoL.font = UIFont.systemFont(ofSize: 12)
+        twoV.addSubview(twoL)
+        twoL.snp.makeConstraints { (make) in
+            make.top.equalTo(twoV).offset(12)
+            make.centerX.equalTo(twoV)
+        }
+        
+        let twoI = UIImageView()
+        twoI.image = UIImage(named: "qingli")
+        twoV.addSubview(twoI)
+        twoI.snp.makeConstraints { (make) in
+            make.centerX.equalTo(twoV)
+            make.top.equalTo(twoL.snp.bottom).offset(6)
+        }
+        
+        let threeV = UIView()
+        threeV.backgroundColor = .white
+        loginContainerView.addSubview(threeV)
+        threeV.snp.makeConstraints { (make) in
+            make.width.top.bottom.equalTo(oneV)
+            make.left.equalTo(twoV.snp.right)
+        }
+        
+        let threeL = UILabel()
+        threeL.text = "联系客服"
+        threeL.textColor = UIColor(hexString: "#C1C0C9")
+        threeL.font = UIFont.systemFont(ofSize: 12)
+        threeV.addSubview(threeL)
+        threeL.snp.makeConstraints { (make) in
+            make.top.equalTo(twoV).offset(12)
+            make.centerX.equalTo(threeV)
+        }
+        
+        let threeI = UIImageView()
+        threeI.image = UIImage(named: "kefu")
+        threeV.addSubview(threeI)
+        threeI.snp.makeConstraints { (make) in
+            make.centerX.equalTo(threeV)
+            make.top.equalTo(threeL.snp.bottom).offset(6)
+        }
+        
+        collectBtn = UIButton(type: .custom)
+        collectBtn.addTarget(self, action: #selector(collectAction), for: .touchUpInside)
+        oneV.addSubview(collectBtn)
+        collectBtn.snp.makeConstraints { (make) in
+            make.edges.equalTo(oneV)
+        }
+        
+        cleanBtn = UIButton(type: .custom)
+        cleanBtn.addTarget(self, action: #selector(cleanAction), for: .touchUpInside)
+        twoV.addSubview(cleanBtn)
+        cleanBtn.snp.makeConstraints { (make) in
+            make.edges.equalTo(twoV)
+        }
+
+        contactBtn = UIButton(type: .custom)
+        contactBtn.addTarget(self, action: #selector(contactAction), for: .touchUpInside)
+        threeV.addSubview(contactBtn)
+        contactBtn.snp.makeConstraints { (make) in
+            make.edges.equalTo(threeV)
+        }
+        
     }
     
     @objc func loginAction() {
         let loginVc = LoginController()
         loginVc.hidesBottomBarWhenPushed = true
+        loginVc.modalPresentationStyle = .fullScreen
         present(loginVc, animated: true, completion: nil)
     }
     
@@ -124,5 +228,20 @@ class MyController: UIViewController {
         let signinVc = SigninController()
         signinVc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(signinVc, animated: true)
+    }
+    
+    //收藏
+    @objc func collectAction() {
+        
+    }
+    
+    //清理
+    @objc func cleanAction() {
+        
+    }
+    
+    //联系客服
+    @objc func contactAction() {
+        
     }
 }
