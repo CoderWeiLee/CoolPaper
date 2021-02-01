@@ -23,6 +23,10 @@ public enum PushScene {
     case navShowScene
 }
 class BigImageController: UIViewController {
+    struct like: Encodable {
+        let id: String
+        let token: String
+    }
     var skeletonLayer: CAGradientLayer!
     var imgV = UIImageView()
     var livePhotoView = PHLivePhotoView()
@@ -84,6 +88,16 @@ class BigImageController: UIViewController {
         didSet {
             livePhotoView.isHidden = true
             imgV.kf.setImage(with: URL(string: model?.url ?? ""))
+            guard let fav = model?.fav else {
+                return
+            }
+            if fav == "1" {
+                //如果是1  说明已经收藏  显示❤️
+                likeBtn.isSelected = true
+            }else if fav == "0" {
+                //如果是0  说明没有收藏  显示白色
+                likeBtn.isSelected = false
+            }
         }
     }
     override func viewDidLoad() {
@@ -224,7 +238,57 @@ class BigImageController: UIViewController {
     }
     
     @objc func likeAction() {
-
+        if !checkLogin() {
+            let loginVc = LoginController()
+            loginVc.hidesBottomBarWhenPushed = true
+            loginVc.modalPresentationStyle = .fullScreen
+            present(loginVc, animated: true, completion: nil)
+        }else {
+            likeBtn.isSelected = !likeBtn.isSelected
+            if likeBtn.isSelected {
+                //发送收藏请求 //addFavURL
+                let likeParams = like(id: model?.id ?? "", token: UserManager.currentUser?.token ?? "")
+                AF.request(addFavURL, method: .post, parameters: likeParams).responseJSON {[self] (response) in
+                    switch response.result {
+                    case  .success( _) :
+                        let hud = MBProgressHUD.showAdded(to: view, animated: true)
+                        hud.label.text = "收藏成功"
+                        hud.mode = .text
+                        hud.show(animated: true)
+                        hud.hide(animated: true, afterDelay: 1)
+                    
+                    case .failure(let error) :
+                        let hud = MBProgressHUD.showAdded(to: view, animated: true)
+                        hud.label.text = error.localizedDescription
+                        hud.mode = .text
+                        hud.show(animated: true)
+                        hud.hide(animated: true, afterDelay: 1)
+                    }
+                    
+                }
+            }else {
+                //发送取消收藏请求 delFavURL
+                let likeParams = like(id: model?.id ?? "", token: UserManager.currentUser?.token ?? "")
+                AF.request(delFavURL, method: .post, parameters: likeParams).responseJSON {[self] (response) in
+                    switch response.result {
+                    case  .success( _) :
+                        let hud = MBProgressHUD.showAdded(to: view, animated: true)
+                        hud.label.text = "取消收藏成功"
+                        hud.mode = .text
+                        hud.show(animated: true)
+                        hud.hide(animated: true, afterDelay: 1)
+                    
+                    case .failure(let error) :
+                        let hud = MBProgressHUD.showAdded(to: view, animated: true)
+                        hud.label.text = error.localizedDescription
+                        hud.mode = .text
+                        hud.show(animated: true)
+                        hud.hide(animated: true, afterDelay: 1)
+                    }
+                    
+                }
+            }
+        }
     }
     
     @objc func downloadAction() {
@@ -442,6 +506,17 @@ extension BigImageController: BUNativeExpressFullscreenVideoAdDelegate {
     func nativeExpressFullscreenVideoAd(_ fullscreenVideoAd: BUNativeExpressFullscreenVideoAd, didFailWithError error: Error?) {
         if error != nil {
             print(error!.localizedDescription)
+        }
+    }
+}
+
+extension UIViewController {
+    //检查是否登录
+    func checkLogin() -> Bool {
+        if UserManager.currentUser?.token == nil {
+           return false
+        }else {
+            return true
         }
     }
 }
