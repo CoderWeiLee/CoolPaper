@@ -14,6 +14,9 @@
 		D04D485D25C0F0F000C6AFA6 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04D485C25C0F0F000C6AFA6 /* CategoryModel.swift */; };
 		D04D487125C0FFC100C6AFA6 /* CategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04D487025C0FFC100C6AFA6 /* CategoryController.swift */; };
 		D04E9C2325C68394002FBAD3 /* LWGradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04E9C2225C68394002FBAD3 /* LWGradientButton.swift */; };
+		D050510425C90B530075E963 /* LocalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D050510325C90B530075E963 /* LocalController.swift */; };
+		D050510725C90C7C0075E963 /* MyDownloadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D050510625C90C7C0075E963 /* MyDownloadController.swift */; };
+		D050510A25C90CA30075E963 /* LocalPaperController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D050510925C90CA30075E963 /* LocalPaperController.swift */; };
 		D05A837A25A4419C0016910D /* CCVideoImageTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A837925A4419C0016910D /* CCVideoImageTool.swift */; };
 		D05A837D25A448210016910D /* DiscoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A837C25A448210016910D /* DiscoverController.swift */; };
 		D05A838125A44AF40016910D /* DiscoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A838025A44AF40016910D /* DiscoverCell.swift */; };
@@ -65,6 +68,9 @@
 		D04D485C25C0F0F000C6AFA6 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		D04D487025C0FFC100C6AFA6 /* CategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryController.swift; sourceTree = "<group>"; };
 		D04E9C2225C68394002FBAD3 /* LWGradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LWGradientButton.swift; sourceTree = "<group>"; };
+		D050510325C90B530075E963 /* LocalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalController.swift; sourceTree = "<group>"; };
+		D050510625C90C7C0075E963 /* MyDownloadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDownloadController.swift; sourceTree = "<group>"; };
+		D050510925C90CA30075E963 /* LocalPaperController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPaperController.swift; sourceTree = "<group>"; };
 		D05A837925A4419C0016910D /* CCVideoImageTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCVideoImageTool.swift; sourceTree = "<group>"; };
 		D05A837C25A448210016910D /* DiscoverController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverController.swift; sourceTree = "<group>"; };
 		D05A838025A44AF40016910D /* DiscoverCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCell.swift; sourceTree = "<group>"; };
@@ -219,6 +225,9 @@
 				D05CCE0A2599E15C005BF42B /* SearchController.swift */,
 				D08EE2492595D63900F0279D /* HomeController.swift */,
 				D069C73A25C8EBBC00819B72 /* TypeController.swift */,
+				D050510325C90B530075E963 /* LocalController.swift */,
+				D050510625C90C7C0075E963 /* MyDownloadController.swift */,
+				D050510925C90CA30075E963 /* LocalPaperController.swift */,
 				D06859CA25A5A24B00848477 /* CCTabBarController.h */,
 				D06859CB25A5A24B00848477 /* CCTabBarController.m */,
 				D08EE2432595D39800F0279D /* MyTabBarController.swift */,
@@ -432,6 +441,7 @@
 				D08EE2202595C29000F0279D /* ViewController.swift in Sources */,
 				D05CCE0B2599E15C005BF42B /* SearchController.swift in Sources */,
 				D08EE2502595D65800F0279D /* DIYController.swift in Sources */,
+				D050510A25C90CA30075E963 /* LocalPaperController.swift in Sources */,
 				D04D484225C004C500C6AFA6 /* HomeModel.swift in Sources */,
 				D05CCE39259AFF7B005BF42B /* RecommendCell.swift in Sources */,
 				D06859C825A5A17200848477 /* CCTabBar.m in Sources */,
@@ -445,6 +455,8 @@
 				D05CCDD925997D14005BF42B /* SigninController.swift in Sources */,
 				D05CCDBB259895EA005BF42B /* BigImageController.swift in Sources */,
 				D05CCE0E2599E9E6005BF42B /* MoreCollectionCell.swift in Sources */,
+				D050510725C90C7C0075E963 /* MyDownloadController.swift in Sources */,
+				D050510425C90B530075E963 /* LocalController.swift in Sources */,
 				D08EE2442595D39800F0279D /* MyTabBarController.swift in Sources */,
 				D08EE24D2595D64800F0279D /* MoreController.swift in Sources */,
 				D05CCE8F259C55A8005BF42B /* QuickTimeMov.swift in Sources */,
