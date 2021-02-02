@@ -154,6 +154,7 @@ class BigImageController: UIViewController {
         
         //添加imageview
         view.addSubview(imgV)
+        imgV.contentMode = .scaleAspectFill
         imgV.snp.makeConstraints { (make) in
             make.edges.equalTo(view)
         }
@@ -163,7 +164,7 @@ class BigImageController: UIViewController {
         //添加返回按钮
         let backBtn = UIButton(type: .custom)
         backBtn.adjustsImageWhenHighlighted = false
-        backBtn.setImage(UIImage(named: "back"), for: .normal)
+        backBtn.setImage(UIImage(named: "browser-back-black"), for: .normal)
         backBtn.addTarget(self, action: #selector(backAction), for: .touchUpInside)
         view.addSubview(backBtn)
         backBtn.snp.makeConstraints { (make) in

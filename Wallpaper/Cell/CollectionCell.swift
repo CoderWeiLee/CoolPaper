@@ -92,7 +92,7 @@ class CollectionCell: UICollectionViewCell {
                 }
             }else {
                 livePhotoView.isHidden = true
-                imgV.kf.setImage(with: URL(string: imageModel?.originurl ?? ""))
+                imgV.kf.setImage(with: URL(string: imageModel?.url ?? ""))
             }
             likesLabel.text = imageModel?.views
         }
@@ -126,6 +126,7 @@ class CollectionCell: UICollectionViewCell {
         skeletonLayer.slide(to: .right)
         
         imgV = UIImageView()
+        imgV.contentMode = .scaleAspectFill
         imgV.frame = contentView.bounds
         imgV.layer.cornerRadius = 6
         imgV.layer.masksToBounds = true
