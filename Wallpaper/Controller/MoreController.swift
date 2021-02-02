@@ -14,9 +14,9 @@ class MoreController: UIViewController {
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: moreW, height: moreH)
-        layout.minimumLineSpacing = 3
-        layout.minimumInteritemSpacing = 3
-        let collectionView = UICollectionView(frame: CGRect(x: 3, y: 3, width: view.bounds.width - 6, height: view.bounds.height-3), collectionViewLayout: layout)
+        layout.minimumLineSpacing = 7
+        layout.minimumInteritemSpacing = 7
+        let collectionView = UICollectionView(frame: CGRect(x: 8, y: 8, width: view.bounds.width - 16, height: view.bounds.height-8), collectionViewLayout: layout)
         collectionView.backgroundColor = .white
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -32,20 +32,17 @@ class MoreController: UIViewController {
         super.viewDidLoad()
         //0.设置导航栏和文字标题
         title = "动态"
-//        tabBarItem.title = ""
-        navigationController?.setNavigationBarHidden(false, animated: true)
-        view.backgroundColor = .white
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "indicatorColor") ?? .green, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)]
-        //隐藏分割线
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
+        //隐藏导航栏
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        //7.添加渐变层
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenW, height: statusBarHeight + 50)
+        gradientLayer.colors = [UIColor(hexString: "#FF62A5").cgColor, UIColor(hexString: "#FF632E").cgColor]
+        gradientLayer.locations = [0,1]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 1)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 0)
+        view.layer.insertSublayer(gradientLayer, at: 0)
         
-        let searchImg = UIImageView(image: UIImage(named: "search"))
-        searchImg.isUserInteractionEnabled = true
-        let tap = UITapGestureRecognizer(target: self, action: #selector(searchAction))
-        searchImg.addGestureRecognizer(tap)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchImg)
-        view.addSubview(collectionView)
         
         
     }
@@ -68,12 +65,6 @@ class MoreController: UIViewController {
                 num = imgTypes.count
             }
         }
-    }
-    
-    @objc func searchAction() {
-        let searchVc = SearchController()
-        searchVc.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(searchVc, animated: true)
     }
 }
 
