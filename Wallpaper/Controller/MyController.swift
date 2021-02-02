@@ -384,12 +384,19 @@ class MyController: UIViewController {
     
     //收藏
     @objc func collectAction() {
-        
+       let vc = CollectListController()
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     //清理
     @objc func cleanAction() {
-        
+        clearCache()
+        let hud = MBProgressHUD.showAdded(to: view, animated: true)
+        hud.label.text = "清理成功"
+        hud.mode = .text
+        hud.show(animated: true)
+        hud.hide(animated: true, afterDelay: 1)
     }
     
     //联系客服
@@ -477,4 +484,27 @@ class MyController: UIViewController {
 
           return decodedString
       }
+    
+    func clearCache() {
+        
+        // 取出cache文件夹目录 缓存文件都在这个目录下
+        let cachePath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.cachesDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first
+        
+        // 取出文件夹下所有文件数组
+        let fileArr = FileManager.default.subpaths(atPath: cachePath!)
+        
+        // 遍历删除
+        for file in fileArr! {
+            
+            let path = cachePath?.appending("\(file)")
+            if FileManager.default.fileExists(atPath: path!) {
+                
+                do {
+                    try FileManager.default.removeItem(atPath: path!)
+                } catch {
+                    
+                }
+            }
+        }
+    }
 }

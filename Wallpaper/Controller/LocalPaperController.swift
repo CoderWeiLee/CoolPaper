@@ -28,7 +28,7 @@ class LocalPaperController: UIViewController {
     
     lazy var noDataImg: UIImageView = {
        let imgV = UIImageView(image: UIImage(named: "noData"))
-       imgV.frame = view.bounds
+        imgV.contentMode = .scaleAspectFit
        return imgV
     }()
     
@@ -55,8 +55,15 @@ class LocalPaperController: UIViewController {
         self.collectionView.mj_header?.endRefreshing()
         if (self.dataArray?.count == 0) {
             self.collectionView.addSubview(self.noDataImg)
+            self.noDataImg.snp.remakeConstraints { (make) in
+                make.width.equalTo(166)
+                make.height.equalTo(118)
+                make.centerX.equalTo(view)
+                make.centerY.equalTo(view).offset(-50)
+            }
         }else {
             self.noDataImg.removeFromSuperview()
+            
         }
     }
 }

@@ -18,6 +18,7 @@
 		D04F9B0D25C94235000F630B /* ProtocolController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F9B0C25C94235000F630B /* ProtocolController.swift */; };
 		D04F9B1025C94332000F630B /* PolicyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F9B0F25C94332000F630B /* PolicyController.swift */; };
 		D04F9B1425C94961000F630B /* protocol.html in Resources */ = {isa = PBXBuildFile; fileRef = D04F9B1325C94961000F630B /* protocol.html */; };
+		D04F9B1725C94C5D000F630B /* CollectListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F9B1625C94C5D000F630B /* CollectListController.swift */; };
 		D050510425C90B530075E963 /* LocalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D050510325C90B530075E963 /* LocalController.swift */; };
 		D050510725C90C7C0075E963 /* MyDownloadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D050510625C90C7C0075E963 /* MyDownloadController.swift */; };
 		D050510A25C90CA30075E963 /* LocalPaperController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D050510925C90CA30075E963 /* LocalPaperController.swift */; };
@@ -79,6 +80,7 @@
 		D04F9B0C25C94235000F630B /* ProtocolController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolController.swift; sourceTree = "<group>"; };
 		D04F9B0F25C94332000F630B /* PolicyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyController.swift; sourceTree = "<group>"; };
 		D04F9B1325C94961000F630B /* protocol.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = protocol.html; sourceTree = "<group>"; };
+		D04F9B1625C94C5D000F630B /* CollectListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectListController.swift; sourceTree = "<group>"; };
 		D050510325C90B530075E963 /* LocalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalController.swift; sourceTree = "<group>"; };
 		D050510625C90C7C0075E963 /* MyDownloadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDownloadController.swift; sourceTree = "<group>"; };
 		D050510925C90CA30075E963 /* LocalPaperController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPaperController.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				D04F9B0C25C94235000F630B /* ProtocolController.swift */,
 				D04F9B0F25C94332000F630B /* PolicyController.swift */,
 				D050510925C90CA30075E963 /* LocalPaperController.swift */,
+				D04F9B1625C94C5D000F630B /* CollectListController.swift */,
 				D06859CA25A5A24B00848477 /* CCTabBarController.h */,
 				D06859CB25A5A24B00848477 /* CCTabBarController.m */,
 				D08EE2432595D39800F0279D /* MyTabBarController.swift */,
@@ -496,6 +499,7 @@
 				D05A837A25A4419C0016910D /* CCVideoImageTool.swift in Sources */,
 				D04B281D25A2EA55005AC797 /* CacheManager.swift in Sources */,
 				D05A838125A44AF40016910D /* DiscoverCell.swift in Sources */,
+				D04F9B1725C94C5D000F630B /* CollectListController.swift in Sources */,
 				D06859CC25A5A24B00848477 /* CCTabBarController.m in Sources */,
 				D069C73B25C8EBBC00819B72 /* TypeController.swift in Sources */,
 				D05CCDC72598B788005BF42B /* LoginController.swift in Sources */,
