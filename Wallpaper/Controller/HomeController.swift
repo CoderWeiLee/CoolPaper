@@ -104,7 +104,10 @@ class HomeController: UIViewController, JXSegmentedViewDelegate, JXSegmentedList
     }
     
     @objc func menuAction() {
-        
+        let typeVc = TypeController()
+        typeVc.hidesBottomBarWhenPushed = true
+        typeVc.dataArray = self.dataArray
+        navigationController?.pushViewController(typeVc, animated: true)
     }
 }
 

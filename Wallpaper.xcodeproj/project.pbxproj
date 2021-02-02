@@ -34,6 +34,7 @@
 		D05CCE92259C5634005BF42B /* DTOtherMacro.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05CCE91259C5634005BF42B /* DTOtherMacro.swift */; };
 		D06859C825A5A17200848477 /* CCTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D06859C725A5A17200848477 /* CCTabBar.m */; };
 		D06859CC25A5A24B00848477 /* CCTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D06859CB25A5A24B00848477 /* CCTabBarController.m */; };
+		D069C73B25C8EBBC00819B72 /* TypeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D069C73A25C8EBBC00819B72 /* TypeController.swift */; };
 		D08EE21C2595C29000F0279D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EE21B2595C29000F0279D /* AppDelegate.swift */; };
 		D08EE2202595C29000F0279D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EE21F2595C29000F0279D /* ViewController.swift */; };
 		D08EE2232595C29000F0279D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D08EE2212595C29000F0279D /* Main.storyboard */; };
@@ -88,6 +89,7 @@
 		D06859C725A5A17200848477 /* CCTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTabBar.m; sourceTree = "<group>"; };
 		D06859CA25A5A24B00848477 /* CCTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTabBarController.h; sourceTree = "<group>"; };
 		D06859CB25A5A24B00848477 /* CCTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTabBarController.m; sourceTree = "<group>"; };
+		D069C73A25C8EBBC00819B72 /* TypeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeController.swift; sourceTree = "<group>"; };
 		D08EE2182595C29000F0279D /* Wallpaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wallpaper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D08EE21B2595C29000F0279D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D08EE21F2595C29000F0279D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				D05CCDD425996E1F005BF42B /* RegisterController.swift */,
 				D05CCE0A2599E15C005BF42B /* SearchController.swift */,
 				D08EE2492595D63900F0279D /* HomeController.swift */,
+				D069C73A25C8EBBC00819B72 /* TypeController.swift */,
 				D06859CA25A5A24B00848477 /* CCTabBarController.h */,
 				D06859CB25A5A24B00848477 /* CCTabBarController.m */,
 				D08EE2432595D39800F0279D /* MyTabBarController.swift */,
@@ -455,6 +458,7 @@
 				D04B281D25A2EA55005AC797 /* CacheManager.swift in Sources */,
 				D05A838125A44AF40016910D /* DiscoverCell.swift in Sources */,
 				D06859CC25A5A24B00848477 /* CCTabBarController.m in Sources */,
+				D069C73B25C8EBBC00819B72 /* TypeController.swift in Sources */,
 				D05CCDC72598B788005BF42B /* LoginController.swift in Sources */,
 				D05CCE36259AFA6E005BF42B /* CollectionHeaderView.swift in Sources */,
 				D08EE29A2597210500F0279D /* CollectionCell.swift in Sources */,

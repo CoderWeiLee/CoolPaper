@@ -34,6 +34,7 @@ class SearchController: UIViewController {
     var types: [String]?
     var keys: [String]?
     var imgTypes: [ImgTypes]?
+    var dataArray: Array<CategoryModel>?
     override func viewDidLoad() {
         super.viewDidLoad()
         if let data = UserDefaults.standard.value(forKey: "ImgTypes") as? Data{
@@ -92,7 +93,7 @@ class SearchController: UIViewController {
     
     @objc func backAction() {
         navigationController?.popViewController(animated: true)
-        navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     @objc func cancelAction() {
