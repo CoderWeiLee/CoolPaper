@@ -12,6 +12,7 @@ import KakaJSON
 class MoreController: UIViewController , JXSegmentedViewDelegate, JXSegmentedListContainerViewDataSource{
     struct Category: Encodable {
         let appkey: String
+        let video: String
     }
     var segmentedView: JXSegmentedView!
     var segmentedDataSource: JXSegmentedTitleDataSource!
@@ -84,7 +85,7 @@ class MoreController: UIViewController , JXSegmentedViewDelegate, JXSegmentedLis
         }
             
         //发起请求查询分页的数据
-        let category = Category(appkey: "035d4cebaaf8bc9d9f5aa782368224ac")
+        let category = Category(appkey: "035d4cebaaf8bc9d9f5aa782368224ac", video: "1")
             AF.request(categoryListURL, method: .post, parameters: category).responseJSON {[self] (response) in
             if let responseModel = (response.data?.kj.model(CategoryResModel.self)){
                 self.dataArray = Array(responseModel.data!)
@@ -104,7 +105,7 @@ class MoreController: UIViewController , JXSegmentedViewDelegate, JXSegmentedLis
     }
     
     @objc func menuAction() {
-        let typeVc = TypeController()
+        let typeVc = MoreTypeController()
         typeVc.hidesBottomBarWhenPushed = true
         typeVc.dataArray = self.dataArray
         navigationController?.pushViewController(typeVc, animated: true)
@@ -136,9 +137,9 @@ extension MoreController {
     func listContainerView(_ listContainerView: JXSegmentedListContainerView, initListAt index: Int) -> JXSegmentedListContainerViewListDelegate {
         switch index {
         case 0:
-            return RecommendController()
+            return MoreRecommengController()
         case 1:
-            return PopularController()
+            return MorePopularController()
         default:
             let categoryVC = CategoryController()
             categoryVC.model = self.dataArray?[index-2]

@@ -71,11 +71,9 @@ extension CommonController: UICollectionViewDataSource, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseID, for: indexPath) as! CollectionCell
-        guard let type = imgType else {
-            return cell
-        }
-        type.index = String(format: "%04d", indexPath.row + 1)
-        cell.type = type
+        
+//        type.index = String(format: "%04d", indexPath.row + 1)
+//        cell.type = type
         return cell
     }
     
@@ -88,7 +86,7 @@ extension CommonController: UICollectionViewDataSource, UICollectionViewDelegate
         cell.livePhotoView.stopPlayback()
         bigC.scene = .navShowScene
         type.index = String(format: "%04d", indexPath.row + 1)
-        bigC.type = type
+//        bigC.type = type
         bigC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(bigC, animated: true)
     }

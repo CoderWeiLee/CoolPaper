@@ -46,48 +46,78 @@ class BigImageController: UIViewController {
     var fullscreenAD: BUNativeExpressFullscreenVideoAd?
     
     var originBundleID = ""
-    var type: ImgTypes? {
-        didSet {
-            if let t = type {
-                if t.key == "Dongtai" {
-                    livePhotoView.isHidden = false
-                    livePhotoView.isMuted = true
-                    livePhotoView.delegate = self
-                   
-                    guard let imgPath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first?.appending("/\(t.index ?? "0001").JPG") else {return}
-                    guard let videoPath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first?.appending("/\(t.index ?? "0001").MOV") else {return}
-                    self.imgPath = imgPath
-                    self.videoPath = videoPath
-                    if FileManager.default.fileExists(atPath: imgPath) && FileManager.default.fileExists(atPath: videoPath) {
-                        loadLivePhoto(with: imgPath, with: videoPath)
-                    }else {
-                        //文件不存在
-                        let url = baseUrl + "/\(t.key ?? "Dongtai")/\(t.index ?? "0001").mp4"
-                        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-                        let fileURL = documentsURL.appendingPathComponent("\(t.index ?? "0001").mp4")
-                            //指定位置，且删除已存在的该文件
-                            let dest: DownloadRequest.Destination = { _, _ in
-                                return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
-                            }
-                            AF.download(url, interceptor: nil, to: dest).downloadProgress(closure: { (progress) in
-                            }).responseData { (res) in
-                                
-                                self.loadLivePhotoWithVideo(with: fileURL, with: imgPath, with: videoPath)
-                                self.livePhotoView.startPlayback(with: .full)
-                            }
-                    }
-                }else {
-                    livePhotoView.isHidden = true
-                    imgV.kf.setImage(with: URL(string: baseUrl + "/\(t.key ?? "Daily")/\(t.index ?? "0001").jpg"))
-                }
-            }
-        }
-    }
+//    var type: ImgTypes? {
+//        didSet {
+//            if let t = type {
+//                if t.key == "Dongtai" {
+//                    livePhotoView.isHidden = false
+//                    livePhotoView.isMuted = true
+//                    livePhotoView.delegate = self
+//
+//                    guard let imgPath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first?.appending("/\(t.index ?? "0001").JPG") else {return}
+//                    guard let videoPath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first?.appending("/\(t.index ?? "0001").MOV") else {return}
+//                    self.imgPath = imgPath
+//                    self.videoPath = videoPath
+//                    if FileManager.default.fileExists(atPath: imgPath) && FileManager.default.fileExists(atPath: videoPath) {
+//                        loadLivePhoto(with: imgPath, with: videoPath)
+//                    }else {
+//                        //文件不存在
+//                        let url = baseUrl + "/\(t.key ?? "Dongtai")/\(t.index ?? "0001").mp4"
+//                        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+//                        let fileURL = documentsURL.appendingPathComponent("\(t.index ?? "0001").mp4")
+//                            //指定位置，且删除已存在的该文件
+//                            let dest: DownloadRequest.Destination = { _, _ in
+//                                return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
+//                            }
+//                            AF.download(url, interceptor: nil, to: dest).downloadProgress(closure: { (progress) in
+//                            }).responseData { (res) in
+//
+//                                self.loadLivePhotoWithVideo(with: fileURL, with: imgPath, with: videoPath)
+//                                self.livePhotoView.startPlayback(with: .full)
+//                            }
+//                    }
+//                }else {
+//                    livePhotoView.isHidden = true
+//                    imgV.kf.setImage(with: URL(string: baseUrl + "/\(t.key ?? "Daily")/\(t.index ?? "0001").jpg"))
+//                }
+//            }
+//        }
+//    }
     var scene: PushScene?
     var model: ImageModel? {
         didSet {
-            livePhotoView.isHidden = true
-            imgV.kf.setImage(with: URL(string: model?.url ?? ""))
+            if model?.originurl?.hasSuffix(".mp4") == true {
+                livePhotoView.isHidden = false
+                livePhotoView.isMuted = true
+                livePhotoView.delegate = self
+               
+                guard let imgPath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first?.appending("/\(model?.id ?? "0").JPG") else {return}
+                guard let videoPath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first?.appending("/\(model?.id ?? "0").MOV") else {return}
+                self.imgPath = imgPath
+                self.videoPath = videoPath
+                if FileManager.default.fileExists(atPath: imgPath) && FileManager.default.fileExists(atPath: videoPath) {
+                    loadLivePhoto(with: imgPath, with: videoPath)
+                }else {
+                    //文件不存在
+                    if let url = model?.originurl {
+                        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+                        let fileURL = documentsURL.appendingPathComponent("\(model?.id ?? "0").mp4")
+                        //指定位置，且删除已存在的该文件
+                        let dest: DownloadRequest.Destination = { _, _ in
+                            return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
+                        }
+                        AF.download(url, interceptor: nil, to: dest).downloadProgress(closure: { (progress) in
+                        }).responseData { (res) in
+                            
+                            self.loadLivePhotoWithVideo(with: fileURL, with: imgPath, with: videoPath)
+                            self.livePhotoView.startPlayback(with: .full)
+                        }
+                    }
+                    }
+            }else {
+                livePhotoView.isHidden = true
+                imgV.kf.setImage(with: URL(string: model?.url ?? ""))
+            }
             guard let fav = model?.fav else {
                 return
             }
@@ -431,12 +461,12 @@ class BigImageController: UIViewController {
     }
     
     private func save() {
-        if let t = type {
-            if t.key == "Dongtai" {
+        
+        if model?.originurl?.hasSuffix(".mp4") == true {
                 self.exportLivePhoto()
             }else {
-                let contents = "/\(t.key ?? "Daily")/\(t.index ?? "0001").jpg"
-                KingfisherManager.shared.downloader.downloadImage(with: URL(string: baseUrl + contents)!, options: nil, completionHandler:  { [self] (result) in
+                
+                KingfisherManager.shared.downloader.downloadImage(with: URL(string: model?.originurl ?? "")!, options: nil, completionHandler:  { [self] (result) in
                     switch result {
                     case .success(let value):
                         //保存图片到系统相册
@@ -446,7 +476,7 @@ class BigImageController: UIViewController {
                     }
                 })
             }
-        }
+        
     }
 }
 

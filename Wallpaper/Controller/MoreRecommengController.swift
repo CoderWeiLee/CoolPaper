@@ -1,16 +1,16 @@
 //
-//  PopularController.swift
+//  MoreRecommengController.swift
 //  Wallpaper
 //
-//  Created by 李伟 on 2020/12/26.
+//  Created by 李伟 on 2021/2/2.
 //
 
 import UIKit
 import JXSegmentedView
 import MJRefresh
 import Alamofire
-import KakaJSON 
-class PopularController: UIViewController {
+import KakaJSON
+class MoreRecommengController: UIViewController {
     struct Login: Encodable {
         let appkey: String
         let page: String
@@ -22,8 +22,8 @@ class PopularController: UIViewController {
         layout.itemSize = CGSize(width: w, height: h)
         layout.minimumLineSpacing = 7
         layout.minimumInteritemSpacing = 7
-        let collectionView = UICollectionView(frame: CGRect(x: 8, y: 8, width: view.bounds.width - 16, height: view.bounds.height - 8 - CGFloat(bottomSafeAreaHeight)), collectionViewLayout: layout)
-        collectionView.backgroundColor = .white
+        let collectionView = UICollectionView(frame: CGRect(x: 8, y: 8, width: view.bounds.width - 16, height: view.bounds.height-8 - CGFloat(bottomSafeAreaHeight)), collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.showsVerticalScrollIndicator = true
@@ -36,7 +36,7 @@ class PopularController: UIViewController {
     var dataArray: NSMutableArray?
     var currentPage: NSInteger?
     var totalPage: NSInteger?
-
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         view.addSubview(collectionView)
@@ -47,11 +47,15 @@ class PopularController: UIViewController {
         collectionView.mj_header?.beginRefreshing()
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
     //下拉刷新
     @objc func loadData() -> Void {
         currentPage = 1
-        let login = Login(appkey: "035d4cebaaf8bc9d9f5aa782368224ac", page: "\(currentPage ?? 1)", pagesize: "20", video: "0")
-        AF.request(hotURL, method: .post, parameters: login).responseJSON {[self] (response) in
+        let login = Login(appkey: "035d4cebaaf8bc9d9f5aa782368224ac", page: "\(currentPage ?? 1)", pagesize: "20", video: "1")
+        AF.request(homeURL, method: .post, parameters: login).responseJSON {[self] (response) in
             if let responseModel = (response.data?.kj.model(ResponseModel.self)){
                 self.dataArray = NSMutableArray(array: (responseModel.data?.data)!)
                 self.collectionView.reloadData()
@@ -63,8 +67,8 @@ class PopularController: UIViewController {
     //上拉加载更多
     @objc func loadMore() -> Void {
         currentPage = currentPage ?? 1 + 1
-        let login = Login(appkey: "035d4cebaaf8bc9d9f5aa782368224ac", page: "\(currentPage ?? 1)", pagesize: "20", video: "0")
-        AF.request(hotURL, method: .post, parameters: login).response {[self] (response) in
+        let login = Login(appkey: "035d4cebaaf8bc9d9f5aa782368224ac", page: "\(currentPage ?? 1)", pagesize: "20", video: "1")
+        AF.request(homeURL, method: .post, parameters: login).response {[self] (response) in
             if let responseModel = (response.data?.kj.model(ResponseModel.self)){
                 self.currentPage = NSInteger(responseModel.data?.current_page ?? "1")
                 self.totalPage = NSInteger(responseModel.data?.total ?? "1")
@@ -78,7 +82,7 @@ class PopularController: UIViewController {
     }
 }
 
-extension PopularController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension MoreRecommengController: UICollectionViewDataSource, UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.dataArray?.count ?? 0
     }
@@ -95,14 +99,9 @@ extension PopularController: UICollectionViewDataSource, UICollectionViewDelegat
         bigC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(bigC, animated: true)
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        //
-    }
 }
 
-extension PopularController: JXSegmentedListContainerViewListDelegate {
+extension MoreRecommengController: JXSegmentedListContainerViewListDelegate {
     /// 如果列表是VC，就返回VC.view
     /// 如果列表是View，就返回View自己
     /// - Returns: 返回列表视图
@@ -110,3 +109,4 @@ extension PopularController: JXSegmentedListContainerViewListDelegate {
         return view
     }
 }
+

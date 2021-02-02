@@ -17,6 +17,9 @@
 		D050510425C90B530075E963 /* LocalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D050510325C90B530075E963 /* LocalController.swift */; };
 		D050510725C90C7C0075E963 /* MyDownloadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D050510625C90C7C0075E963 /* MyDownloadController.swift */; };
 		D050510A25C90CA30075E963 /* LocalPaperController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D050510925C90CA30075E963 /* LocalPaperController.swift */; };
+		D050510D25C929E00075E963 /* MoreRecommengController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D050510C25C929E00075E963 /* MoreRecommengController.swift */; };
+		D050511025C92A200075E963 /* MorePopularController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D050510F25C92A200075E963 /* MorePopularController.swift */; };
+		D050511325C92ABB0075E963 /* MoreTypeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D050511225C92ABB0075E963 /* MoreTypeController.swift */; };
 		D05A837A25A4419C0016910D /* CCVideoImageTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A837925A4419C0016910D /* CCVideoImageTool.swift */; };
 		D05A837D25A448210016910D /* DiscoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A837C25A448210016910D /* DiscoverController.swift */; };
 		D05A838125A44AF40016910D /* DiscoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A838025A44AF40016910D /* DiscoverCell.swift */; };
@@ -71,6 +74,9 @@
 		D050510325C90B530075E963 /* LocalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalController.swift; sourceTree = "<group>"; };
 		D050510625C90C7C0075E963 /* MyDownloadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDownloadController.swift; sourceTree = "<group>"; };
 		D050510925C90CA30075E963 /* LocalPaperController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPaperController.swift; sourceTree = "<group>"; };
+		D050510C25C929E00075E963 /* MoreRecommengController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreRecommengController.swift; sourceTree = "<group>"; };
+		D050510F25C92A200075E963 /* MorePopularController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorePopularController.swift; sourceTree = "<group>"; };
+		D050511225C92ABB0075E963 /* MoreTypeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTypeController.swift; sourceTree = "<group>"; };
 		D05A837925A4419C0016910D /* CCVideoImageTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCVideoImageTool.swift; sourceTree = "<group>"; };
 		D05A837C25A448210016910D /* DiscoverController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverController.swift; sourceTree = "<group>"; };
 		D05A838025A44AF40016910D /* DiscoverCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCell.swift; sourceTree = "<group>"; };
@@ -211,8 +217,10 @@
 				D08EE2462595D4B300F0279D /* MyNavigationController.swift */,
 				D08EE21F2595C29000F0279D /* ViewController.swift */,
 				D08EE27A25970BB400F0279D /* RecommendController.swift */,
+				D050510C25C929E00075E963 /* MoreRecommengController.swift */,
 				D05CCE3E259B1559005BF42B /* CommonController.swift */,
 				D08EE27D25970BC200F0279D /* PopularController.swift */,
+				D050510F25C92A200075E963 /* MorePopularController.swift */,
 				D04D487025C0FFC100C6AFA6 /* CategoryController.swift */,
 				D05CCDBA259895EA005BF42B /* BigImageController.swift */,
 				D08EE24C2595D64800F0279D /* MoreController.swift */,
@@ -225,6 +233,7 @@
 				D05CCE0A2599E15C005BF42B /* SearchController.swift */,
 				D08EE2492595D63900F0279D /* HomeController.swift */,
 				D069C73A25C8EBBC00819B72 /* TypeController.swift */,
+				D050511225C92ABB0075E963 /* MoreTypeController.swift */,
 				D050510325C90B530075E963 /* LocalController.swift */,
 				D050510625C90C7C0075E963 /* MyDownloadController.swift */,
 				D050510925C90CA30075E963 /* LocalPaperController.swift */,
@@ -443,6 +452,7 @@
 				D08EE2502595D65800F0279D /* DIYController.swift in Sources */,
 				D050510A25C90CA30075E963 /* LocalPaperController.swift in Sources */,
 				D04D484225C004C500C6AFA6 /* HomeModel.swift in Sources */,
+				D050511025C92A200075E963 /* MorePopularController.swift in Sources */,
 				D05CCE39259AFF7B005BF42B /* RecommendCell.swift in Sources */,
 				D06859C825A5A17200848477 /* CCTabBar.m in Sources */,
 				D08EE2472595D4B300F0279D /* MyNavigationController.swift in Sources */,
@@ -452,6 +462,7 @@
 				D08EE21C2595C29000F0279D /* AppDelegate.swift in Sources */,
 				D08EE2C425984F6400F0279D /* Config.swift in Sources */,
 				D04D485D25C0F0F000C6AFA6 /* CategoryModel.swift in Sources */,
+				D050511325C92ABB0075E963 /* MoreTypeController.swift in Sources */,
 				D05CCDD925997D14005BF42B /* SigninController.swift in Sources */,
 				D05CCDBB259895EA005BF42B /* BigImageController.swift in Sources */,
 				D05CCE0E2599E9E6005BF42B /* MoreCollectionCell.swift in Sources */,
@@ -465,6 +476,7 @@
 				D08EE24A2595D63900F0279D /* HomeController.swift in Sources */,
 				D05CCDB825988E8D005BF42B /* MyCell.swift in Sources */,
 				D04D483F25BFE60700C6AFA6 /* Api.swift in Sources */,
+				D050510D25C929E00075E963 /* MoreRecommengController.swift in Sources */,
 				D05CCDD525996E1F005BF42B /* RegisterController.swift in Sources */,
 				D05A837A25A4419C0016910D /* CCVideoImageTool.swift in Sources */,
 				D04B281D25A2EA55005AC797 /* CacheManager.swift in Sources */,

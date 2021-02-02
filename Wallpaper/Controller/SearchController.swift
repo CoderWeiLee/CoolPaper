@@ -157,7 +157,7 @@ extension SearchController: UICollectionViewDataSource, UICollectionViewDelegate
             let bigC = BigImageController()
             bigC.scene = .navHideScene
             type.index = String(format: "04d", indexPath.row + 1)
-            bigC.type = type
+//            bigC.type = type
             bigC.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(bigC, animated: true)
         }

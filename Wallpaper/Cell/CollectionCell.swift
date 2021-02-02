@@ -23,48 +23,77 @@ class CollectionCell: UICollectionViewCell {
     var imgPath: String!
     var videoPath: String!
     var likesLabel: UILabel!
-    var type: ImgTypes? {
-        didSet {
-            if let t = type {
-                if t.key == "Dongtai" {
-                    livePhotoView.isHidden = false
-                    livePhotoView.delegate = self
-                    guard let imgPath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first?.appending("/\(t.index ?? "0001").JPG") else {return}
-                    guard let videoPath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first?.appending("/\(t.index ?? "0001").MOV") else {return}
-                    self.imgPath = imgPath
-                    self.videoPath = videoPath
-                    print(imgPath)
-                    if FileManager.default.fileExists(atPath: imgPath) && FileManager.default.fileExists(atPath: videoPath) {
-                        skeletonLayer.stopSliding()
-                        loadLivePhoto(with: imgPath, with: videoPath)
-                    }else {
-                        let url = baseUrl + "/\(t.key ?? "Dongtai")/\(t.index ?? "0001").mp4"
-                        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-                        let fileURL = documentsURL.appendingPathComponent("\(t.index ?? "0001").mp4")
-                            //指定位置，且删除已存在的该文件
-                            let dest: DownloadRequest.Destination = { _, _ in
-                                return (fileURL, [.createIntermediateDirectories])
-                            }
-                            AF.download(url, interceptor: nil, to: dest).downloadProgress(closure: { (progress) in
-                            }).responseData { [self] (res) in
-                                self.loadLivePhotoWithVideo(with: fileURL, with: imgPath, with: videoPath)
-                                self.livePhotoView.startPlayback(with: .full)
-                            }
-                    }
-                }else {
-                    livePhotoView.isHidden = true
-                    imgV.kf.setImage(with: URL(string: baseUrl + "/\(t.key ?? "Daily")/\(t.index ?? "0001").jpg"), placeholder: nil, options: nil) { _ in
-//                        self.skeletonLayer.stopSliding()
-                    }
-                }
-            }
-        }
-    }
+//    var type: ImgTypes? {
+//        didSet {
+//            if let t = type {
+//                if t.key == "Dongtai" {
+//                    livePhotoView.isHidden = false
+//                    livePhotoView.delegate = self
+//                    guard let imgPath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first?.appending("/\(t.index ?? "0001").JPG") else {return}
+//                    guard let videoPath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first?.appending("/\(t.index ?? "0001").MOV") else {return}
+//                    self.imgPath = imgPath
+//                    self.videoPath = videoPath
+//                    print(imgPath)
+//                    if FileManager.default.fileExists(atPath: imgPath) && FileManager.default.fileExists(atPath: videoPath) {
+//                        skeletonLayer.stopSliding()
+//                        loadLivePhoto(with: imgPath, with: videoPath)
+//                    }else {
+//                        let url = baseUrl + "/\(t.key ?? "Dongtai")/\(t.index ?? "0001").mp4"
+//                        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+//                        let fileURL = documentsURL.appendingPathComponent("\(t.index ?? "0001").mp4")
+//                            //指定位置，且删除已存在的该文件
+//                            let dest: DownloadRequest.Destination = { _, _ in
+//                                return (fileURL, [.createIntermediateDirectories])
+//                            }
+//                            AF.download(url, interceptor: nil, to: dest).downloadProgress(closure: { (progress) in
+//                            }).responseData { [self] (res) in
+//                                self.loadLivePhotoWithVideo(with: fileURL, with: imgPath, with: videoPath)
+//                                self.livePhotoView.startPlayback(with: .full)
+//                            }
+//                    }
+//                }else {
+//                    livePhotoView.isHidden = true
+//                    imgV.kf.setImage(with: URL(string: baseUrl + "/\(t.key ?? "Daily")/\(t.index ?? "0001").jpg"), placeholder: nil, options: nil) { _ in
+////                        self.skeletonLayer.stopSliding()
+//                    }
+//                }
+//            }
+//        }
+//    }
     
     var imageModel: ImageModel? {
         didSet {
-            livePhotoView.isHidden = true
-            imgV.kf.setImage(with: URL(string: imageModel?.originurl ?? ""))
+            //判断是否是动态视频
+            if imageModel?.originurl?.hasSuffix(".mp4") == true {
+                livePhotoView.isHidden = false
+                livePhotoView.delegate = self
+                guard let imgPath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first?.appending("/\(imageModel?.id ?? "0").JPG") else {return}
+                guard let videoPath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first?.appending("/\(imageModel?.id ?? "0").MOV") else {return}
+                self.imgPath = imgPath
+                self.videoPath = videoPath
+                print(imgPath)
+                if FileManager.default.fileExists(atPath: imgPath) && FileManager.default.fileExists(atPath: videoPath) {
+                    skeletonLayer.stopSliding()
+                    loadLivePhoto(with: imgPath, with: videoPath)
+                }else {
+                    let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+                    let fileURL = documentsURL.appendingPathComponent("\(imageModel?.id ?? "0").mp4")
+                        //指定位置，且删除已存在的该文件
+                        let dest: DownloadRequest.Destination = { _, _ in
+                            return (fileURL, [.createIntermediateDirectories])
+                        }
+                    if let url = imageModel?.originurl {
+                        AF.download(url, interceptor: nil, to: dest).downloadProgress(closure: { (progress) in
+                        }).responseData { [self] (res) in
+                            self.loadLivePhotoWithVideo(with: fileURL, with: imgPath, with: videoPath)
+                            self.livePhotoView.startPlayback(with: .full)
+                        }
+                    }
+                }
+            }else {
+                livePhotoView.isHidden = true
+                imgV.kf.setImage(with: URL(string: imageModel?.originurl ?? ""))
+            }
             likesLabel.text = imageModel?.views
         }
     }

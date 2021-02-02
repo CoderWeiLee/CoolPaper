@@ -1,16 +1,16 @@
 //
-//  PopularController.swift
+//  MorePopularController.swift
 //  Wallpaper
 //
-//  Created by 李伟 on 2020/12/26.
+//  Created by 李伟 on 2021/2/2.
 //
 
 import UIKit
 import JXSegmentedView
 import MJRefresh
 import Alamofire
-import KakaJSON 
-class PopularController: UIViewController {
+import KakaJSON
+class MorePopularController: UIViewController {
     struct Login: Encodable {
         let appkey: String
         let page: String
@@ -50,7 +50,7 @@ class PopularController: UIViewController {
     //下拉刷新
     @objc func loadData() -> Void {
         currentPage = 1
-        let login = Login(appkey: "035d4cebaaf8bc9d9f5aa782368224ac", page: "\(currentPage ?? 1)", pagesize: "20", video: "0")
+        let login = Login(appkey: "035d4cebaaf8bc9d9f5aa782368224ac", page: "\(currentPage ?? 1)", pagesize: "20", video: "1")
         AF.request(hotURL, method: .post, parameters: login).responseJSON {[self] (response) in
             if let responseModel = (response.data?.kj.model(ResponseModel.self)){
                 self.dataArray = NSMutableArray(array: (responseModel.data?.data)!)
@@ -63,7 +63,7 @@ class PopularController: UIViewController {
     //上拉加载更多
     @objc func loadMore() -> Void {
         currentPage = currentPage ?? 1 + 1
-        let login = Login(appkey: "035d4cebaaf8bc9d9f5aa782368224ac", page: "\(currentPage ?? 1)", pagesize: "20", video: "0")
+        let login = Login(appkey: "035d4cebaaf8bc9d9f5aa782368224ac", page: "\(currentPage ?? 1)", pagesize: "20", video: "1")
         AF.request(hotURL, method: .post, parameters: login).response {[self] (response) in
             if let responseModel = (response.data?.kj.model(ResponseModel.self)){
                 self.currentPage = NSInteger(responseModel.data?.current_page ?? "1")
@@ -78,7 +78,7 @@ class PopularController: UIViewController {
     }
 }
 
-extension PopularController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension MorePopularController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.dataArray?.count ?? 0
     }
@@ -102,7 +102,7 @@ extension PopularController: UICollectionViewDataSource, UICollectionViewDelegat
     }
 }
 
-extension PopularController: JXSegmentedListContainerViewListDelegate {
+extension MorePopularController: JXSegmentedListContainerViewListDelegate {
     /// 如果列表是VC，就返回VC.view
     /// 如果列表是View，就返回View自己
     /// - Returns: 返回列表视图
@@ -110,3 +110,4 @@ extension PopularController: JXSegmentedListContainerViewListDelegate {
         return view
     }
 }
+
