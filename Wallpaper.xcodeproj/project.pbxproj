@@ -14,6 +14,10 @@
 		D04D485D25C0F0F000C6AFA6 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04D485C25C0F0F000C6AFA6 /* CategoryModel.swift */; };
 		D04D487125C0FFC100C6AFA6 /* CategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04D487025C0FFC100C6AFA6 /* CategoryController.swift */; };
 		D04E9C2325C68394002FBAD3 /* LWGradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04E9C2225C68394002FBAD3 /* LWGradientButton.swift */; };
+		D04F9B0725C9400A000F630B /* policy.html in Resources */ = {isa = PBXBuildFile; fileRef = D04F9B0625C9400A000F630B /* policy.html */; };
+		D04F9B0A25C9400E000F630B /* protocol.html in Resources */ = {isa = PBXBuildFile; fileRef = D04F9B0925C9400E000F630B /* protocol.html */; };
+		D04F9B0D25C94235000F630B /* ProtocolController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F9B0C25C94235000F630B /* ProtocolController.swift */; };
+		D04F9B1025C94332000F630B /* PolicyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F9B0F25C94332000F630B /* PolicyController.swift */; };
 		D050510425C90B530075E963 /* LocalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D050510325C90B530075E963 /* LocalController.swift */; };
 		D050510725C90C7C0075E963 /* MyDownloadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D050510625C90C7C0075E963 /* MyDownloadController.swift */; };
 		D050510A25C90CA30075E963 /* LocalPaperController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D050510925C90CA30075E963 /* LocalPaperController.swift */; };
@@ -71,6 +75,10 @@
 		D04D485C25C0F0F000C6AFA6 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		D04D487025C0FFC100C6AFA6 /* CategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryController.swift; sourceTree = "<group>"; };
 		D04E9C2225C68394002FBAD3 /* LWGradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LWGradientButton.swift; sourceTree = "<group>"; };
+		D04F9B0625C9400A000F630B /* policy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = policy.html; sourceTree = "<group>"; };
+		D04F9B0925C9400E000F630B /* protocol.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = protocol.html; sourceTree = "<group>"; };
+		D04F9B0C25C94235000F630B /* ProtocolController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolController.swift; sourceTree = "<group>"; };
+		D04F9B0F25C94332000F630B /* PolicyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyController.swift; sourceTree = "<group>"; };
 		D050510325C90B530075E963 /* LocalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalController.swift; sourceTree = "<group>"; };
 		D050510625C90C7C0075E963 /* MyDownloadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDownloadController.swift; sourceTree = "<group>"; };
 		D050510925C90CA30075E963 /* LocalPaperController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPaperController.swift; sourceTree = "<group>"; };
@@ -236,6 +244,8 @@
 				D050511225C92ABB0075E963 /* MoreTypeController.swift */,
 				D050510325C90B530075E963 /* LocalController.swift */,
 				D050510625C90C7C0075E963 /* MyDownloadController.swift */,
+				D04F9B0C25C94235000F630B /* ProtocolController.swift */,
+				D04F9B0F25C94332000F630B /* PolicyController.swift */,
 				D050510925C90CA30075E963 /* LocalPaperController.swift */,
 				D06859CA25A5A24B00848477 /* CCTabBarController.h */,
 				D06859CB25A5A24B00848477 /* CCTabBarController.m */,
@@ -260,6 +270,8 @@
 		D08EE20F2595C29000F0279D = {
 			isa = PBXGroup;
 			children = (
+				D04F9B0925C9400E000F630B /* protocol.html */,
+				D04F9B0625C9400A000F630B /* policy.html */,
 				D08EE21A2595C29000F0279D /* Wallpaper */,
 				D08EE2192595C29000F0279D /* Products */,
 				139AD757393CDE6E17716447 /* Pods */,
@@ -373,7 +385,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D04F9B0725C9400A000F630B /* policy.html in Resources */,
 				D0B8D93525C7F75000B32726 /* luanch.png in Resources */,
+				D04F9B0A25C9400E000F630B /* protocol.html in Resources */,
 				D08EE2282595C29300F0279D /* LaunchScreen.storyboard in Resources */,
 				D08EE2252595C29300F0279D /* Assets.xcassets in Resources */,
 				D08EE2232595C29000F0279D /* Main.storyboard in Resources */,
@@ -471,6 +485,7 @@
 				D08EE2442595D39800F0279D /* MyTabBarController.swift in Sources */,
 				D08EE24D2595D64800F0279D /* MoreController.swift in Sources */,
 				D05CCE8F259C55A8005BF42B /* QuickTimeMov.swift in Sources */,
+				D04F9B0D25C94235000F630B /* ProtocolController.swift in Sources */,
 				D08EE27E25970BC200F0279D /* PopularController.swift in Sources */,
 				D04D487125C0FFC100C6AFA6 /* CategoryController.swift in Sources */,
 				D08EE24A2595D63900F0279D /* HomeController.swift in Sources */,
@@ -493,6 +508,7 @@
 				D05CCE3F259B1559005BF42B /* CommonController.swift in Sources */,
 				D05CCE92259C5634005BF42B /* DTOtherMacro.swift in Sources */,
 				D05CCE3C259AFFEC005BF42B /* SearchCell.swift in Sources */,
+				D04F9B1025C94332000F630B /* PolicyController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

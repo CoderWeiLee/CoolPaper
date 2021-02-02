@@ -349,6 +349,23 @@ class MyController: UIViewController {
             make.top.equalTo(view).offset(statusBarHeight + 11)
         }
         
+        //检查用户是否已经登录
+        if UserDefaults.standard.value(forKey: "token") != nil {
+            loginBtn.isUserInteractionEnabled = false
+            loginLabel.text = UserDefaults.standard.value(forKey: "username") as? String
+            //2.隐藏提示文字
+            loginTipsLabel.isHidden = true
+            loginBtn.isHidden = true
+        }else {
+            //退出登录设置为半透明
+            loginBtn.isHidden = false
+            loginBtn.isUserInteractionEnabled = true
+            loginLabel.text = "点击登录"
+            loginTipsLabel.isHidden = false
+            loginoutBtn.alpha = 0.41
+            loginoutBtn.isUserInteractionEnabled = false
+        }
+        
     }
     
     @objc func loginAction() {
@@ -382,17 +399,38 @@ class MyController: UIViewController {
     
     //用户协议
     @objc func protocolAction() {
-        
+        let vc = ProtocolController()
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     //隐私政策
     @objc func policyAction() {
-        
+        let vc = PolicyController()
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     //退出登录
     @objc func loginoutAction() {
-        
+        //退出登录设置为半透明
+        loginBtn.isHidden = false
+        loginBtn.isUserInteractionEnabled = true
+        loginLabel.text = "点击登录"
+        loginTipsLabel.isHidden = false
+        loginoutBtn.alpha = 0.41
+        loginoutBtn.isUserInteractionEnabled = false
+        //清除userdefaults 内容
+        UserDefaults.standard.removeObject(forKey: "id")
+        UserDefaults.standard.removeObject(forKey: "username")
+        UserDefaults.standard.removeObject(forKey: "nickname")
+        UserDefaults.standard.removeObject(forKey: "mobile")
+        UserDefaults.standard.removeObject(forKey: "avatar")
+        UserDefaults.standard.removeObject(forKey: "score")
+        UserDefaults.standard.removeObject(forKey: "token")
+        UserDefaults.standard.removeObject(forKey: "createtime")
+        UserDefaults.standard.removeObject(forKey: "expiretime")
+        UserDefaults.standard.removeObject(forKey: "expires_in")
     }
     
     //登录成功
@@ -408,7 +446,9 @@ class MyController: UIViewController {
         loginTipsLabel.isHidden = true
         //3.退出登录alpha设置为1
         loginoutBtn.alpha = 1
+        loginBtn.isHidden = true
         loginoutBtn.isUserInteractionEnabled = true
+        
     }
     
     /// 编码
