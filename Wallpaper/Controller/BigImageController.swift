@@ -291,9 +291,17 @@ class BigImageController: UIViewController {
         }
     }
     
+    //下载
     @objc func downloadAction() {
-        
-        
+        KingfisherManager.shared.downloader.downloadImage(with: URL(string: model?.url ?? "")!, options: nil, completionHandler:  { [self] (result) in
+            switch result {
+            case .success(let value):
+                //保存图片到系统相册
+                UIImageWriteToSavedPhotosAlbum(value.image, self, #selector(savedPhotosAlbum(image:didFinishSavingWithError:contextInfo:)), nil)
+            case .failure(let error):
+                ProgressHUD.showError(error.errorDescription)
+            }
+        })
     }
     
     @objc func savedPhotosAlbum(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: AnyObject) {
