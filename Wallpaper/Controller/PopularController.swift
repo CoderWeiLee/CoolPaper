@@ -49,7 +49,7 @@ class PopularController: UIViewController {
     //下拉刷新
     @objc func loadData() -> Void {
         currentPage = 1
-        let login = Login(appkey: "mobile-iOS", page: "\(currentPage ?? 1)", pagesize: "20")
+        let login = Login(appkey: "035d4cebaaf8bc9d9f5aa782368224ac", page: "\(currentPage ?? 1)", pagesize: "20")
         AF.request(hotURL, method: .post, parameters: login).responseJSON {[self] (response) in
             if let responseModel = (response.data?.kj.model(ResponseModel.self)){
                 self.dataArray = NSMutableArray(array: (responseModel.data?.data)!)
@@ -62,7 +62,7 @@ class PopularController: UIViewController {
     //上拉加载更多
     @objc func loadMore() -> Void {
         currentPage = currentPage ?? 1 + 1
-        let login = Login(appkey: "mobile-iOS", page: "\(currentPage ?? 1)", pagesize: "20")
+        let login = Login(appkey: "035d4cebaaf8bc9d9f5aa782368224ac", page: "\(currentPage ?? 1)", pagesize: "20")
         AF.request(hotURL, method: .post, parameters: login).response {[self] (response) in
             if let responseModel = (response.data?.kj.model(ResponseModel.self)){
                 self.currentPage = NSInteger(responseModel.data?.current_page ?? "1")

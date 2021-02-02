@@ -15,7 +15,7 @@ struct CategoryResModel: Convertible, Hashable {
 }
 
 struct CategoryModel: Convertible, Hashable {
-    var category_id: String?
+    var id: String?
     var name: String?
 }
 

@@ -12,6 +12,7 @@ import KakaJSON
 class HomeController: UIViewController, JXSegmentedViewDelegate, JXSegmentedListContainerViewDataSource {
     struct Category: Encodable {
         let appkey: String
+        let video: String
     }
     var segmentedView: JXSegmentedView!
     var segmentedDataSource: JXSegmentedTitleDataSource!
@@ -84,7 +85,7 @@ class HomeController: UIViewController, JXSegmentedViewDelegate, JXSegmentedList
         }
             
         //发起请求查询分页的数据
-        let category = Category(appkey: "mobile-iOS")
+        let category = Category(appkey: "035d4cebaaf8bc9d9f5aa782368224ac", video: "0")
             AF.request(categoryListURL, method: .post, parameters: category).responseJSON {[self] (response) in
             if let responseModel = (response.data?.kj.model(CategoryResModel.self)){
                 self.dataArray = Array(responseModel.data!)

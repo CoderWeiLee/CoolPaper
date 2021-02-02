@@ -16,6 +16,7 @@ struct ResponseModel: Convertible, Hashable {
 struct ImageModel: Convertible, Hashable {
     var id: String?
     var url: String?
+    var originurl: String?
     var views: String?
     var fav: String?
 }

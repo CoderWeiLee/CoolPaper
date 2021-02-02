@@ -64,7 +64,7 @@ class CollectionCell: UICollectionViewCell {
     var imageModel: ImageModel? {
         didSet {
             livePhotoView.isHidden = true
-            imgV.kf.setImage(with: URL(string: imageModel?.url ?? ""))
+            imgV.kf.setImage(with: URL(string: imageModel?.originurl ?? ""))
             likesLabel.text = imageModel?.views
         }
     }

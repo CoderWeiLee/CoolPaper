@@ -15,7 +15,7 @@ let searchH = searchW * 2
 class SearchController: UIViewController {
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: moreW, height: moreH)
+        layout.itemSize = CGSize(width: 100, height: 100)
         layout.minimumLineSpacing = 3
         layout.minimumInteritemSpacing = 3
         layout.headerReferenceSize = CGSize(width: kScreenW - 6, height: 30)

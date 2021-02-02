@@ -7,7 +7,7 @@
 
 import Foundation
 //请求域名
-let baseURL = "https://bzdq.itqingjiao.com"
+let baseURL = "https://2041a8770cfc5833.itqingjiao.com"
 
 /*----------------------------首页接口---------------------------*/
 //首页
