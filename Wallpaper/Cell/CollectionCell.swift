@@ -97,6 +97,16 @@ class CollectionCell: UICollectionViewCell {
             likesLabel.text = imageModel?.views
         }
     }
+    
+   public func showWithFileName(_ name: String) {
+        livePhotoView.isHidden = false
+        livePhotoView.delegate = self
+        let head = name.prefix(name.count - 4)
+        let imgPath = head + ".JPG"
+        skeletonLayer.stopSliding()
+        loadLivePhoto(with: String(imgPath), with: name)
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         skeletonLayer = CAGradientLayer()
