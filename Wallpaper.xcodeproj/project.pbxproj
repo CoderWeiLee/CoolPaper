@@ -15,9 +15,9 @@
 		D04D487125C0FFC100C6AFA6 /* CategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04D487025C0FFC100C6AFA6 /* CategoryController.swift */; };
 		D04E9C2325C68394002FBAD3 /* LWGradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04E9C2225C68394002FBAD3 /* LWGradientButton.swift */; };
 		D04F9B0725C9400A000F630B /* policy.html in Resources */ = {isa = PBXBuildFile; fileRef = D04F9B0625C9400A000F630B /* policy.html */; };
-		D04F9B0A25C9400E000F630B /* protocol.html in Resources */ = {isa = PBXBuildFile; fileRef = D04F9B0925C9400E000F630B /* protocol.html */; };
 		D04F9B0D25C94235000F630B /* ProtocolController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F9B0C25C94235000F630B /* ProtocolController.swift */; };
 		D04F9B1025C94332000F630B /* PolicyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F9B0F25C94332000F630B /* PolicyController.swift */; };
+		D04F9B1425C94961000F630B /* protocol.html in Resources */ = {isa = PBXBuildFile; fileRef = D04F9B1325C94961000F630B /* protocol.html */; };
 		D050510425C90B530075E963 /* LocalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D050510325C90B530075E963 /* LocalController.swift */; };
 		D050510725C90C7C0075E963 /* MyDownloadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D050510625C90C7C0075E963 /* MyDownloadController.swift */; };
 		D050510A25C90CA30075E963 /* LocalPaperController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D050510925C90CA30075E963 /* LocalPaperController.swift */; };
@@ -76,9 +76,9 @@
 		D04D487025C0FFC100C6AFA6 /* CategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryController.swift; sourceTree = "<group>"; };
 		D04E9C2225C68394002FBAD3 /* LWGradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LWGradientButton.swift; sourceTree = "<group>"; };
 		D04F9B0625C9400A000F630B /* policy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = policy.html; sourceTree = "<group>"; };
-		D04F9B0925C9400E000F630B /* protocol.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = protocol.html; sourceTree = "<group>"; };
 		D04F9B0C25C94235000F630B /* ProtocolController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolController.swift; sourceTree = "<group>"; };
 		D04F9B0F25C94332000F630B /* PolicyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyController.swift; sourceTree = "<group>"; };
+		D04F9B1325C94961000F630B /* protocol.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = protocol.html; sourceTree = "<group>"; };
 		D050510325C90B530075E963 /* LocalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalController.swift; sourceTree = "<group>"; };
 		D050510625C90C7C0075E963 /* MyDownloadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDownloadController.swift; sourceTree = "<group>"; };
 		D050510925C90CA30075E963 /* LocalPaperController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPaperController.swift; sourceTree = "<group>"; };
@@ -270,8 +270,8 @@
 		D08EE20F2595C29000F0279D = {
 			isa = PBXGroup;
 			children = (
-				D04F9B0925C9400E000F630B /* protocol.html */,
 				D04F9B0625C9400A000F630B /* policy.html */,
+				D04F9B1325C94961000F630B /* protocol.html */,
 				D08EE21A2595C29000F0279D /* Wallpaper */,
 				D08EE2192595C29000F0279D /* Products */,
 				139AD757393CDE6E17716447 /* Pods */,
@@ -387,7 +387,7 @@
 			files = (
 				D04F9B0725C9400A000F630B /* policy.html in Resources */,
 				D0B8D93525C7F75000B32726 /* luanch.png in Resources */,
-				D04F9B0A25C9400E000F630B /* protocol.html in Resources */,
+				D04F9B1425C94961000F630B /* protocol.html in Resources */,
 				D08EE2282595C29300F0279D /* LaunchScreen.storyboard in Resources */,
 				D08EE2252595C29300F0279D /* Assets.xcassets in Resources */,
 				D08EE2232595C29000F0279D /* Main.storyboard in Resources */,
