@@ -107,6 +107,11 @@ class CollectionCell: UICollectionViewCell {
         loadLivePhoto(with: String(imgPath), with: name)
     }
     
+    public func showWithImageFileName(_ name: String) {
+        livePhotoView.isHidden = true
+        imgV.image = UIImage(contentsOfFile: name)
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         skeletonLayer = CAGradientLayer()

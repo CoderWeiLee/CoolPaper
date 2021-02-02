@@ -26,6 +26,12 @@ class MyDownloadController: UIViewController {
         return collectionView
     }()
     
+    lazy var noDataImg: UIImageView = {
+       let imgV = UIImageView(image: UIImage(named: "noData"))
+       imgV.frame = view.bounds
+       return imgV
+    }()
+    
     var dataArray: [String]?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +58,11 @@ class MyDownloadController: UIViewController {
         }
         self.collectionView.reloadData()
         self.collectionView.mj_header?.endRefreshing()
+        if (self.dataArray?.count == 0) {
+            self.collectionView.addSubview(self.noDataImg)
+        }else {
+            self.noDataImg.removeFromSuperview()
+        }
     }
 }
 
