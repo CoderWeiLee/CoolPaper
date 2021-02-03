@@ -19,6 +19,7 @@
 		D04F9B1025C94332000F630B /* PolicyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F9B0F25C94332000F630B /* PolicyController.swift */; };
 		D04F9B1425C94961000F630B /* protocol.html in Resources */ = {isa = PBXBuildFile; fileRef = D04F9B1325C94961000F630B /* protocol.html */; };
 		D04F9B1725C94C5D000F630B /* CollectListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F9B1625C94C5D000F630B /* CollectListController.swift */; };
+		D04F9B2225C99B2C000F630B /* XViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D04F9B2125C99B2C000F630B /* XViewController.m */; };
 		D050510425C90B530075E963 /* LocalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D050510325C90B530075E963 /* LocalController.swift */; };
 		D050510725C90C7C0075E963 /* MyDownloadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D050510625C90C7C0075E963 /* MyDownloadController.swift */; };
 		D050510A25C90CA30075E963 /* LocalPaperController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D050510925C90CA30075E963 /* LocalPaperController.swift */; };
@@ -46,6 +47,7 @@
 		D06859C825A5A17200848477 /* CCTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D06859C725A5A17200848477 /* CCTabBar.m */; };
 		D06859CC25A5A24B00848477 /* CCTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D06859CB25A5A24B00848477 /* CCTabBarController.m */; };
 		D069C73B25C8EBBC00819B72 /* TypeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D069C73A25C8EBBC00819B72 /* TypeController.swift */; };
+		D07289FC25CA3BA700F6927E /* LWVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D07289FB25CA3BA700F6927E /* LWVideoModel.m */; };
 		D08EE21C2595C29000F0279D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EE21B2595C29000F0279D /* AppDelegate.swift */; };
 		D08EE2202595C29000F0279D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EE21F2595C29000F0279D /* ViewController.swift */; };
 		D08EE2232595C29000F0279D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D08EE2212595C29000F0279D /* Main.storyboard */; };
@@ -81,6 +83,8 @@
 		D04F9B0F25C94332000F630B /* PolicyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyController.swift; sourceTree = "<group>"; };
 		D04F9B1325C94961000F630B /* protocol.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = protocol.html; sourceTree = "<group>"; };
 		D04F9B1625C94C5D000F630B /* CollectListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectListController.swift; sourceTree = "<group>"; };
+		D04F9B2025C99B2C000F630B /* XViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XViewController.h; sourceTree = "<group>"; };
+		D04F9B2125C99B2C000F630B /* XViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XViewController.m; sourceTree = "<group>"; };
 		D050510325C90B530075E963 /* LocalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalController.swift; sourceTree = "<group>"; };
 		D050510625C90C7C0075E963 /* MyDownloadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDownloadController.swift; sourceTree = "<group>"; };
 		D050510925C90CA30075E963 /* LocalPaperController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPaperController.swift; sourceTree = "<group>"; };
@@ -112,6 +116,8 @@
 		D06859CA25A5A24B00848477 /* CCTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTabBarController.h; sourceTree = "<group>"; };
 		D06859CB25A5A24B00848477 /* CCTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTabBarController.m; sourceTree = "<group>"; };
 		D069C73A25C8EBBC00819B72 /* TypeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeController.swift; sourceTree = "<group>"; };
+		D07289FA25CA3BA700F6927E /* LWVideoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LWVideoModel.h; sourceTree = "<group>"; };
+		D07289FB25CA3BA700F6927E /* LWVideoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LWVideoModel.m; sourceTree = "<group>"; };
 		D08EE2182595C29000F0279D /* Wallpaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wallpaper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D08EE21B2595C29000F0279D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D08EE21F2595C29000F0279D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -253,6 +259,10 @@
 				D06859CA25A5A24B00848477 /* CCTabBarController.h */,
 				D06859CB25A5A24B00848477 /* CCTabBarController.m */,
 				D08EE2432595D39800F0279D /* MyTabBarController.swift */,
+				D04F9B2025C99B2C000F630B /* XViewController.h */,
+				D04F9B2125C99B2C000F630B /* XViewController.m */,
+				D07289FA25CA3BA700F6927E /* LWVideoModel.h */,
+				D07289FB25CA3BA700F6927E /* LWVideoModel.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -475,6 +485,7 @@
 				D08EE2472595D4B300F0279D /* MyNavigationController.swift in Sources */,
 				D05CCE8C259C559E005BF42B /* JPEG.swift in Sources */,
 				D05A83B725A473D60016910D /* NSBundle+changeBundleId.m in Sources */,
+				D07289FC25CA3BA700F6927E /* LWVideoModel.m in Sources */,
 				D08EE27B25970BB400F0279D /* RecommendController.swift in Sources */,
 				D08EE21C2595C29000F0279D /* AppDelegate.swift in Sources */,
 				D08EE2C425984F6400F0279D /* Config.swift in Sources */,
@@ -510,6 +521,7 @@
 				D0F2084B25BEA71B0032B17D /* User.swift in Sources */,
 				D04E9C2325C68394002FBAD3 /* LWGradientButton.swift in Sources */,
 				D05CCE3F259B1559005BF42B /* CommonController.swift in Sources */,
+				D04F9B2225C99B2C000F630B /* XViewController.m in Sources */,
 				D05CCE92259C5634005BF42B /* DTOtherMacro.swift in Sources */,
 				D05CCE3C259AFFEC005BF42B /* SearchCell.swift in Sources */,
 				D04F9B1025C94332000F630B /* PolicyController.swift in Sources */,

@@ -6,145 +6,121 @@
 //
 
 import UIKit
-import JXSegmentedView
+//import JXSegmentedView
 import Alamofire
 import KakaJSON
-class MoreController: UIViewController , JXSegmentedViewDelegate, JXSegmentedListContainerViewDataSource{
+class MoreController: UIViewController{
+    var scrollView: UIScrollView!
+    var height: CGFloat = 0
+    var beginY: CGFloat = 0
+    var isBeginScroll: Bool = false //第一次按下
+    var isBeginAnimationScroll: Bool = false //开始结束滑动scroll动画
+    var isXiangHuaDong: Bool = false //
     struct Category: Encodable {
         let appkey: String
         let video: String
     }
-    var segmentedView: JXSegmentedView!
-    var segmentedDataSource: JXSegmentedTitleDataSource!
-    var listContainerView: JXSegmentedListContainerView!
-    var dataArray: Array<CategoryModel>?
-    var menuImageView: UIImageView!
-    var menuBtn: UIButton!
         override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: true)
-        view.backgroundColor = .systemBackground
-        //1、初始化JXSegmentedView
-        segmentedView = JXSegmentedView()
-            
-        //2、配置数据源
-        //segmentedViewDataSource一定要通过属性强持有！！！！！！！！！
-        segmentedDataSource = JXSegmentedTitleDataSource()
-        segmentedDataSource.isItemSpacingAverageEnabled = false
-        segmentedDataSource.itemWidth = 30
-        segmentedDataSource.titles = ["推荐", "热门"]
-        segmentedDataSource.titleNormalColor = .white
-        segmentedDataSource.titleNormalFont = UIFont.systemFont(ofSize: 14)
-        segmentedDataSource.titleSelectedFont = UIFont.systemFont(ofSize: 17)
-        segmentedDataSource.titleSelectedColor = .white
-        segmentedDataSource.isTitleColorGradientEnabled = true
-        segmentedView.dataSource = segmentedDataSource
-            
-        //3、配置指示器
-        let indicator = JXSegmentedIndicatorLineView()
-            indicator.indicatorColor = .white
-        indicator.indicatorWidth = JXSegmentedViewAutomaticDimension
-        indicator.lineStyle = .lengthen
-        indicator.verticalOffset = 5
-        segmentedView.indicators = [indicator]
-            
-        //4、配置JXSegmentedView的属性
-        view.addSubview(segmentedView)
-            
-        //5、初始化JXSegmentedListContainerView
-        listContainerView = JXSegmentedListContainerView(dataSource: self)
-        view.addSubview(listContainerView)
-            
-        //6、将listContainerView.scrollView和segmentedView.contentScrollView进行关联
-        segmentedView.listContainer = listContainerView
+        view.backgroundColor = .black
+        scrollView = UIScrollView(frame: view.bounds)
+        scrollView.contentSize = CGSize(width: view.width, height: view.height * 2)
+        scrollView.delegate = self
+        loadResouses(0)
+        view.addSubview(scrollView)
+        addObserver(self, forKeyPath: "isBeginScroll", options: .new, context: nil)
+            loadResouses(scrollView.height)
         
-        //7.添加渐变层
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenW, height: statusBarHeight + 50)
-        gradientLayer.colors = [UIColor(hexString: "#FF62A5").cgColor, UIColor(hexString: "#FF632E").cgColor]
-        gradientLayer.locations = [0,1]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 1)
-        gradientLayer.endPoint = CGPoint(x: 1, y: 0)
-        view.layer.insertSublayer(gradientLayer, at: 0)
+        
 
-        //8.添加选择更多的按钮
-        menuImageView = UIImageView(image: UIImage(named: "menu"))
-        view.addSubview(menuImageView)
-        menuImageView.snp.makeConstraints { (make) in
-            make.right.equalTo(view).offset(-19)
-            make.centerY.equalTo(segmentedView);
-        }
-            
-        menuBtn = UIButton(type: .custom)
-        menuBtn.addTarget(self, action: #selector(menuAction), for: .touchUpInside)
-        view.addSubview(menuBtn)
-        menuBtn.snp.makeConstraints { (make) in
-            make.top.right.equalTo(view)
-            make.height.equalTo(statusBarHeight + 50)
-            make.width.equalTo(100)
-        }
+      
             
         //发起请求查询分页的数据
         let category = Category(appkey: "035d4cebaaf8bc9d9f5aa782368224ac", video: "1")
             AF.request(categoryListURL, method: .post, parameters: category).responseJSON {[self] (response) in
             if let responseModel = (response.data?.kj.model(CategoryResModel.self)){
-                self.dataArray = Array(responseModel.data!)
-//                self.segmentedDataSource.titles.append(contentsOf: self.dataArray.flatMap {
-//                    $0.map {$0.name!}
-//                }!)
-//                self.segmentedView.reloadData()
+//                self.dataArray = Array(responseModel.data!)
             }
         }
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        segmentedView.frame = CGRect(x: 0, y: statusBarHeight, width: view.bounds.size.width, height: 50)
-        listContainerView.frame = CGRect(x: 0, y: statusBarHeight + 50, width: view.bounds.size.width, height: view.bounds.size.height - statusBarHeight - 50)
+    
+    /// <#Description#>
+    /// - Parameter startY: startY为当前屏幕显示的位置起始y坐标
+    func loadResouses(_ startY: CGFloat) {
+        let label = UILabel(frame: CGRect(x: view.width - 112, y: startY + scrollView.height - 386 , width: 90, height: 9))
+        label.text = "1024"
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.textAlignment = .right
+        label.textColor = .white
+        scrollView.addSubview(label)
     }
     
-    @objc func menuAction() {
-        let typeVc = MoreTypeController()
-        typeVc.hidesBottomBarWhenPushed = true
-        typeVc.dataArray = self.dataArray
-        navigationController?.pushViewController(typeVc, animated: true)
-    }
-}
-
-
-extension MoreController {
-    //点击选中或者滚动选中都会调用该方法。适用于只关心选中事件，而不关心具体是点击还是滚动选中的情况。
-    func segmentedView(_ segmentedView: JXSegmentedView, didSelectedItemAt index: Int) {}
-    
-    // 点击选中的情况才会调用该方法
-    func segmentedView(_ segmentedView: JXSegmentedView, didClickSelectedItemAt index: Int) {}
-    
-    // 滚动选中的情况才会调用该方法
-    func segmentedView(_ segmentedView: JXSegmentedView, didScrollSelectedItemAt index: Int) {}
-    
-    // 正在滚动中的回调
-    func segmentedView(_ segmentedView: JXSegmentedView, scrollingFrom leftIndex: Int, to rightIndex: Int, percent: CGFloat) {}
-}
-
-extension MoreController {
-    //返回列表的数量
-    func numberOfLists(in listContainerView: JXSegmentedListContainerView) -> Int {
-        return segmentedDataSource.titles.count
-    }
-    
-    //返回遵从`JXSegmentedListContainerViewListDelegate`协议的实例
-    func listContainerView(_ listContainerView: JXSegmentedListContainerView, initListAt index: Int) -> JXSegmentedListContainerViewListDelegate {
-        switch index {
-        case 0:
-            return MoreRecommengController()
-        case 1:
-            return MorePopularController()
-        default:
-            let categoryVC = CategoryController()
-            categoryVC.model = self.dataArray?[index-2]
-            return categoryVC
-            
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if !isBeginScroll {
+            let offsetY = scrollView.contentOffset.y
+            if (!(abs(offsetY - beginY) > scrollView.height / 3.0)  && !isXiangHuaDong) {
+                scrollView.setContentOffset(CGPoint(x: 0, y: beginY), animated: true)
+                return
+            }
+            let scale = NSInteger(offsetY / scrollView.height)
+            if offsetY >= beginY {
+                if CGFloat(scale + 2) * scrollView.height >= scrollView.contentSize.height {
+                    scrollView.contentSize = CGSize(width: view.width, height: scrollView.contentSize.height + scrollView.height)
+                }
+                
+                //每次滑动scrollView自动扩容
+                scrollView.setContentOffset(CGPoint(x: 0, y: CGFloat(scale + 1) * scrollView.height), animated: true)
+                loadResouses(CGFloat(scale + 2) * scrollView.height)
+            }
+            if offsetY < beginY {
+                if beginY >= view.height {
+                    scrollView.setContentOffset(CGPoint(x: 0, y: CGFloat(scale) * scrollView.height), animated: true)
+                }
+            }
         }
     }
+}
+
+extension MoreController: UIScrollViewDelegate {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        isBeginScroll = true
+        beginY = scrollView.contentOffset.y
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        //停下自动滑动scrollView
+        scrollView.setContentOffset(velocity, animated: true)
+        //结束滑动scrollView
+        isBeginScroll = false
+        //开始滑动动画
+        isBeginAnimationScroll = true
+        if (abs(velocity.y) > 0.3) {
+            isXiangHuaDong = true
+        }else {
+            isXiangHuaDong = false
+        }
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        scrollView.setContentOffset(.zero, animated: true)
+        //结束滑动scrollView
+        isBeginScroll = false
+        //开始滑动动画
+        isBeginAnimationScroll = true
+    }
+    
+    //结束滑动动画
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        if isBeginAnimationScroll {
+            let currentY = scrollView.contentOffset.y
+            let page = NSInteger(currentY / scrollView.height)
+            //在这里可以处理滑动结束一些视频自动播放逻辑
+        }
+        isBeginAnimationScroll = false
+    }
+    
+    
+    
 }

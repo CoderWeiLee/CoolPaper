@@ -1,0 +1,6 @@
+framework module JQFMDB {
+  umbrella header "JQFMDB-umbrella.h"
+
+  export *
+  module * { export * }
+}

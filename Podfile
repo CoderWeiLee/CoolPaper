@@ -19,6 +19,8 @@ target 'Wallpaper' do
   pod 'MJRefresh'
   pod 'SDWebImage'
   pod 'JQFMDB'
+  pod 'AFNetworking'
+  pod 'MJExtension'
   # Pods for Wallpaper
 
 end

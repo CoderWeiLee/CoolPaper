@@ -175,13 +175,17 @@ code_sign_if_enabled() {
 }
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/HXPHPicker/HXPHPicker.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/JKSwiftExtension/JKSwiftExtension.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/JQFMDB/JQFMDB.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/JXSegmentedView/JXSegmentedView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/KakaJSON/KakaJSON.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProgressHUD/ProgressHUD.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
@@ -189,13 +193,17 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/HXPHPicker/HXPHPicker.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/JKSwiftExtension/JKSwiftExtension.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/JQFMDB/JQFMDB.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/JXSegmentedView/JXSegmentedView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/KakaJSON/KakaJSON.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProgressHUD/ProgressHUD.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"

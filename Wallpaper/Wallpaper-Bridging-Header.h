@@ -7,3 +7,5 @@
 #import "CCTabBarController.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <SDWebImage/SDWebImage.h>
+#import "XViewController.h"
+#import <AFNetworking/AFNetWorking.h>

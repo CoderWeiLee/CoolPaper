@@ -24,7 +24,7 @@ class MyTabBarController: UITabBarController {
     
     private func addChildViewControllers() {
         setChildViewController(HomeController(), title: "首页", imageName: "tab-recommend")
-        setChildViewController(MoreController(), title: "动态", imageName: "tab-explore")
+        setChildViewController(XViewController(), title: "动态", imageName: "tab-explore")
 //        setChildViewController(DiscoverController(), title: "社区", imageName: "post_normal")
         setChildViewController(LocalController(), title: "本地", imageName: "tab-social")
         setChildViewController(MyController(), title: "我的", imageName: "tab-mine")
