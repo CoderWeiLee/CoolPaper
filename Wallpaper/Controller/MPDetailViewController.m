@@ -12,7 +12,11 @@
 #import <ZFPlayer.h>
 #import <ZFPlayerControlView.h>
 #import "MPTransition.h"
-
+#import <AFNetworking/AFNetworking.h>
+#import <MJRefresh/MJRefresh.h>
+#import <MJExtension/MJExtension.h>
+#import <MBProgressHUD/MBProgressHUD.h>
+#import "LWVideoModel.h"
 static NSString *kIdentifier = @"kIdentifier";
 
 @interface MPDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -24,6 +28,9 @@ static NSString *kIdentifier = @"kIdentifier";
 @property (nonatomic, strong) ZFPlayerControlView *preControlView;
 @property (nonatomic) BOOL isInited;
 @property (nonatomic) BOOL isPassPlayer;
+@property (nonatomic, assign) NSInteger currentPage;
+@property (nonatomic, assign) NSInteger totalPage;
+@property (nonatomic, strong) NSMutableArray *dataArray;
 @end
 
 @implementation MPDetailViewController
@@ -33,13 +40,17 @@ static NSString *kIdentifier = @"kIdentifier";
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.tableView];
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
+    self.tableView.mj_header.automaticallyChangeAlpha = YES;
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMore)];
+    self.tableView.mj_footer.automaticallyChangeAlpha = YES;
     [self.view addSubview:self.backBtn];
     
     @weakify(self)
     if (!self.player) {
         self.player = [MPPlayerController playrWithContainerView:[UIView new]];
-        [self requestData];
-        self.player.playableArray = self.dataSource;
+//        [self requestData];
+//        self.player.playableArray = self.dataSource;
     }else {
         for(UIView *subView in self.player.currentPlayerManager.view.subviews) {
             [subView removeFromSuperview];
@@ -55,9 +66,85 @@ static NSString *kIdentifier = @"kIdentifier";
             self.player.currentPlayerManager.scalingMode = ZFPlayerScalingModeAspectFill;
         }
     };
-    [self.tableView reloadData];
+    [self.tableView.mj_header beginRefreshing];
+//    [self.tableView reloadData];
     self.playingIndexPath = [NSIndexPath indexPathForRow:self.index inSection:0];
-    [self.tableView scrollToRowAtIndexPath:self.playingIndexPath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+//    [self.tableView scrollToRowAtIndexPath:self.playingIndexPath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+}
+
+#pragma mark - 刷新数据
+- (void)loadData {
+    self.currentPage = 1;
+    //发起网络请求
+    NSString *urlString = @"https://2041a8770cfc5833.itqingjiao.com/api/index/index";
+    NSDictionary *params = @{@"appkey": @"035d4cebaaf8bc9d9f5aa782368224ac", @"page": @(self.currentPage), @"pagesize": @20, @"video": @1};
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager POST:urlString parameters:params headers:nil progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary *response = (NSDictionary *)responseObject;
+        self.dataArray = [LWVideoModel mj_objectArrayWithKeyValuesArray:response[@"data"][@"data"]];
+        //做一个模型转换
+        NSMutableArray *resultArray = [NSMutableArray array];
+        for (LWVideoModel *model in self.dataArray) {
+            ZFTableData *data = [[ZFTableData alloc] init];
+            data.video_url = model.originurl;
+            data.thumbnail_url = model.url;
+            [resultArray addObject:data];
+        }
+        self.player.playableArray = resultArray;
+        self.dataSource = resultArray;
+        [self.tableView reloadData];
+        [self.tableView.mj_header endRefreshing];
+        [self startPlay];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.label.text = error.localizedDescription;
+        hud.mode = MBProgressHUDModeText;
+        [hud showAnimated:YES];
+        [hud hideAnimated:YES afterDelay:1.0];
+    }];
+    
+}
+
+- (void)loadMore {
+    self.currentPage = self.currentPage + 1;
+    //发起网络请求
+    NSString *urlString = @"https://2041a8770cfc5833.itqingjiao.com/api/index/index";
+    NSDictionary *params = @{@"appkey": @"035d4cebaaf8bc9d9f5aa782368224ac", @"page": @(self.currentPage), @"pagesize": @20, @"video": @1};
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager POST:urlString parameters:params headers:nil progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary *response = (NSDictionary *)responseObject;
+        self.totalPage = [response[@"data"][@"total"] integerValue];
+        NSArray *temp = [LWVideoModel mj_objectArrayWithKeyValuesArray:response[@"data"][@"data"]];
+        [self.dataArray addObjectsFromArray:temp];
+        //做一个模型转换
+        NSMutableArray *resultArray = [NSMutableArray array];
+        for (LWVideoModel *model in self.dataArray) {
+            ZFTableData *data = [[ZFTableData alloc] init];
+            data.video_url = model.originurl;
+            data.thumbnail_url = model.url;
+            [resultArray addObject:data];
+        }
+        self.player.playableArray = resultArray;
+        self.dataSource = resultArray;
+//        self.dataSource
+        [self.tableView reloadData];
+        [self startPlay];
+        if (self.currentPage >= self.totalPage) {
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
+        }else {
+            [self.tableView.mj_footer endRefreshing];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.label.text = error.localizedDescription;
+        hud.mode = MBProgressHUDModeText;
+        [hud showAnimated:YES];
+        [hud hideAnimated:YES afterDelay:1.0];
+    }];
 }
 
 - (void)viewWillLayoutSubviews {
@@ -77,24 +164,23 @@ static NSString *kIdentifier = @"kIdentifier";
     [self.navigationController setNavigationBarHidden:NO animated:animated];
 }
 
-- (void)requestData {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"data" ofType:@"json"];
-    NSData *data = [NSData dataWithContentsOfFile:path];
-    NSDictionary *rootDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-    
-    self.dataSource = @[].mutableCopy;
-    NSArray *videoList = [rootDict objectForKey:@"list"];
-    for (NSDictionary *dataDic in videoList) {
-        ZFTableData *data = [[ZFTableData alloc] init];
-        [data setValuesForKeysWithDictionary:dataDic];
-        [self.dataSource addObject:data];
-    }
-    self.player.playableArray = self.dataSource;
-}
+//- (void)requestData {
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"data" ofType:@"json"];
+//    NSData *data = [NSData dataWithContentsOfFile:path];
+//    NSDictionary *rootDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+//
+//    self.dataSource = @[].mutableCopy;
+//    NSArray *videoList = [rootDict objectForKey:@"list"];
+//    for (NSDictionary *dataDic in videoList) {
+//        ZFTableData *data = [[ZFTableData alloc] init];
+//        [data setValuesForKeysWithDictionary:dataDic];
+//        [self.dataSource addObject:data];
+//    }
+//    self.player.playableArray = self.dataSource;
+//}
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
+
+- (void)startPlay {
     if (!self.isInited) {
         self.isInited = YES;
         if (self.isPassPlayer) {
