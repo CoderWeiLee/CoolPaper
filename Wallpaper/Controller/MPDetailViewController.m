@@ -44,7 +44,7 @@ static NSString *kIdentifier = @"kIdentifier";
     self.tableView.mj_header.automaticallyChangeAlpha = YES;
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMore)];
     self.tableView.mj_footer.automaticallyChangeAlpha = YES;
-    [self.view addSubview:self.backBtn];
+//    [self.view addSubview:self.backBtn];
     
     @weakify(self)
     if (!self.player) {
@@ -331,14 +331,14 @@ static NSString *kIdentifier = @"kIdentifier";
     return _controlView;
 }
 
-- (UIButton *)backBtn {
-    if (!_backBtn) {
-        _backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_backBtn setImage:[UIImage imageNamed:@"icon_titlebar_whiteback"] forState:UIControlStateNormal];
-        [_backBtn addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _backBtn;
-}
+//- (UIButton *)backBtn {
+//    if (!_backBtn) {
+//        _backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [_backBtn setImage:[UIImage imageNamed:@"icon_titlebar_whiteback"] forState:UIControlStateNormal];
+//        [_backBtn addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
+//    }
+//    return _backBtn;
+//}
 
 - (void)setPlayer:(MPPlayerController *)player
 {

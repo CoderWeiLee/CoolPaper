@@ -68,7 +68,7 @@
     min_h = min_w;
     min_x = min_view_w - min_w - 20;
     min_y = min_view_h - min_h - 80;
-    self.shareBtn.frame = CGRectMake(min_x, min_y, min_w, min_h);
+    self.shareBtn.frame = CGRectMake(min_x, min_y-100, min_w, min_h);
     
     min_w = CGRectGetWidth(self.shareBtn.frame);
     min_h = min_w;
@@ -102,8 +102,14 @@
     if (!_likeBtn) {
         _likeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_likeBtn setImage:[UIImage imageNamed:@"like"] forState:UIControlStateNormal];
+        [_likeBtn setImage:[UIImage imageNamed:@"ic_home_like_after"] forState:UIControlStateSelected];
+        [_likeBtn addTarget:self action:@selector(likeAction) forControlEvents:UIControlEventTouchUpInside];
     }
     return _likeBtn;
+}
+
+- (void)likeAction {
+    _likeBtn.selected = !_likeBtn.selected;
 }
 
 
