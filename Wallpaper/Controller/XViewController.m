@@ -12,7 +12,8 @@
 #import <MJExtension/MJExtension.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "LWVideoModel.h"
-@interface XViewController () <UIScrollViewDelegate>
+#import <ZFPlayer/ZFPlayer.h>
+@interface XViewController () <UIScrollViewDelegate, ZFPlayerMediaPlayback>
 @property (nonatomic,strong) UIScrollView *scrollView;
 
 @property (nonatomic) NSInteger height;
@@ -30,6 +31,9 @@
 @property (nonatomic, assign) NSInteger totalPage;
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
+
+@property (nonatomic, strong) ZFPlayerController *player;
+
 @end
 
 @implementation XViewController
@@ -55,6 +59,7 @@
 
         [self loadResouses:_scrollView.frame.size.height];
     [_scrollView.mj_header beginRefreshing];
+    self.player = [ZFPlayerController playerWithScrollView:self.scrollView playerManager:self containerView:self.view];
 }
 
 #pragma mark - 刷新数据
@@ -69,6 +74,7 @@
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *response = (NSDictionary *)responseObject;
         self.dataArray = [LWVideoModel mj_objectArrayWithKeyValuesArray:response[@"data"]];
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.label.text = error.localizedDescription;
@@ -116,6 +122,8 @@
     
     [self.scrollView addSubview:text];
  
+    NSInteger index = (startY / self.scrollView.frame.size.height);
+//    [self.player play]
     
 }
 
@@ -240,6 +248,10 @@
     }
     
 }
+
+
+#pragma mark - ZFPlayerMediaPlayback
+
 
 
 

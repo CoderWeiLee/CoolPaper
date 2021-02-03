@@ -48,6 +48,14 @@
 		D06859CC25A5A24B00848477 /* CCTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D06859CB25A5A24B00848477 /* CCTabBarController.m */; };
 		D069C73B25C8EBBC00819B72 /* TypeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D069C73A25C8EBBC00819B72 /* TypeController.swift */; };
 		D07289FC25CA3BA700F6927E /* LWVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D07289FB25CA3BA700F6927E /* LWVideoModel.m */; };
+		D0728A3B25CA492D00F6927E /* MPDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0728A3A25CA492D00F6927E /* MPDetailViewController.m */; };
+		D0728A3F25CA499600F6927E /* MPPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0728A3D25CA499600F6927E /* MPPlayerController.m */; };
+		D0728A4525CA4A3300F6927E /* ZFDouYinCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D0728A4425CA4A3300F6927E /* ZFDouYinCell.m */; };
+		D0728A4925CA4A4C00F6927E /* ZFDouYinControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0728A4825CA4A4C00F6927E /* ZFDouYinControlView.m */; };
+		D0728A4D25CA4A9100F6927E /* MPTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = D0728A4C25CA4A9100F6927E /* MPTransition.m */; };
+		D0728A5125CA4ABA00F6927E /* ZFTableData.m in Sources */ = {isa = PBXBuildFile; fileRef = D0728A4F25CA4ABA00F6927E /* ZFTableData.m */; };
+		D0728A8625CA4D0700F6927E /* MPlayerAttributeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0728A8425CA4D0700F6927E /* MPlayerAttributeManager.m */; };
+		D0728A8A25CA4D2B00F6927E /* MPPreLoaderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D0728A8925CA4D2B00F6927E /* MPPreLoaderModel.m */; };
 		D08EE21C2595C29000F0279D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EE21B2595C29000F0279D /* AppDelegate.swift */; };
 		D08EE2202595C29000F0279D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EE21F2595C29000F0279D /* ViewController.swift */; };
 		D08EE2232595C29000F0279D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D08EE2212595C29000F0279D /* Main.storyboard */; };
@@ -118,6 +126,23 @@
 		D069C73A25C8EBBC00819B72 /* TypeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeController.swift; sourceTree = "<group>"; };
 		D07289FA25CA3BA700F6927E /* LWVideoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LWVideoModel.h; sourceTree = "<group>"; };
 		D07289FB25CA3BA700F6927E /* LWVideoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LWVideoModel.m; sourceTree = "<group>"; };
+		D0728A3925CA492D00F6927E /* MPDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPDetailViewController.h; sourceTree = "<group>"; };
+		D0728A3A25CA492D00F6927E /* MPDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPDetailViewController.m; sourceTree = "<group>"; };
+		D0728A3D25CA499600F6927E /* MPPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPPlayerController.m; sourceTree = "<group>"; };
+		D0728A3E25CA499600F6927E /* MPPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPPlayerController.h; sourceTree = "<group>"; };
+		D0728A4125CA49B700F6927E /* MPPlayableProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPPlayableProtocol.h; sourceTree = "<group>"; };
+		D0728A4325CA4A3300F6927E /* ZFDouYinCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFDouYinCell.h; sourceTree = "<group>"; };
+		D0728A4425CA4A3300F6927E /* ZFDouYinCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFDouYinCell.m; sourceTree = "<group>"; };
+		D0728A4725CA4A4C00F6927E /* ZFDouYinControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFDouYinControlView.h; sourceTree = "<group>"; };
+		D0728A4825CA4A4C00F6927E /* ZFDouYinControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFDouYinControlView.m; sourceTree = "<group>"; };
+		D0728A4B25CA4A9100F6927E /* MPTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPTransition.h; sourceTree = "<group>"; };
+		D0728A4C25CA4A9100F6927E /* MPTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPTransition.m; sourceTree = "<group>"; };
+		D0728A4F25CA4ABA00F6927E /* ZFTableData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFTableData.m; sourceTree = "<group>"; };
+		D0728A5025CA4ABA00F6927E /* ZFTableData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFTableData.h; sourceTree = "<group>"; };
+		D0728A8425CA4D0700F6927E /* MPlayerAttributeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPlayerAttributeManager.m; sourceTree = "<group>"; };
+		D0728A8525CA4D0700F6927E /* MPlayerAttributeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPlayerAttributeManager.h; sourceTree = "<group>"; };
+		D0728A8825CA4D2B00F6927E /* MPPreLoaderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPPreLoaderModel.h; sourceTree = "<group>"; };
+		D0728A8925CA4D2B00F6927E /* MPPreLoaderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPPreLoaderModel.m; sourceTree = "<group>"; };
 		D08EE2182595C29000F0279D /* Wallpaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wallpaper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D08EE21B2595C29000F0279D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D08EE21F2595C29000F0279D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -261,6 +286,23 @@
 				D08EE2432595D39800F0279D /* MyTabBarController.swift */,
 				D04F9B2025C99B2C000F630B /* XViewController.h */,
 				D04F9B2125C99B2C000F630B /* XViewController.m */,
+				D0728A3925CA492D00F6927E /* MPDetailViewController.h */,
+				D0728A3A25CA492D00F6927E /* MPDetailViewController.m */,
+				D0728A3E25CA499600F6927E /* MPPlayerController.h */,
+				D0728A4325CA4A3300F6927E /* ZFDouYinCell.h */,
+				D0728A4425CA4A3300F6927E /* ZFDouYinCell.m */,
+				D0728A4125CA49B700F6927E /* MPPlayableProtocol.h */,
+				D0728A3D25CA499600F6927E /* MPPlayerController.m */,
+				D0728A4725CA4A4C00F6927E /* ZFDouYinControlView.h */,
+				D0728A4825CA4A4C00F6927E /* ZFDouYinControlView.m */,
+				D0728A4B25CA4A9100F6927E /* MPTransition.h */,
+				D0728A5025CA4ABA00F6927E /* ZFTableData.h */,
+				D0728A4F25CA4ABA00F6927E /* ZFTableData.m */,
+				D0728A4C25CA4A9100F6927E /* MPTransition.m */,
+				D0728A8525CA4D0700F6927E /* MPlayerAttributeManager.h */,
+				D0728A8425CA4D0700F6927E /* MPlayerAttributeManager.m */,
+				D0728A8825CA4D2B00F6927E /* MPPreLoaderModel.h */,
+				D0728A8925CA4D2B00F6927E /* MPPreLoaderModel.m */,
 				D07289FA25CA3BA700F6927E /* LWVideoModel.h */,
 				D07289FB25CA3BA700F6927E /* LWVideoModel.m */,
 			);
@@ -474,6 +516,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D08EE2B82597559100F0279D /* ImgTypes.swift in Sources */,
+				D0728A8625CA4D0700F6927E /* MPlayerAttributeManager.m in Sources */,
+				D0728A4D25CA4A9100F6927E /* MPTransition.m in Sources */,
 				D08EE2202595C29000F0279D /* ViewController.swift in Sources */,
 				D05CCE0B2599E15C005BF42B /* SearchController.swift in Sources */,
 				D08EE2502595D65800F0279D /* DIYController.swift in Sources */,
@@ -484,13 +528,17 @@
 				D06859C825A5A17200848477 /* CCTabBar.m in Sources */,
 				D08EE2472595D4B300F0279D /* MyNavigationController.swift in Sources */,
 				D05CCE8C259C559E005BF42B /* JPEG.swift in Sources */,
+				D0728A8A25CA4D2B00F6927E /* MPPreLoaderModel.m in Sources */,
 				D05A83B725A473D60016910D /* NSBundle+changeBundleId.m in Sources */,
 				D07289FC25CA3BA700F6927E /* LWVideoModel.m in Sources */,
 				D08EE27B25970BB400F0279D /* RecommendController.swift in Sources */,
 				D08EE21C2595C29000F0279D /* AppDelegate.swift in Sources */,
 				D08EE2C425984F6400F0279D /* Config.swift in Sources */,
 				D04D485D25C0F0F000C6AFA6 /* CategoryModel.swift in Sources */,
+				D0728A3F25CA499600F6927E /* MPPlayerController.m in Sources */,
+				D0728A3B25CA492D00F6927E /* MPDetailViewController.m in Sources */,
 				D050511325C92ABB0075E963 /* MoreTypeController.swift in Sources */,
+				D0728A4925CA4A4C00F6927E /* ZFDouYinControlView.m in Sources */,
 				D05CCDD925997D14005BF42B /* SigninController.swift in Sources */,
 				D05CCDBB259895EA005BF42B /* BigImageController.swift in Sources */,
 				D05CCE0E2599E9E6005BF42B /* MoreCollectionCell.swift in Sources */,
@@ -513,10 +561,12 @@
 				D04F9B1725C94C5D000F630B /* CollectListController.swift in Sources */,
 				D06859CC25A5A24B00848477 /* CCTabBarController.m in Sources */,
 				D069C73B25C8EBBC00819B72 /* TypeController.swift in Sources */,
+				D0728A5125CA4ABA00F6927E /* ZFTableData.m in Sources */,
 				D05CCDC72598B788005BF42B /* LoginController.swift in Sources */,
 				D05CCE36259AFA6E005BF42B /* CollectionHeaderView.swift in Sources */,
 				D08EE29A2597210500F0279D /* CollectionCell.swift in Sources */,
 				D08EE2532595D66200F0279D /* MyController.swift in Sources */,
+				D0728A4525CA4A3300F6927E /* ZFDouYinCell.m in Sources */,
 				D05A837D25A448210016910D /* DiscoverController.swift in Sources */,
 				D0F2084B25BEA71B0032B17D /* User.swift in Sources */,
 				D04E9C2325C68394002FBAD3 /* LWGradientButton.swift in Sources */,

@@ -21,6 +21,9 @@ target 'Wallpaper' do
   pod 'JQFMDB'
   pod 'AFNetworking'
   pod 'MJExtension'
+  pod 'ZFPlayer'
+  pod 'ZFPlayer/ControlView'
+  pod 'KTVHTTPCache', '~> 2.0.0'
   # Pods for Wallpaper
 
 end

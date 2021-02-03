@@ -8,4 +8,4 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <SDWebImage/SDWebImage.h>
 #import "XViewController.h"
-#import <AFNetworking/AFNetWorking.h>
+#import "MPDetailViewController.h"
