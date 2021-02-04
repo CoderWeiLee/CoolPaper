@@ -183,23 +183,23 @@ class MyController: UIViewController {
             make.left.equalTo(twoV.snp.right)
         }
         
-        let threeL = UILabel()
-        threeL.text = "联系客服"
-        threeL.textColor = UIColor(hexString: "#C1C0C9")
-        threeL.font = UIFont.systemFont(ofSize: 12)
-        threeV.addSubview(threeL)
-        threeL.snp.makeConstraints { (make) in
-            make.top.equalTo(twoV).offset(12)
-            make.centerX.equalTo(threeV)
-        }
-        
-        let threeI = UIImageView()
-        threeI.image = UIImage(named: "kefu")
-        threeV.addSubview(threeI)
-        threeI.snp.makeConstraints { (make) in
-            make.centerX.equalTo(threeV)
-            make.top.equalTo(threeL.snp.bottom).offset(6)
-        }
+//        let threeL = UILabel()
+//        threeL.text = "联系客服"
+//        threeL.textColor = UIColor(hexString: "#C1C0C9")
+//        threeL.font = UIFont.systemFont(ofSize: 12)
+//        threeV.addSubview(threeL)
+//        threeL.snp.makeConstraints { (make) in
+//            make.top.equalTo(twoV).offset(12)
+//            make.centerX.equalTo(threeV)
+//        }
+//        
+//        let threeI = UIImageView()
+//        threeI.image = UIImage(named: "kefu")
+//        threeV.addSubview(threeI)
+//        threeI.snp.makeConstraints { (make) in
+//            make.centerX.equalTo(threeV)
+//            make.top.equalTo(threeL.snp.bottom).offset(6)
+//        }
         
         collectBtn = UIButton(type: .custom)
         collectBtn.addTarget(self, action: #selector(collectAction), for: .touchUpInside)
@@ -215,12 +215,12 @@ class MyController: UIViewController {
             make.edges.equalTo(twoV)
         }
 
-        contactBtn = UIButton(type: .custom)
-        contactBtn.addTarget(self, action: #selector(contactAction), for: .touchUpInside)
-        threeV.addSubview(contactBtn)
-        contactBtn.snp.makeConstraints { (make) in
-            make.edges.equalTo(threeV)
-        }
+//        contactBtn = UIButton(type: .custom)
+//        contactBtn.addTarget(self, action: #selector(contactAction), for: .touchUpInside)
+//        threeV.addSubview(contactBtn)
+//        contactBtn.snp.makeConstraints { (make) in
+//            make.edges.equalTo(threeV)
+//        }
         
         userContainer = UIView()
         userContainer.backgroundColor = .white
@@ -356,14 +356,16 @@ class MyController: UIViewController {
             //2.隐藏提示文字
             loginTipsLabel.isHidden = true
             loginBtn.isHidden = true
+            loginoutBtn.isHidden = false
+            loginoutBtn.isUserInteractionEnabled = true
         }else {
             //退出登录设置为半透明
             loginBtn.isHidden = false
             loginBtn.isUserInteractionEnabled = true
             loginLabel.text = "点击登录"
             loginTipsLabel.isHidden = false
-            loginoutBtn.alpha = 0.41
             loginoutBtn.isUserInteractionEnabled = false
+            loginoutBtn.isHidden = true
         }
         
     }
@@ -384,13 +386,21 @@ class MyController: UIViewController {
     
     //收藏
     @objc func collectAction() {
-       let vc = CollectListController()
-        vc.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(vc, animated: true)
+        if UserDefaults.standard.value(forKey: "token") != nil {
+            let vc = CollectListController()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+        }else {
+            let login = LoginController()
+            login.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(login, animated: true)
+            
+        }
     }
     
     //清理
     @objc func cleanAction() {
+        
         clearCache()
         let hud = MBProgressHUD.showAdded(to: view, animated: true)
         hud.label.text = "清理成功"
@@ -455,6 +465,7 @@ class MyController: UIViewController {
         loginoutBtn.alpha = 1
         loginBtn.isHidden = true
         loginoutBtn.isUserInteractionEnabled = true
+        loginoutBtn.isHidden = true
         
     }
     

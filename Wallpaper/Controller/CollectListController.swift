@@ -30,8 +30,10 @@ class CollectListController: UIViewController {
         ///api/token/refresh
         AF.request(checkTokenURL, method: .get, parameters: nil).responseJSON {[self] (response) in
             if let responseModel = (response.data?.kj.model(ResponseModel.self)){
-                self.dataArray = NSMutableArray(array: (responseModel.data?.data)!)
-                self.collectionView.reloadData()
+                if (responseModel.data?.data != nil) {
+                    self.dataArray = NSMutableArray(array: (responseModel.data?.data)!)
+                    self.collectionView.reloadData()
+                }
                 self.collectionView.mj_header?.endRefreshing()
             }
         }
@@ -51,8 +53,10 @@ class CollectListController: UIViewController {
 //        let login = Login(appkey: "035d4cebaaf8bc9d9f5aa782368224ac", page: "\(currentPage ?? 1)", pagesize: "20", video: "0")
         AF.request(favListURL, method: .post, parameters: nil).responseJSON {[self] (response) in
             if let responseModel = (response.data?.kj.model(ResponseModel.self)){
-                self.dataArray = NSMutableArray(array: (responseModel.data?.data)!)
-                self.collectionView.reloadData()
+                if (responseModel.data?.data != nil) {
+                    self.dataArray = NSMutableArray(array: (responseModel.data?.data)!)
+                    self.collectionView.reloadData()
+                }
                 self.collectionView.mj_header?.endRefreshing()
             }
         }
