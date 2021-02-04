@@ -9,6 +9,7 @@ import UIKit
 import JXSegmentedView
 import Alamofire
 import KakaJSON
+import BUAdSDK
 class HomeController: UIViewController, JXSegmentedViewDelegate, JXSegmentedListContainerViewDataSource {
     struct Category: Encodable {
         let appkey: String
@@ -20,6 +21,7 @@ class HomeController: UIViewController, JXSegmentedViewDelegate, JXSegmentedList
     var dataArray: Array<CategoryModel>?
     var menuImageView: UIImageView!
     var menuBtn: UIButton!
+    var rewardedAd: BURewardedVideoAd!
         override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: true)
@@ -105,10 +107,19 @@ class HomeController: UIViewController, JXSegmentedViewDelegate, JXSegmentedList
     }
     
     @objc func menuAction() {
-        let typeVc = TypeController()
-        typeVc.hidesBottomBarWhenPushed = true
-        typeVc.dataArray = self.dataArray
-        navigationController?.pushViewController(typeVc, animated: true)
+        //0.展示激励广告位 945804276
+        BUAdSDKManager.setAppID("5138725")
+        let model = BURewardedVideoModel()
+        model.userId = "tag123"
+        self.rewardedAd = BURewardedVideoAd(slotID: "945804276", rewardedVideoModel: model)
+        self.rewardedAd.delegate = self
+        self.rewardedAd.loadData()
+    }
+    
+    func showRewardVideoAd() -> Void {
+        if self.rewardedAd != nil {
+            self.rewardedAd.show(fromRootViewController: self)
+        }
     }
 }
 
@@ -148,3 +159,22 @@ extension HomeController {
         }
     }
 }
+
+extension HomeController: BURewardedVideoAdDelegate {
+    func rewardedVideoAdVideoDidLoad(_ rewardedVideoAd: BURewardedVideoAd) {
+        self.rewardedAd.show(fromRootViewController: self)
+    }
+    
+    func rewardedVideoAdDidClose(_ rewardedVideoAd: BURewardedVideoAd) {
+        let typeVc = TypeController()
+        typeVc.hidesBottomBarWhenPushed = true
+        typeVc.dataArray = self.dataArray
+        navigationController?.pushViewController(typeVc, animated: true)
+    }
+    
+    func rewardedVideoAdServerRewardDidFail(_ rewardedVideoAd: BURewardedVideoAd, error: Error) {
+        
+    }
+}
+
+
