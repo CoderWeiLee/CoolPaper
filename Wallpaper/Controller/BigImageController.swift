@@ -173,15 +173,15 @@ class BigImageController: UIViewController {
             make.width.height.equalTo(30)
         }
         
-        let shareBtn = UIButton(type: .custom)
-        shareBtn.adjustsImageWhenHighlighted = false
-        shareBtn.setImage(UIImage(named: "share"), for: .normal)
-        shareBtn.addTarget(self, action: #selector(shareAction), for: .touchUpInside)
-        view.addSubview(shareBtn)
-        shareBtn.snp.makeConstraints { (make) in
-            make.right.equalTo(view).offset(-17)
-            make.centerY.equalTo(backBtn)
-        }
+//        let shareBtn = UIButton(type: .custom)
+//        shareBtn.adjustsImageWhenHighlighted = false
+//        shareBtn.setImage(UIImage(named: "share"), for: .normal)
+//        shareBtn.addTarget(self, action: #selector(shareAction), for: .touchUpInside)
+//        view.addSubview(shareBtn)
+//        shareBtn.snp.makeConstraints { (make) in
+//            make.right.equalTo(view).offset(-17)
+//            make.centerY.equalTo(backBtn)
+//        }
         
         //爱心按钮
         likeBtn.setImage(UIImage(named: "collect"), for: .normal)
@@ -206,37 +206,37 @@ class BigImageController: UIViewController {
             make.width.height.equalTo(36)
         }
         
-        setHomeBtn = UIButton(type: .custom)
-        setHomeBtn.backgroundColor = UIColor(hexString: "#6A6F84", alpha: 0.23)
-        setHomeBtn.setTitle("设为桌面", for: .normal)
-        setHomeBtn.setTitleColor(.white, for: .normal)
-        setHomeBtn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        setHomeBtn.layer.cornerRadius = 18
-        setHomeBtn.addTarget(self, action: #selector(setHomeAction), for: .touchUpInside)
-        setHomeBtn.layer.masksToBounds = true
-        view.addSubview(setHomeBtn)
-        setHomeBtn.snp.makeConstraints { (make) in
-            make.width.equalTo(100)
-            make.height.equalTo(36)
-            make.left.equalTo(likeBtn.snp.right).offset(26)
-            make.centerY.equalTo(likeBtn)
-        }
-        
-        setLockBtn = UIButton(type: .custom)
-        setLockBtn.backgroundColor = UIColor(hexString: "#6A6F84", alpha: 0.23)
-        setLockBtn.setTitle("设为锁屏", for: .normal)
-        setLockBtn.setTitleColor(.white, for: .normal)
-        setLockBtn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        setLockBtn.layer.cornerRadius = 18
-        setLockBtn.addTarget(self, action: #selector(setLockAction), for: .touchUpInside)
-        setLockBtn.layer.masksToBounds = true
-        view.addSubview(setLockBtn)
-        setLockBtn.snp.makeConstraints { (make) in
-            make.width.equalTo(100)
-            make.height.equalTo(36)
-            make.right.equalTo(downloadBtn.snp.left).offset(-20)
-            make.centerY.equalTo(likeBtn)
-        }
+//        setHomeBtn = UIButton(type: .custom)
+//        setHomeBtn.backgroundColor = UIColor(hexString: "#6A6F84", alpha: 0.23)
+//        setHomeBtn.setTitle("设为桌面", for: .normal)
+//        setHomeBtn.setTitleColor(.white, for: .normal)
+//        setHomeBtn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+//        setHomeBtn.layer.cornerRadius = 18
+//        setHomeBtn.addTarget(self, action: #selector(setHomeAction), for: .touchUpInside)
+//        setHomeBtn.layer.masksToBounds = true
+//        view.addSubview(setHomeBtn)
+//        setHomeBtn.snp.makeConstraints { (make) in
+//            make.width.equalTo(100)
+//            make.height.equalTo(36)
+//            make.left.equalTo(likeBtn.snp.right).offset(26)
+//            make.centerY.equalTo(likeBtn)
+//        }
+//
+//        setLockBtn = UIButton(type: .custom)
+//        setLockBtn.backgroundColor = UIColor(hexString: "#6A6F84", alpha: 0.23)
+//        setLockBtn.setTitle("设为锁屏", for: .normal)
+//        setLockBtn.setTitleColor(.white, for: .normal)
+//        setLockBtn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+//        setLockBtn.layer.cornerRadius = 18
+//        setLockBtn.addTarget(self, action: #selector(setLockAction), for: .touchUpInside)
+//        setLockBtn.layer.masksToBounds = true
+//        view.addSubview(setLockBtn)
+//        setLockBtn.snp.makeConstraints { (make) in
+//            make.width.equalTo(100)
+//            make.height.equalTo(36)
+//            make.right.equalTo(downloadBtn.snp.left).offset(-20)
+//            make.centerY.equalTo(likeBtn)
+//        }
         
         
     }
