@@ -75,15 +75,15 @@ class TypeController: UIViewController, UIScrollViewDelegate {
             make.centerY.equalTo(backBtn)
         }
         
-        let searchBtn = UIButton(type: .custom)
-        searchBtn.adjustsImageWhenHighlighted = false
-        searchBtn.setImage(UIImage(named: "nav_search"), for: .normal)
-        searchBtn.addTarget(self, action: #selector(searchAction), for: .touchUpInside)
-        view.addSubview(searchBtn)
-        searchBtn.snp.makeConstraints { (make) in
-            make.right.equalTo(view).offset(-17)
-            make.centerY.equalTo(backBtn)
-        }
+//        let searchBtn = UIButton(type: .custom)
+//        searchBtn.adjustsImageWhenHighlighted = false
+//        searchBtn.setImage(UIImage(named: "nav_search"), for: .normal)
+//        searchBtn.addTarget(self, action: #selector(searchAction), for: .touchUpInside)
+//        view.addSubview(searchBtn)
+//        searchBtn.snp.makeConstraints { (make) in
+//            make.right.equalTo(view).offset(-17)
+//            make.centerY.equalTo(backBtn)
+//        }
         
         scroll = UIScrollView(frame: CGRect(x: 0, y: statusBarHeight + 50, width: view.width, height: 50))
 //        scroll.backgroundColor = UIColor(hexString: "#162223")
