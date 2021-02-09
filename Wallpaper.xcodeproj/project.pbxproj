@@ -74,6 +74,7 @@
 		D08EE2C425984F6400F0279D /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EE2C325984F6400F0279D /* Config.swift */; };
 		D0B8D93525C7F75000B32726 /* luanch.png in Resources */ = {isa = PBXBuildFile; fileRef = D0B8D93425C7F75000B32726 /* luanch.png */; };
 		D0F2084B25BEA71B0032B17D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F2084A25BEA71B0032B17D /* User.swift */; };
+		D0FE1B6025CCCCEC008C37C2 /* xuanchuan.png in Resources */ = {isa = PBXBuildFile; fileRef = D0FE1B5F25CCCCEC008C37C2 /* xuanchuan.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -164,6 +165,7 @@
 		D0B8D93425C7F75000B32726 /* luanch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = luanch.png; sourceTree = "<group>"; };
 		D0F2084025BE93820032B17D /* mobileffmpeg.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = mobileffmpeg.xcframework; path = "Pods/mobile-ffmpeg-full/mobileffmpeg.xcframework"; sourceTree = "<group>"; };
 		D0F2084A25BEA71B0032B17D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D0FE1B5F25CCCCEC008C37C2 /* xuanchuan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xuanchuan.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -362,6 +364,7 @@
 				D08EE2262595C29300F0279D /* LaunchScreen.storyboard */,
 				D08EE2292595C29300F0279D /* Info.plist */,
 				D0B8D93425C7F75000B32726 /* luanch.png */,
+				D0FE1B5F25CCCCEC008C37C2 /* xuanchuan.png */,
 				D05A83B425A473D50016910D /* Wallpaper-Bridging-Header.h */,
 			);
 			path = Wallpaper;
@@ -443,6 +446,7 @@
 				D04F9B0725C9400A000F630B /* policy.html in Resources */,
 				D0B8D93525C7F75000B32726 /* luanch.png in Resources */,
 				D04F9B1425C94961000F630B /* protocol.html in Resources */,
+				D0FE1B6025CCCCEC008C37C2 /* xuanchuan.png in Resources */,
 				D08EE2282595C29300F0279D /* LaunchScreen.storyboard in Resources */,
 				D08EE2252595C29300F0279D /* Assets.xcassets in Resources */,
 				D08EE2232595C29000F0279D /* Main.storyboard in Resources */,
